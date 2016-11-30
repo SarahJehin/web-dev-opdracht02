@@ -84,6 +84,13 @@ ul {
 .categories img {
     width: 40px;
     height: auto;
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+    
+    &:hover { 
+        -webkit-filter: none;
+        filter: none;
+    }
 }
 
 .categories span {

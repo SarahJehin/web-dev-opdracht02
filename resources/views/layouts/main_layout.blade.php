@@ -43,9 +43,9 @@
                 
                 <div class="categories">
                     <ul>
-                        <li><a href="#"><img src="{{url('/images/icons/nav_dog.png')}}"><span>Dogs</span></a></li>
-                        <li><a href="#"><img src="{{url('/images/icons/nav_cat.png')}}"><span>Cats</span></a></li>
-                        <li><a href="#"><img src="{{url('/images/icons/nav_fish.png')}}"><span>Fish</span></a></li>
+                        <li><a href="#"><img src="{{url('/images/icons/icon_dog.png')}}"><span>Dogs</span></a></li>
+                        <li><a href="#"><img src="{{url('/images/icons/icon_cat.png')}}"><span>Cats</span></a></li>
+                        <li><a href="#"><img src="{{url('/images/icons/icon_fish.png')}}"><span>Fish</span></a></li>
                     </ul>
                 </div>
             </nav>

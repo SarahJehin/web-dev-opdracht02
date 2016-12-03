@@ -18,24 +18,58 @@
         </div>
         <div class="row categories">
             <div class="col-md-12">
+                
                 <div class="col-md-2 category">
-                    dogs
+                    <div class="cat_dogs"></div>
+                    <div>DOGS</div>
                 </div>
                 <div class="col-md-2 category">
-                    cats
+                    <div class="cat_cats"></div>
+                    <div>CATS</div>
                 </div>
                 <div class="col-md-2 category">
-                    fish
+                    <div class="cat_fish"></div>
+                    <div>FISH</div>
                 </div>
                 <div class="col-md-2 category">
-                    birds
+                    <div class="cat_birds"></div>
+                    <div>BIRDS</div>
                 </div>
                 <div class="col-md-2 category">
-                    small animals
+                    <div class="cat_hamsters"></div>
+                    <div>SMALL ANIMALS</div>
+                </div>
+                <div class="col-md-2 category">
+                    <div class="cat_other"></div>
+                    <div>OTHER</div>
+                </div>
+                
+                
+                <!--
+                <div class="col-md-2 category">
+                    <img src="{{url('/images/icons/icon_dog.png')}}" alt="dog">
+                    <span>dogs</span>
+                </div>
+                <div class="col-md-2 category">
+                    <img src="{{url('/images/icons/icon_cat.png')}}" alt="dog">
+                    <span>cats</span>
+                </div>
+                <div class="col-md-2 category">
+                    <img src="{{url('/images/icons/icon_fish.png')}}" alt="dog">
+                    <span>fish</span>
+                </div>
+                <div class="col-md-2 category">
+                    <img src="{{url('/images/icons/icon_bird.png')}}" alt="dog">
+                    <span>birds</span>
+                </div>
+                <div class="col-md-2 category">
+                    <img src="{{url('/images/icons/icon_hamster.png')}}" alt="dog">
+                    <span>small animals</span>
                 </div>
                 <div class="col-md-2 category">
                     other
                 </div>
+                -->
             </div>
         </div>
         
@@ -64,10 +98,25 @@
         
         <div class="row bottom">
             <div class="col-md-8 deals">
-                discover amazing kowloon deals
+                <div class="col-md-8 col-md-offset-2">
+                    discover amazing Kowloon deals!
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    only in our newsletter
+                </div>
             </div>
-            <div class="col-md-4">
-                subscribe to our newsletter
+            <div class="col-md-4 newsletter">
+                <h3>Subscribe to our newsletter</h3>
+                <div>Lorem ipsum dolor sit amet.</div>
+                <div>
+                    <form method="post" action="#">
+                        {{ csrf_field() }}
+                        <div>
+                            <input type="email" name="email" placeholder="Name@domain.com">
+                            <input type="submit" value="OK">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         </div>

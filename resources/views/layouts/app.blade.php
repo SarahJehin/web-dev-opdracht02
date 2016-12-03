@@ -82,6 +82,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/side_nav.js"></script>
 </body>
 </html>

@@ -1,0 +1,193 @@
+#hamburger {
+    display: none;
+}
+
+#hamburger + label {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background-color: #252525;
+    color: #eee;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: block;
+    margin: 0 auto;
+    margin-top: 8px;
+    width: 45px;
+    height: 45px;
+    background: url('../images/icons/general_menu_icons_sprite.png') 0 -120px;
+}
+
+
+.side_nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 60px;
+    background-color: $nav_color;
+    overflow: hidden;
+    z-index: 5;
+    color: #eee;
+    padding-top: 60px;
+    
+    -webkit-transition: width 0.5s; /* Safari */
+    transition: width 0.5s;
+    
+    ul li a {
+        display: block;
+        padding: 6px;
+    }
+    
+    .general {
+        
+        a {
+            color: #a2a2a2;
+            
+            span {
+                float: left;
+            }
+            
+            .text {
+                line-height: 40px;
+                vertical-align: middle;
+                display: none;
+            }
+            
+            &:hover {
+                color: #323232;
+                background-color: $nav_general_hover;
+
+                .search {
+                    background: url('../images/icons/general_menu_icons_sprite.png') 40px 0;
+                }
+                .faq {
+                    background: url('../images/icons/general_menu_icons_sprite.png') 40px -40px;
+                }
+                .about_us {
+                    background: url('../images/icons/general_menu_icons_sprite.png') 40px -80px;
+                }
+            }
+        }
+        
+        .search {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: url('../images/icons/general_menu_icons_sprite.png') 0 0;
+        }
+        
+        .faq {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: url('../images/icons/general_menu_icons_sprite.png') 0 -40px;
+        }
+        
+        .about_us {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: url('../images/icons/general_menu_icons_sprite.png') 0 -80px;
+        }
+        
+    }
+    
+    .categories {
+        ul a {
+            display: block;
+            color: #fff;
+            
+            span {
+                float: left;
+                &:first-child {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            
+            .text {
+                line-height: 50px;
+                vertical-align: middle;
+                display: none;
+            }
+            
+            .dog_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 0;
+            }
+
+            .cat_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 -50px;
+            }
+
+            .fish_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 -100px;
+            }
+            
+            .fish_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 -100px;
+            }
+            
+            .bird_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 -150px;
+            }
+            
+            .hamster_icon {
+                background: url('../images/icons/category_icons_sprite.png') 0 -200px;
+            }
+            
+            
+            &:hover {
+                .dog_icon {
+                    background: url('../images/icons/category_icons_sprite.png') -50px 0;
+                }
+
+                .cat_icon {
+                    background: url('../images/icons/category_icons_sprite.png') -50px -50px;
+                }
+
+                .fish_icon {
+                    background: url('../images/icons/category_icons_sprite.png') -50px -100px;
+                }
+                
+                .bird_icon {
+                    background: url('../images/icons/category_icons_sprite.png') -50px -150px;
+                }
+
+                .hamster_icon {
+                    background: url('../images/icons/category_icons_sprite.png') -50px -200px;
+                }
+            }
+            
+            
+        }
+
+        img {
+            width: 40px;
+            height: auto;
+            -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1);
+
+            &:hover { 
+                -webkit-filter: none;
+                filter: none;
+            }
+        }
+        
+        span {
+            display: none;
+        }
+    }
+    
+}
+
+
+#hamburger:checked ~ .side_nav {
+    width: 217px;
+}

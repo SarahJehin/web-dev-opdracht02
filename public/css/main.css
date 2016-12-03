@@ -156,6 +156,23 @@ ul {
     background-color: rgba(212, 18, 82, 0.53);
     opacity: 0.75; }
 
+.header_slider {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  position: relative; }
+  .header_slider img {
+    width: 100%;
+    height: auto; }
+  .header_slider .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(212, 18, 82, 0.53);
+    opacity: 0.75; }
+
 .page_content {
   padding-bottom: 100px; }
   .page_content .categories .category {

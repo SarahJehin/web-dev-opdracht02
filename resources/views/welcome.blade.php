@@ -2,44 +2,7 @@
 
 @section('content')
 <div class="">
-    <div class="row header">
-        <!--
-        <div class="col-md-12 header_img">
-            <img src="{{url('/images/header_dog01.jpg')}}" alt="header image">
-            <div class="overlay"></div>
-        </div>
-        -->
-        
-        <div class="col-md-12">
-            <div id="myCarousel" class="carousel slide header_slider" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                  </ol>
-
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <img src="{{url('/images/header_dog01.jpg')}}" alt="01">
-                    </div>
-
-                    <div class="item">
-                      <img src="{{url('/images/header_dog02.jpg')}}" alt="02">
-                    </div>
-
-                    <div class="item">
-                      <img src="{{url('/images/header_dog03.jpg')}}" alt="03">
-                    </div>
-                    
-                    <div class="overlay"></div>
-                  </div>
-
-                </div>
-        </div>
-        
-    </div>
+    @include('sub_views.header')
     
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
@@ -105,26 +68,66 @@
             </div>
         </div>
         
-        <div class="row">
+        <div class="row hot_items">
             <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Hot items.</div>
+                    <div><h1>Hot items.</h1></div>
 
-                    <div class="panel-body">
-                        <div class="col-md-3">
-                            foto1
+                    <div class="items">
+                        <div class="hot_item">
+                            <a href="#">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
+                                </figure>
+                            </a>
                         </div>
-                        <div class="col-md-3">
-                            foto2
+                        <div class="hot_item">
+                            <a href="#">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
+                                </figure>
+                            </a>
                         </div>
-                        <div class="col-md-3">
-                            foto3
+                        <div class="hot_item">
+                            <a href="#">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
+                                </figure>
+                            </a>
                         </div>
-                        <div class="col-md-3">
-                            foto4
+                        <div class="hot_item">
+                            <a href="#">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
+                                </figure>
+                            </a>
                         </div>
                     </div>
-                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 visit_store">
+                <a href="#">Visit the store</a>
             </div>
         </div>
         

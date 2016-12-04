@@ -8,11 +8,13 @@ $('label[for="hamburger"]').click(function () {
     if(hamburger_open) {
         setTimeout((function() {
             $(".text").show();
+            $(".logo a").addClass( "show_full" );
         }), 200);
     }
     else {
         setTimeout((function() {
             $(".text").hide();
+            $(".logo a").removeClass( "show_full" );
         }), 100);
     }
 

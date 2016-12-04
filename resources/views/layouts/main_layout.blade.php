@@ -37,7 +37,7 @@
                     <ul>
                         <li><a href="#"><span class="search"></span><span class="text">Search</span></a></li>
                         <li><a href="#"><span class="faq"></span><span class="text">FAQ</span></a></li>
-                        <li><a href="#"><span class="about_us"></span><span class="text">About us</span></a></li>
+                        <li><a href="{{url('about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
                     </ul>
                 </div>
                 
@@ -56,6 +56,11 @@
                     </ul>
                 </div>
             </nav>
+            
+            <div class="logo">
+                <a href="{{url('/')}}"></a>
+            </div>
+            
         </div>
         
 

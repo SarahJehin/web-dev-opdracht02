@@ -14,6 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/products', function () {
+    return view('category_products');
+});
+Route::get('/about_us', function () {
+    return view('about_us');
+});
 
 Auth::routes();
 

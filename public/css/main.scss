@@ -2,6 +2,7 @@ $nav_color: #323232;
 $nav_general_hover: #ededed;
 $dog_color: #ff6f9e;
 $dog_overlay: rgba(212, 18, 82, 0.53);
+$pink_overlay: rgba(255, 111, 158, 0.85);
 $cat_color: #8787ff;
 $fish_color: #ffb93f;
 $bird_color: #7bff81;
@@ -44,30 +45,6 @@ ul {
     padding: 0;
 }
 
-
-
-.header_img {
-    width: 100%;
-    height: 480px;
-    overflow: hidden;
-    position: relative;
-    
-    img {
-        width: 100%;
-        height: auto;
-    }
-    
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: $dog_overlay;
-        opacity: 0.75;
-    }
-}
-
 .header_slider {
     width: 100%;
     height: 480px;
@@ -87,12 +64,15 @@ ul {
         background-color: $dog_overlay;
         opacity: 0.75;
     }
+    
+    .kowloon_logo {
+        position: absolute;
+        top: 50px;
+        left: calc(50% - 150px);
+    }
 }
 
-
-
 .page_content {
-    
     padding-bottom: 100px;
     
     .categories .category {
@@ -125,11 +105,91 @@ ul {
         }
         
     }
+    
+    .hot_items,
+    .items {
+         
+        .hot_item {
+            width: calc((100% - 15px)/4);
+            padding: 4px;
+            border: 1px solid #717171;
+            margin-right: 5px;
+            background-color: #565656;
+            float: left;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+            
+            a {
+                color: #fff;
+                figure {
+                    width: 100%;
+
+                    .img {
+                        position: relative;
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                        .overlay_icon {
+                            display: none;
+                        }
+                    }
+
+                    .title {
+                        font-weight: bold;
+                        float: left;
+                    }
+                    .price {
+                        float: right;
+                    }
+                }
+                
+                &:hover {
+                    .overlay {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: $pink_overlay;
+                    }
+                    figure .img .overlay_icon {
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url('../images/icons/view_details.png');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        span {
+                            position: absolute;
+                            left: calc(50% - 37px);
+                            top: 65%;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    .visit_store {
+        text-align: right;
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+    }
         
     
     .bottom {
         color: #fff;
         height: 185px;
+        margin-top: 70px;
         
         .deals {
             height: 100%;
@@ -154,6 +214,22 @@ ul {
         .newsletter {
             background-color: #5f5f5f;
             height: 100%;
+            
+            input {
+                padding: 5px;
+                border: 1px solid #bcbcbc;
+                
+                &[type="email"] {
+                    width: 230px;
+                    color: #000;
+                }
+                
+                &[type="submit"] {
+                    background-color: $nav_color;
+                    border: 1px solid $nav_color;
+                    margin-left: -5px;
+                }
+            }
         }
         
     }
@@ -161,18 +237,29 @@ ul {
     
 }
 
+/*    ABOUT US     */
+
+@import "_about_us";
+
+
+
+
 
 /* **********    CLEARFIX     ********** */
 
 .general a::before, .general a::after,
-.categories a::before, .categories a::after {
+.categories a::before, .categories a::after,
+.hot_items .items::before, .hot_items .items::after,
+figure figcaption::before, figure figcaption::after {
     content: "";
     line-height: 0;
     display: table;
 }
 
 .general a::after,
-.categories a::after {
+.categories a::after,
+.hot_items .items::after,
+figure figcaption::after {
     clear: both;
 }
 

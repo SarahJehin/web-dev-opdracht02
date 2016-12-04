@@ -16,9 +16,9 @@
   display: block;
   margin: 0 auto;
   margin-top: 8px;
-  width: 45px;
-  height: 45px;
-  background: url("../images/icons/general_menu_icons_sprite.png") 0 -120px; }
+  width: 50px;
+  height: 50px;
+  background: url("../images/icons/general_menu_icons_sprite.png") 0 -150px; }
 
 .side_nav {
   position: fixed;
@@ -37,38 +37,41 @@
   .side_nav ul li a {
     display: block;
     padding: 6px; }
+  .side_nav .general li:nth-child(3) {
+    border-top: 1px solid #454545;
+    border-bottom: 1px solid #454545; }
   .side_nav .general a {
     color: #a2a2a2; }
     .side_nav .general a span {
       float: left; }
     .side_nav .general a .text {
-      line-height: 40px;
+      line-height: 50px;
       vertical-align: middle;
       display: none; }
     .side_nav .general a:hover {
       color: #323232;
       background-color: #ededed; }
       .side_nav .general a:hover .search {
-        background: url("../images/icons/general_menu_icons_sprite.png") 40px 0; }
+        background: url("../images/icons/general_menu_icons_sprite.png") -50px 0; }
       .side_nav .general a:hover .faq {
-        background: url("../images/icons/general_menu_icons_sprite.png") 40px -40px; }
+        background: url("../images/icons/general_menu_icons_sprite.png") -50px -50px; }
       .side_nav .general a:hover .about_us {
-        background: url("../images/icons/general_menu_icons_sprite.png") 40px -80px; }
+        background: url("../images/icons/general_menu_icons_sprite.png") -50px -100px; }
   .side_nav .general .search {
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: url("../images/icons/general_menu_icons_sprite.png") 0 0; }
   .side_nav .general .faq {
     display: block;
-    width: 40px;
-    height: 40px;
-    background: url("../images/icons/general_menu_icons_sprite.png") 0 -40px; }
+    width: 50px;
+    height: 50px;
+    background: url("../images/icons/general_menu_icons_sprite.png") 0 -50px; }
   .side_nav .general .about_us {
     display: block;
-    width: 40px;
-    height: 40px;
-    background: url("../images/icons/general_menu_icons_sprite.png") 0 -80px; }
+    width: 50px;
+    height: 50px;
+    background: url("../images/icons/general_menu_icons_sprite.png") 0 -100px; }
   .side_nav .categories ul a {
     display: block;
     color: #fff; }
@@ -114,6 +117,18 @@
       filter: none; }
   .side_nav .categories span {
     display: none; }
+  .side_nav .logo {
+    width: 100%;
+    padding: 6px;
+    position: absolute;
+    bottom: 0px; }
+    .side_nav .logo a {
+      display: block;
+      width: 100%;
+      height: 50px;
+      background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px; }
+      .side_nav .logo a.show_full {
+        background: url("../images/icons/general_menu_icons_sprite.png") 0px -200px; }
 
 #hamburger:checked ~ .side_nav {
   width: 217px; }
@@ -139,23 +154,6 @@ ul {
 .col-md-12 {
   padding: 0; }
 
-.header_img {
-  width: 100%;
-  height: 480px;
-  overflow: hidden;
-  position: relative; }
-  .header_img img {
-    width: 100%;
-    height: auto; }
-  .header_img .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(212, 18, 82, 0.53);
-    opacity: 0.75; }
-
 .header_slider {
   width: 100%;
   height: 480px;
@@ -172,6 +170,10 @@ ul {
     width: 100%;
     background-color: rgba(212, 18, 82, 0.53);
     opacity: 0.75; }
+  .header_slider .kowloon_logo {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 150px); }
 
 .page_content {
   padding-bottom: 100px; }
@@ -192,9 +194,73 @@ ul {
       background: url("../images/icons/category_icons_sprite.png") -100px -650px; }
     .page_content .categories .category .cat_other {
       background: url("../images/icons/category_icons_sprite.png") -100px -750px; }
+  .page_content .hot_items .hot_item,
+  .page_content .items .hot_item {
+    width: calc((100% - 15px)/4);
+    padding: 4px;
+    border: 1px solid #717171;
+    margin-right: 5px;
+    background-color: #565656;
+    float: left; }
+    .page_content .hot_items .hot_item:last-child,
+    .page_content .items .hot_item:last-child {
+      margin-right: 0; }
+    .page_content .hot_items .hot_item a,
+    .page_content .items .hot_item a {
+      color: #fff; }
+      .page_content .hot_items .hot_item a figure,
+      .page_content .items .hot_item a figure {
+        width: 100%; }
+        .page_content .hot_items .hot_item a figure .img,
+        .page_content .items .hot_item a figure .img {
+          position: relative; }
+          .page_content .hot_items .hot_item a figure .img img,
+          .page_content .items .hot_item a figure .img img {
+            width: 100%;
+            height: auto; }
+          .page_content .hot_items .hot_item a figure .img .overlay_icon,
+          .page_content .items .hot_item a figure .img .overlay_icon {
+            display: none; }
+        .page_content .hot_items .hot_item a figure .title,
+        .page_content .items .hot_item a figure .title {
+          font-weight: bold;
+          float: left; }
+        .page_content .hot_items .hot_item a figure .price,
+        .page_content .items .hot_item a figure .price {
+          float: right; }
+      .page_content .hot_items .hot_item a:hover .overlay,
+      .page_content .items .hot_item a:hover .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 111, 158, 0.85); }
+      .page_content .hot_items .hot_item a:hover figure .img .overlay_icon,
+      .page_content .items .hot_item a:hover figure .img .overlay_icon {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../images/icons/view_details.png");
+        background-repeat: no-repeat;
+        background-position: center; }
+        .page_content .hot_items .hot_item a:hover figure .img .overlay_icon span,
+        .page_content .items .hot_item a:hover figure .img .overlay_icon span {
+          position: absolute;
+          left: calc(50% - 37px);
+          top: 65%; }
+  .page_content .visit_store {
+    text-align: right; }
+    .page_content .visit_store a {
+      color: #fff;
+      text-decoration: underline; }
   .page_content .bottom {
     color: #fff;
-    height: 185px; }
+    height: 185px;
+    margin-top: 70px; }
     .page_content .bottom .deals {
       height: 100%;
       background-image: url(../images/pattern_a.jpg);
@@ -211,16 +277,51 @@ ul {
     .page_content .bottom .newsletter {
       background-color: #5f5f5f;
       height: 100%; }
+      .page_content .bottom .newsletter input {
+        padding: 5px;
+        border: 1px solid #bcbcbc; }
+        .page_content .bottom .newsletter input[type="email"] {
+          width: 230px;
+          color: #000; }
+        .page_content .bottom .newsletter input[type="submit"] {
+          background-color: #323232;
+          border: 1px solid #323232;
+          margin-left: -5px; }
+
+/*    ABOUT US     */
+.header_img {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  position: relative; }
+  .header_img img {
+    width: 100%;
+    height: auto; }
+  .header_img .kowloon_logo {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 150px); }
+
+.contact {
+  border-bottom: 1px solid #616161;
+  border-left: 1px solid #616161; }
+  .contact ul {
+    list-style: disc;
+    padding-left: 15px; }
 
 /* **********    CLEARFIX     ********** */
 .general a::before, .general a::after,
-.categories a::before, .categories a::after {
+.categories a::before, .categories a::after,
+.hot_items .items::before, .hot_items .items::after,
+figure figcaption::before, figure figcaption::after {
   content: "";
   line-height: 0;
   display: table; }
 
 .general a::after,
-.categories a::after {
+.categories a::after,
+.hot_items .items::after,
+figure figcaption::after {
   clear: both; }
 
 /*# sourceMappingURL=main.css.map */

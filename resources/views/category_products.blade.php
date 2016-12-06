@@ -19,9 +19,17 @@
                 <div class="col-md-11 col-md-offset-1">
                     <div class="row">
                         by collection
+                        <form>
+                            <input type="checkbox" value="1" id="1"><label for="1">Splash 'n fun</label>
+                            <input type="checkbox" value="2" id="2"><label for="2">Luxury</label>
+                        </form>
                     </div>
                     <div class="row">
                         price range
+                        <label for="from">between:</label>
+                        <input type="number" id="from" name="from" min="1">
+                        <label for="from">and:</label>
+                        <input type="number" id="from" name="from" min="1">
                     </div>
                 </div>
             </div>
@@ -29,7 +37,7 @@
             <div class="row sort">
                 <div class="col-md-2">
                     <select>
-                        <option>Sort by relevance</option>
+                        <option disabled selected>Sort by relevance</option>
                         <option>Price: low to high</option>
                         <option>Price: high to low</option>
                         <option>Latest</option>

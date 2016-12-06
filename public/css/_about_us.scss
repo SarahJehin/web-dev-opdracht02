@@ -1,7 +1,4 @@
 
-//.items is styled in main.scss --> same styling as .hot_items
-
-
 .header_img {
     width: 100%;
     height: 480px;
@@ -21,6 +18,9 @@
 }
 
 
+.about_us {
+    padding: 0;
+}
 
 .contact {
     border-bottom: 1px solid $grey_divider;
@@ -31,4 +31,89 @@
         padding-left: 15px;
     }
 }
+
+
+.contact_form {
+    
+    div {
+        margin-bottom: 30px;
+        color: #fff;
+        
+        label {
+            display: block;
+            font-weight: normal;
+        }
+        input, textarea {
+            padding: 10px 15px;
+            border: #9a9a9a solid 2px;
+            color: #000;
+        }
+        input {
+            width: 220px;
+            
+            &[type="submit"] {
+                border: none;
+                background-color: $pink;
+                font-weight: bold;
+                color: #fff;
+            }
+        }
+        textarea {
+            width: 715px;
+            height: 135px;
+        }
+        
+        
+    }
+}
+
+.faqs {
+    .questionblock {
+        padding: 20px;
+        margin-bottom: 10px;
+        background-color: $grey_faq;
+        color: #fff;
+        
+        .question {
+            cursor: pointer;
+            h4 {
+                margin: 0;
+                float: left;
+            }
+            .arrow {
+                display: block;
+                width: 25px;
+                height: 25px;
+                float: right;
+                background: url('../images/icons/general_menu_icons_sprite.png') -125px 0;
+            }
+            &.collapsed {
+                .arrow {
+                    background: url('../images/icons/general_menu_icons_sprite.png') -100px 0px;
+                }
+            }
+        }
+        
+        .answer {
+            padding-left: 20px;
+        }
+        
+    }
+}
+
+/* CLEARFIX */
+
+.question::before, .question::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+.question::after {
+    clear: both;
+}
+
+
+
+
 

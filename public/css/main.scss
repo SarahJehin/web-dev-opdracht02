@@ -1,7 +1,18 @@
+@font-face {
+    font-family: choplin-extralight;
+    src: url('../fonts/Choplin-ExtraLight-DEMO.otf');
+}
+
+@font-face {
+    font-family: choplin-medium;
+    src: url('../fonts/Choplin-Medium-DEMO.otf');
+}
+
 $nav_color: #323232;
 $nav_general_hover: #ededed;
 $dog_color: #ff6f9e;
 $dog_overlay: rgba(212, 18, 82, 0.53);
+$pink: #ff6f9e;
 $pink_overlay: rgba(255, 111, 158, 0.85);
 $cat_color: #8787ff;
 $fish_color: #ffb93f;
@@ -10,9 +21,12 @@ $small_animal_color: #7be5ff;
 
 $basic_font: "Arial", sans-serif;
 $basic_color: #cecece;
+$choplin_medium: choplin-medium;
 
 $grey_main: #454545;
 $grey_divider: #616161;
+$grey_faq: #717171;
+
 
 
 
@@ -29,6 +43,11 @@ body {
 .content {
     margin-left: 60px;
     background-color: $grey_main;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    font-family: $choplin_medium;
 }
 
 .row {
@@ -192,6 +211,7 @@ ul {
         margin-top: 70px;
         
         .deals {
+            font-family: $choplin_medium;
             height: 100%;
             background-image: url(../images/pattern_a.jpg);
             text-align: center;
@@ -240,6 +260,11 @@ ul {
 /*    ABOUT US     */
 
 @import "_about_us";
+
+/*    PRODUCTS OVERVIEW     */
+
+@import "_products_overview";
+
 
 
 

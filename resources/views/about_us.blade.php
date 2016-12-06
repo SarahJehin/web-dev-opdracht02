@@ -20,13 +20,14 @@
             </div>
             
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-9 about_us">
                     <h3>Kowloon</h3>
                     <div>
-                        Pet concept, active since ...
+                        <p>Pet Concept, active since 1998, is developing, importing and exporting products for pets worldwide.</p>
+                        <p>natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae sequi nesciunt.</p>
                     </div>
                 </div>
-                <div class="col-md-2 contact">
+                <div class="col-md-2 col-md-offset-1 contact">
                     <h3>Contact</h3>
                     <div>
                         <ul>
@@ -42,7 +43,7 @@
                 <h3>Leave us a message</h3>
             </div>
             
-            <div class="row">
+            <div class="row contact_form">
                 <form method="post" action="#">
                     <div>
                         <label for="email">E-mail</label>
@@ -52,7 +53,9 @@
                         <label for="message">Your message</label>
                         <textarea name="message" id="message" placeholder="Write your message here."></textarea>
                     </div>
-                    <input type="submit" value="Send">
+                    <div>
+                        <input type="submit" value="Send">
+                    </div>
                 </form>
             </div>
             
@@ -61,11 +64,21 @@
             </div>
             
             <div class="faqs">
-                <div class="row">
-                    <div class="questions">
+                <div class="row questionblock">
+                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo1">
                         <h4>Dit is een vraag</h4>
+                        <span class="arrow"></span>
                     </div>
-                    <div class="answer">
+                    <div id="demo1" class="collapse answer">
+                        Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
+                    </div>
+                </div>
+                <div class="row questionblock">
+                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo2">
+                        <h4>Dit is een vraag</h4>
+                        <span class="arrow"></span>
+                    </div>
+                    <div id="demo2" class="collapse answer">
                         Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
                     </div>
                 </div>

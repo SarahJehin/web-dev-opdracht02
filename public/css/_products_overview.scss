@@ -1,6 +1,28 @@
 
 //.items is styled in main.scss --> same styling as .hot_items
 
+
+.filter {
+    .title {
+        .text {
+            float: left;
+        }
+        .arrow {
+            display: block;
+            width: 25px;
+            height: 25px;
+            margin-top: -3px;
+            float: left;
+            background: url('../images/icons/general_menu_icons_sprite.png') -125px 0;
+        }
+        &.collapsed {
+            .arrow {
+                background: url('../images/icons/general_menu_icons_sprite.png') -100px 0px;
+            }
+        }
+    }
+}
+
 .sort {
     border-top: $grey_divider 1px solid;
     
@@ -11,7 +33,7 @@
         
         option {
             background-color: #fff;
-            color: $grey_main;
+            color: $theme01;
             &[disabled]:first-child {
                 display: none;
             }
@@ -24,3 +46,17 @@
     }
     
 }
+
+
+/* CLEARFIX */
+
+.title::before, .title::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+.title::after {
+    clear: both;
+}
+

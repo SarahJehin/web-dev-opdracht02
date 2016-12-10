@@ -7,7 +7,9 @@
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
-                Kowloon dogs - splash 'n fun
+                <div class="kowloon_logo"></div>
+                <span class="breadcrumb">Dogs</span>
+                <span class="breadcrumb">Splash 'n fun</span>
             </div>
             
             <div class="row">
@@ -15,17 +17,20 @@
             </div>
             
             <div class="row filter">
-                Filter met openklap menu
-                <div class="col-md-11 col-md-offset-1">
+                <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
+                    <span class="text">Filter</span>
+                    <span class="arrow"></span>
+                </div>
+                <div id="filters" class="col-md-11 col-md-offset-1 collapse">
                     <div class="row">
-                        by collection
+                        <h4>By collection</h4>
                         <form>
                             <input type="checkbox" value="1" id="1"><label for="1">Splash 'n fun</label>
                             <input type="checkbox" value="2" id="2"><label for="2">Luxury</label>
                         </form>
                     </div>
                     <div class="row">
-                        price range
+                        <h4>price range</h4>
                         <label for="from">between:</label>
                         <input type="number" id="from" name="from" min="1">
                         <label for="from">and:</label>

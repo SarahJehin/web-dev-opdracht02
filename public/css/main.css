@@ -11,7 +11,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 35;
   width: 60px;
   height: 60px;
   background-color: #252525;
@@ -34,7 +34,7 @@
   width: 60px;
   background-color: #323232;
   overflow: hidden;
-  z-index: 5;
+  z-index: 30;
   color: #eee;
   padding-top: 60px;
   -webkit-transition: width 0.5s;
@@ -54,14 +54,14 @@
       line-height: 50px;
       vertical-align: middle;
       display: none; }
-    .side_nav .general a:hover {
+    .side_nav .general a:hover, .side_nav .general a.active {
       color: #323232;
       background-color: #ededed; }
-      .side_nav .general a:hover .search {
+      .side_nav .general a:hover .search, .side_nav .general a.active .search {
         background: url("../images/icons/general_menu_icons_sprite.png") -50px 0; }
-      .side_nav .general a:hover .faq {
+      .side_nav .general a:hover .faq, .side_nav .general a.active .faq {
         background: url("../images/icons/general_menu_icons_sprite.png") -50px -50px; }
-      .side_nav .general a:hover .about_us {
+      .side_nav .general a:hover .about_us, .side_nav .general a.active .about_us {
         background: url("../images/icons/general_menu_icons_sprite.png") -50px -100px; }
   .side_nav .general .search {
     display: block;
@@ -147,7 +147,16 @@ body {
 
 .content {
   margin-left: 60px;
-  background-color: #454545; }
+  background-color: #454545;
+  position: relative; }
+
+.faq_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 25;
+  display: none; }
 
 h1, h2, h3 {
   color: #fff;
@@ -184,6 +193,37 @@ ul {
     position: absolute;
     top: 50px;
     left: calc(50% - 150px); }
+
+/*  FAQ  */
+.faq_overlay {
+  padding-top: 150px; }
+
+h2 {
+  color: #e27500; }
+
+#searchword {
+  padding: 5px 10px;
+  padding-left: 50px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #000;
+  width: 100%;
+  font-size: 1.8em;
+  -webkit-transition: border 0.2s;
+  /* Safari */
+  transition: border 0.2s; }
+  #searchword:focus {
+    outline: none;
+    border-bottom: 4px solid #000; }
+
+.results .questionblock {
+  background-color: #fff;
+  box-shadow: 0px 0px 25px -5px rgba(0, 0, 0, 0.5);
+  padding: 20px; }
+  .results .questionblock h4 {
+    margin: 0; }
+  .results .questionblock .answer {
+    margin-left: 20px; }
 
 .page_content {
   padding-bottom: 100px; }
@@ -313,6 +353,33 @@ ul {
     top: 50px;
     left: calc(50% - 150px); }
 
+.breadcrumbs .kowloon_logo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
+  float: left; }
+.breadcrumbs .breadcrumb {
+  position: relative;
+  background: #323232;
+  float: left;
+  padding: 2px 15px;
+  margin-top: 10px;
+  margin-right: 10px; }
+  .breadcrumbs .breadcrumb:after {
+    right: 97%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(66, 66, 66, 0);
+    border-right-color: #323232;
+    border-width: 12px;
+    margin-top: -12px; }
+
 .about_us {
   padding: 0; }
 
@@ -366,15 +433,29 @@ ul {
     padding-left: 20px; }
 
 /* CLEARFIX */
+.breadcrumbs::before, .breadcrumbs::after,
 .question::before, .question::after {
   content: "";
   line-height: 0;
   display: table; }
 
+.breadcrumbs::after,
 .question::after {
   clear: both; }
 
 /*    PRODUCTS OVERVIEW     */
+.filter .title .text {
+  float: left; }
+.filter .title .arrow {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-top: -3px;
+  float: left;
+  background: url("../images/icons/general_menu_icons_sprite.png") -125px 0; }
+.filter .title.collapsed .arrow {
+  background: url("../images/icons/general_menu_icons_sprite.png") -100px 0px; }
+
 .sort {
   border-top: #616161 1px solid; }
   .sort select {
@@ -389,6 +470,15 @@ ul {
       .sort select option:hover {
         background-color: #e9e9e9;
         color: blue; }
+
+/* CLEARFIX */
+.title::before, .title::after {
+  content: "";
+  line-height: 0;
+  display: table; }
+
+.title::after {
+  clear: both; }
 
 /* **********    CLEARFIX     ********** */
 .general a::before, .general a::after,

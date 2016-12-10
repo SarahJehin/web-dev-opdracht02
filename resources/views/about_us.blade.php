@@ -12,7 +12,8 @@
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
-                Kowloon > about us
+                <div class="kowloon_logo"></div>
+                <span class="breadcrumb">about us</span>
             </div>
             
             <div class="row">

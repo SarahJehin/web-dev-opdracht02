@@ -12,8 +12,8 @@ $nav_color: #323232;
 $nav_general_hover: #ededed;
 $dog_color: #ff6f9e;
 $dog_overlay: rgba(212, 18, 82, 0.53);
-$pink: #ff6f9e;
-$pink_overlay: rgba(255, 111, 158, 0.85);
+$main_button_color: #ff6f9e;
+$main_overlay_color: rgba(255, 111, 158, 0.85);
 $cat_color: #8787ff;
 $fish_color: #ffb93f;
 $bird_color: #7bff81;
@@ -23,7 +23,7 @@ $basic_font: "Arial", sans-serif;
 $basic_color: #cecece;
 $choplin_medium: choplin-medium;
 
-$grey_main: #454545;
+$theme01: #454545;
 $grey_divider: #616161;
 $grey_faq: #717171;
 
@@ -42,7 +42,17 @@ body {
 
 .content {
     margin-left: 60px;
-    background-color: $grey_main;
+    background-color: $theme01;
+    position: relative;
+}
+
+.faq_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 25;
+    display: none;
 }
 
 h1, h2, h3 {
@@ -90,6 +100,11 @@ ul {
         left: calc(50% - 150px);
     }
 }
+
+/*  FAQ  */
+@import "_faq_overlay";
+
+
 
 .page_content {
     padding-bottom: 100px;
@@ -172,7 +187,7 @@ ul {
                         top: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: $pink_overlay;
+                        background-color: $main_overlay_color;
                     }
                     figure .img .overlay_icon {
                         display: block;

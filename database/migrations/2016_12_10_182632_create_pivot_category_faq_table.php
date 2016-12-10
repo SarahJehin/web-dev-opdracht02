@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePivotArticleCollectionTable extends Migration
+class CreatePivotCategoryFaqTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePivotArticleCollectionTable extends Migration
      */
     public function up()
     {
-        Schema::create('collection_product', function (Blueprint $table) {
+        Schema::create('category_faq', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('faq_id')->unsigned()->index();
+            $table->foreign('faq_id')->references('id')->on('faqs')->onDelete('cascade');
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->integer('product_id')->unsigned()->index();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreatePivotArticleCollectionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collection_product');
+        Schema::dropIfExists('category_faq');
     }
 }

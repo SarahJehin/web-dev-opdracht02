@@ -14,6 +14,15 @@
         <div class="row categories">
             <div class="col-md-12">
                 
+                <div>
+                    @foreach($categories as $category)
+                    <div>
+                        <?php $name = 'name_' . App::getLocale() ?>
+                        {{$category->$name}}
+                    </div>
+                    @endforeach
+                </div>
+                
                 <div class="col-md-2 category">
                     <div class="cat_dogs"></div>
                     <div>DOGS</div>

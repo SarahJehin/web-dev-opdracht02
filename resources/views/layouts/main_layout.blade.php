@@ -14,7 +14,11 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="{{url('/css/main.css')}}" rel="stylesheet">
     @yield('custom_css')
-
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url('/images/favicon/favicon-16x16.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url('/images/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{url('/images/favicon/favicon-96x96.png')}}">
+    
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,7 +40,7 @@
                 <div class="general">
                     <ul>
                         <li><a href="#"><span class="search"></span><span class="text">Search</span></a></li>
-                        <li><a href="#"><span class="faq"></span><span class="text">FAQ</span></a></li>
+                        <li><a href="#" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
                         <li><a href="{{url('about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
                     </ul>
                 </div>
@@ -65,6 +69,8 @@
         
 
         <div class="content">
+            @include('sub_views.faq_overlay')
+            
             @yield('content')
         </div>
         

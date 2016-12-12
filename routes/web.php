@@ -23,3 +23,5 @@ Route::get('/about_us', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/admin/products_overview', 'ProductController@view_products');
+Route::get('/admin/add_product', 'ProductController@view_add_product');

@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('categories')->delete();
         DB::table('categories')->insert([
             'name_nl' => 'Honden',
             'name_fr' => 'Chiens',
@@ -48,6 +48,13 @@ class CategoriesTableSeeder extends Seeder
             'name_nl' => 'Kleine dieren',
             'name_fr' => 'Animaux petits',
             'name_en' => 'Small animals',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+        DB::table('categories')->insert([
+            'name_nl' => 'Andere',
+            'name_fr' => "D'autres",
+            'name_en' => 'Other',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);

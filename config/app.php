@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Kowloon',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'nl',
+    'locales' => ['en' => 'English', 'nl' => 'Nederlands', 'fr' => 'Français'],
 
     /*
     |--------------------------------------------------------------------------

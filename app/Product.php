@@ -14,8 +14,13 @@ class Product extends Model
         'name_nl', 'name_fr', 'name_en', 'description_nl', 'description_fr', 'description_en', 'price', 'image', 'category_id',
     ];
     
-    public function products()
+    public function category()
     {
-        return $this->hasMany('App\Product');
+        return $this->belongsTo('App\Category');
+    }
+    
+    public function collections()
+    {
+        return $this->belongsToMany('App\Collection');
     }
 }

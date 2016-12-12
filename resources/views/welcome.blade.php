@@ -8,7 +8,13 @@
         <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 intro">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
+                @if(App::isLocale('nl'))
+                 NL (Nederlands) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
+                @elseif(App::isLocale('fr'))
+                FR (Français) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
+                @elseif(App::isLocale('en'))
+                EN (English) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
+                @endif
             </div>
         </div>
         <div class="row categories">
@@ -16,13 +22,15 @@
                 
                 <div>
                     @foreach($categories as $category)
-                    <div>
-                        <?php $name = 'name_' . App::getLocale() ?>
-                        {{$category->$name}}
+                    <?php $name = 'name_' . App::getLocale() ?>
+                    <div class="col-md-2 category">
+                        <div class="cat_{{str_replace(' ', '_', strtolower($category->name_en))}}"></div>
+                        <div>{{strtoupper($category->$name)}}</div>
                     </div>
                     @endforeach
                 </div>
                 
+                <!--
                 <div class="col-md-2 category">
                     <div class="cat_dogs"></div>
                     <div>DOGS</div>
@@ -40,38 +48,12 @@
                     <div>BIRDS</div>
                 </div>
                 <div class="col-md-2 category">
-                    <div class="cat_hamsters"></div>
+                    <div class="cat_small_animals"></div>
                     <div>SMALL ANIMALS</div>
                 </div>
                 <div class="col-md-2 category">
                     <div class="cat_other"></div>
                     <div>OTHER</div>
-                </div>
-                
-                
-                <!--
-                <div class="col-md-2 category">
-                    <img src="{{url('/images/icons/icon_dog.png')}}" alt="dog">
-                    <span>dogs</span>
-                </div>
-                <div class="col-md-2 category">
-                    <img src="{{url('/images/icons/icon_cat.png')}}" alt="dog">
-                    <span>cats</span>
-                </div>
-                <div class="col-md-2 category">
-                    <img src="{{url('/images/icons/icon_fish.png')}}" alt="dog">
-                    <span>fish</span>
-                </div>
-                <div class="col-md-2 category">
-                    <img src="{{url('/images/icons/icon_bird.png')}}" alt="dog">
-                    <span>birds</span>
-                </div>
-                <div class="col-md-2 category">
-                    <img src="{{url('/images/icons/icon_hamster.png')}}" alt="dog">
-                    <span>small animals</span>
-                </div>
-                <div class="col-md-2 category">
-                    other
                 </div>
                 -->
             </div>

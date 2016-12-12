@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url('/images/favicon/favicon-16x16.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url('/images/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{url('/images/favicon/favicon-96x96.png')}}">
+    
 
     <!-- Scripts -->
     <script>
@@ -36,7 +41,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Kowloon') }}
                     </a>
                 </div>
 
@@ -44,6 +49,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">FAQ</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,7 +90,6 @@
 
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="/js/app.js"></script>
-    <script src="/js/side_nav.js"></script>
+    <script src="{{url('/js/app.js')}}"></script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+
+
+form {
+    
+    textarea {
+        max-width: 435px;
+        max-height: 200px;
+    }
+    
+    .collections {
+        //
+    }
+    
+    .colors {
+        label {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            vertical-align: middle;
+            box-shadow: 1px 1px 3px #888;
+        }
+    }
+    
+    .specifications {
+        clear: both;
+        input {
+            float: left;
+        }
+        
+        .name_input {
+            width: 25%;
+        }
+        .desc_input {
+            width: 75%;
+        }
+    }
+}
+

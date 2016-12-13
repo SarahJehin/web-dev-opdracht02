@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->text('description_fr')->nullable();
             $table->text('description_en')->nullable();
             $table->double('price', 8, 2);
-            $table->string('image'); //misschien aparte tabel en dan met multiple images
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->softDeletes();

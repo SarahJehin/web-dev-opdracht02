@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
+    <link href="{{url('/css/admin.css')}}" rel="stylesheet">
     
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('/images/favicon/favicon-16x16.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{url('/images/favicon/favicon-32x32.png')}}">
@@ -49,7 +50,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        <li><a href="#">Products</a></li>
+                        <li><a href="{{url('/admin/products_overview')}}">Products</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>
 
@@ -91,5 +92,6 @@
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{url('/js/app.js')}}"></script>
+    @yield('custom_js')
 </body>
 </html>

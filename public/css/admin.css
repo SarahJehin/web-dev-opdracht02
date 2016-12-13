@@ -1,0 +1,19 @@
+form textarea {
+  max-width: 435px;
+  max-height: 200px; }
+form .colors label {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  box-shadow: 1px 1px 3px #888; }
+form .specifications {
+  clear: both; }
+  form .specifications input {
+    float: left; }
+  form .specifications .name_input {
+    width: 25%; }
+  form .specifications .desc_input {
+    width: 75%; }
+
+/*# sourceMappingURL=admin.css.map */

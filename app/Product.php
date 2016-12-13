@@ -23,4 +23,17 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Collection');
     }
+    
+    public function colors()
+    {
+        return $this->belongsToMany('App\Color');
+    }
+    
+    public function images() {
+        return $this->hasMany('App\Image');
+    }
+    
+    public function specifications() {
+        return $this->hasMany('App\Specification');
+    }
 }

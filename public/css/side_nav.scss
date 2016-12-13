@@ -125,37 +125,33 @@
                 display: none;
             }
             
-            .dog_icon {
+            .dogs_icon {
                 background: url('../images/icons/category_icons_sprite.png') 0 0;
             }
 
-            .cat_icon {
+            .cats_icon {
                 background: url('../images/icons/category_icons_sprite.png') 0 -50px;
             }
-
-            .fish_icon {
-                background: url('../images/icons/category_icons_sprite.png') 0 -100px;
-            }
             
             .fish_icon {
                 background: url('../images/icons/category_icons_sprite.png') 0 -100px;
             }
             
-            .bird_icon {
+            .birds_icon {
                 background: url('../images/icons/category_icons_sprite.png') 0 -150px;
             }
             
-            .hamster_icon {
+            .small_animals_icon {
                 background: url('../images/icons/category_icons_sprite.png') 0 -200px;
             }
             
             
             &:hover {
-                .dog_icon {
+                .dogs_icon {
                     background: url('../images/icons/category_icons_sprite.png') -50px 0;
                 }
 
-                .cat_icon {
+                .cats_icon {
                     background: url('../images/icons/category_icons_sprite.png') -50px -50px;
                 }
 
@@ -163,11 +159,11 @@
                     background: url('../images/icons/category_icons_sprite.png') -50px -100px;
                 }
                 
-                .bird_icon {
+                .birds_icon {
                     background: url('../images/icons/category_icons_sprite.png') -50px -150px;
                 }
 
-                .hamster_icon {
+                .small_animals_icon {
                     background: url('../images/icons/category_icons_sprite.png') -50px -200px;
                 }
             }

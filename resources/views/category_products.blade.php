@@ -4,16 +4,17 @@
 <div class="">
     @include('sub_views.header')
     
+    <?php $name = 'name_' . App::getLocale(); ?>
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
                 <div class="kowloon_logo"></div>
-                <span class="breadcrumb">Dogs</span>
+                <span class="breadcrumb">{{$category->$name}}</span>
                 <span class="breadcrumb">Splash 'n fun</span>
             </div>
             
             <div class="row">
-                <h1>Dogs articles</h1>
+                <h1>{{$category->$name}} articles</h1>
             </div>
             
             <div class="row filter">
@@ -104,6 +105,20 @@
                                 </figure>
                             </a>
                         </div>
+                        @foreach($category->products as $product)
+                        <div class="hot_item">
+                            <a href="{{url('/product_details/' . $product->id)}}">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/' . $product->images[0]->image_path)}}" alt="cooling_mat">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                     <figcaption><span class="title">{{$product->$name}}</span><span class="price">&euro;{{$product->price}}</span></figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        @endforeach
                     </div>
             </div>
             

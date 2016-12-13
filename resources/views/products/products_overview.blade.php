@@ -18,26 +18,23 @@
                         No products found!
                     </div>
                     @else
-                    <table>
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Categorie</th>
                                 <th>Product</th>
                                 <th>Prijs</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>cat</td>
-                                <td>prod</td>
-                                <td>price</td>
-                            </tr>
-                            
                             @foreach($products as $product)
+                            <?php $name = 'name_' . App::getLocale(); ?>
                             <tr>
-                                <td>{{$product->category->name_nl}}</td>
-                                <td>{{$product->name_nl}}</td>
+                                <td>{{$product->category->$name}}</td>
+                                <td>{{$product->$name}}</td>
                                 <td>{{$product->price}}</td>
+                                <td><span>edit</span> <span>delete</span></td>
                             </tr>
                             @endforeach
                         </tbody>

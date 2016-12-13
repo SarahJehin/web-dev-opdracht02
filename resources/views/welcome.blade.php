@@ -24,8 +24,10 @@
                     @foreach($categories as $category)
                     <?php $name = 'name_' . App::getLocale() ?>
                     <div class="col-md-2 category">
-                        <div class="cat_{{str_replace(' ', '_', strtolower($category->name_en))}}"></div>
-                        <div>{{strtoupper($category->$name)}}</div>
+                        <a href="{{url('products/' . $category->id)}}">
+                            <div class="cat_{{str_replace(' ', '_', strtolower($category->name_en))}}"></div>
+                            <div>{{strtoupper($category->$name)}}</div>
+                        </a>
                     </div>
                     @endforeach
                 </div>

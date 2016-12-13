@@ -105,11 +105,15 @@ class ProductController extends Controller
                 }
             }
         }
-        
-        
         return redirect('/admin/products_overview');
-        
-        
-        
     }
+    
+    public function view_edit_product($id) {
+        $categories = Category::all();
+        $collections = Collection::all();
+        $colors = Color::all();
+        $product = Product::find($id);
+        return view('products/edit_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors, 'product' => $product]);
+    }
+    
 }

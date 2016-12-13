@@ -47,11 +47,18 @@
                 
                 <div class="categories">
                     <ul>
-                        <li><a href="#"><span class="dog_icon"></span><span class="text">Dogs</span></a></li>
-                        <li><a href="#"><span class="cat_icon"></span><span class="text">Cats</span></a></li>
+                        <!--
+                        <li><a href="#"><span class="dogs_icon"></span><span class="text">Dogs</span></a></li>
+                        <li><a href="#"><span class="cats_icon"></span><span class="text">Cats</span></a></li>
                         <li><a href="#"><span class="fish_icon"></span><span class="text">Fish</span></a></li>
-                        <li><a href="#"><span class="bird_icon"></span><span class="text">Birds</span></a></li>
-                        <li><a href="#"><span class="hamster_icon"></span><span class="text">Small animals</span></a></li>
+                        <li><a href="#"><span class="birds_icon"></span><span class="text">Birds</span></a></li>
+                        <li><a href="#"><span class="small_animals_icon"></span><span class="text">Small animals</span></a></li>
+                        -->
+                        @foreach($categories as $category)
+                        @if($category->name_en != "Other")
+                        <li><a href="{{url('/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name_nl}}</span></a></li>
+                        @endif
+                        @endforeach
                         <!--
                         <li><a href="#"><img src="{{url('/images/icons/icon_dog.png')}}"><span>Dogs</span></a></li>
                         <li><a href="#"><img src="{{url('/images/icons/icon_cat.png')}}"><span>Cats</span></a></li>

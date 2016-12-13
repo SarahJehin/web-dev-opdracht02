@@ -13,12 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/products', function () {
-    return view('category_products');
-});
-Route::get('/about_us', function () {
-    return view('about_us');
-});
+Route::get('/products/{id}', 'WelcomeController@category_products');
+Route::get('/product_details/{id}', 'WelcomeController@product_details');
+
+Route::get('/about_us', 'WelcomeController@about_us');
 
 Auth::routes();
 
@@ -26,3 +24,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/admin/products_overview', 'ProductController@view_products');
 Route::get('/admin/add_product', 'ProductController@view_add_product');
 Route::post('/admin/add_product', 'ProductController@add_product');
+Route::get('/admin/edit_product/{id}', 'ProductController@view_edit_product');

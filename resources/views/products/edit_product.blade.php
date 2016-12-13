@@ -16,31 +16,31 @@
                                 <h3>Nederlands</h3>
                                 <div>
                                     <label for="name_nl">Naam:</label>
-                                    <input class="form-control" type="text" name="name_nl" id="name_nl" required>
+                                    <input class="form-control" type="text" name="name_nl" id="name_nl" value="{{$product->name_nl}}" required>
                                 </div>
                                 <div>
                                     <label for="description_nl">Beschrijving:</label>
-                                    <textarea class="form-control" name="description_nl" id="description_nl" required></textarea>
+                                    <textarea class="form-control" name="description_nl" id="description_nl" required>{{$product->description_nl}}</textarea>
                                 </div>
 
                                 <h3>Français</h3>
                                 <div>
                                     <label for="name_fr">Nom:</label>
-                                    <input class="form-control" type="text" name="name_fr" id="name_fr" required>
+                                    <input class="form-control" type="text" name="name_fr" id="name_fr" value="{{$product->name_fr}}" required>
                                 </div>
                                 <div>
                                     <label for="description_fr">La description:</label>
-                                    <textarea class="form-control" name="description_fr" id="description_fr" required></textarea>
+                                    <textarea class="form-control" name="description_fr" id="description_fr" required>{{$product->description_fr}}</textarea>
                                 </div>
 
                                 <h3>English</h3>
                                 <div>
                                     <label for="name_en">Name:</label>
-                                    <input class="form-control" type="text" name="name_en" id="name_en" required>
+                                    <input class="form-control" type="text" name="name_en" id="name_en" value="{{$product->name_en}}" required>
                                 </div>
                                 <div>
                                     <label for="description_en">Description:</label>
-                                    <textarea class="form-control" name="description_en" id="description_en" required></textarea>
+                                    <textarea class="form-control" name="description_en" id="description_en" required>{{$product->description_en}}</textarea>
                                 </div>
                                 
                                 <h3>Afbeeldingen</h3>
@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div>
                                     <label for="price"><h3>Prijs/Prix/Price:</h3></label>
-                                    <input class="form-control" type="number" step="0.01" min="1" name="price" id="price" required>
+                                    <input class="form-control" type="number" step="0.01" min="1" name="price" id="price" value="{{$product->price}}" required>
                                 </div>
 
                                 <div>
@@ -63,7 +63,7 @@
                                     <select class="form-control" name="category" id="category">
                                         @foreach($categories as $category)
                                         <?php $cat_name = 'name_' . App::getLocale(); ?>
-                                        <option value="{{ $category->id }}">{{ $category->$cat_name}}</option>
+                                        <option value="{{ $category->id }}" <?php if($category->id === $product->category->id){echo('selected');}?> >{{ $category->$cat_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -126,10 +126,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('custom_js')
-<script>
-    console.log('test');
-    
-</script>
 @endsection

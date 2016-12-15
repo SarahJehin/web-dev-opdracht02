@@ -1,5 +1,10 @@
+table .delete {
+  color: #d55; }
+  table .delete:hover {
+    color: #b44; }
+
 form textarea {
-  max-width: 435px;
+  max-width: 885px;
   max-height: 200px; }
 form .colors label {
   width: 20px;

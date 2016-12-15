@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
     <link href="{{url('/css/admin.css')}}" rel="stylesheet">
     
@@ -50,8 +51,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        @if(Auth::user())
                         <li><a href="{{url('/admin/products_overview')}}">Products</a></li>
                         <li><a href="#">FAQ</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

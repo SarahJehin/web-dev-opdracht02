@@ -1,3 +1,13 @@
 
+table {
+    
+    .delete {
+        color: #d55;
+        &:hover {
+            color: #b44;
+        }
+    }
+}
+
 @import "_admin_add_product";
 

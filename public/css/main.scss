@@ -26,6 +26,7 @@ $choplin_medium: choplin-medium;
 $theme01: #454545;
 $grey_divider: #616161;
 $grey_faq: #717171;
+$main_border_color: #717171;
 
 
 
@@ -146,7 +147,7 @@ ul {
         .hot_item {
             width: calc((100% - 15px)/4);
             padding: 4px;
-            border: 1px solid #717171;
+            border: 1px solid $main_border_color;
             margin-right: 5px;
             background-color: #565656;
             float: left;

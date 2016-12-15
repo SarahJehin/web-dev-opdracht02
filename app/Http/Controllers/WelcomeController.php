@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App;
 use App\Category;
 use App\Product;
+use DB;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
+        /*DB::enableQueryLog();
+        $categories = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name')->get();
+        dd($categories);
+        dd(DB::getQueryLog());*/
         $categories = Category::all();
         $name = 'name_' . App::getLocale();
         return view('welcome', ['categories' => $categories]);

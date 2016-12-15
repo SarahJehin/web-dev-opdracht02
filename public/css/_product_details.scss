@@ -9,3 +9,62 @@
         left: calc(50% - 150px);
     }
 }
+
+.product {
+    .images {
+        
+        .big_img {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .small_img {
+            padding: 0;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+.colors {
+    .color_bullet {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+.specifications {
+    border: 1px $main_border_color solid;
+    padding: 15px;
+    
+    h4 {
+        margin: 0;
+    }
+    
+    .spec_desc {
+        margin-left: 20px;
+    }
+}
+
+
+
+/* CLEARFIX */
+.colors::before, .colors::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+.colors::after {
+    clear: both;
+}
+

@@ -488,6 +488,40 @@ h2 {
     top: 50px;
     left: calc(50% - 150px); }
 
+.product .images .big_img img {
+  width: 100%;
+  height: auto; }
+.product .images .small_img {
+  padding: 0; }
+  .product .images .small_img img {
+    width: 100%;
+    height: auto; }
+
+.colors .color_bullet {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  float: left;
+  margin-right: 5px; }
+
+.specifications {
+  border: 1px #717171 solid;
+  padding: 15px; }
+  .specifications h4 {
+    margin: 0; }
+  .specifications .spec_desc {
+    margin-left: 20px; }
+
+/* CLEARFIX */
+.colors::before, .colors::after {
+  content: "";
+  line-height: 0;
+  display: table; }
+
+.colors::after {
+  clear: both; }
+
 /* **********    CLEARFIX     ********** */
 .general a::before, .general a::after,
 .categories a::before, .categories a::after,

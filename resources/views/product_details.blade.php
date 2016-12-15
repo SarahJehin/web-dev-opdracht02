@@ -12,10 +12,15 @@
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row product">
-                <div class="col-md-6">
-                    <div class="col-md-12">
+                <div class="col-md-6 images">
+                    <div class="col-md-12 big_img">
                         <img src="{{url('/images/products/' . $product->images[0]->image_path)}}" alt="{{$product->category->name_nl}}">
                     </div>
+                    @foreach($product->images as $image)
+                    <div class="col-md-4 small_img">
+                        <img src="{{url('/images/products/' . $image->image_path)}}" alt="{{$product->name_en}}">
+                    </div>
+                    @endforeach
                     <div class="col-md-4">
                         kleine foto 1
                     </div>
@@ -38,9 +43,9 @@
                     </div>
                     <div class="row">
                         <h4>Colors</h4>
-                        <div>
+                        <div class="colors">
                             @foreach($product->colors as $color)
-                            <div>{{$color->hexcode}}</div>
+                            <div class="color_bullet" style="background-color:{{$color->hexcode}}"></div>
                             @endforeach
                         </div>
                     </div>
@@ -53,12 +58,12 @@
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row specifications">
                 <h4>Specifications</h4>
                 @foreach($product->specifications as $specification)
-                <div>
+                <div class="spec">
                     <h5>{{strtoupper($specification->title_nl)}}</h5>
-                    <div>
+                    <div class="spec_desc">
                         {{$specification->description_nl}}
                     </div>
                 </div>

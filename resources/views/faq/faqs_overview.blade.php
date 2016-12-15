@@ -5,35 +5,32 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Products overview</div>
+                <div class="panel-heading">FAQ's overview</div>
 
                 <div class="panel-body">
                     
                     <div>
-                        <a href="{{url('/admin/add_product')}}">Product toevoegen</a>
+                        <a href="{{url('/admin/add_faq')}}">Add FAQ</a>
                     </div>
                     
-                    @if($products->isEmpty())
+                    @if($faqs->isEmpty())
                     <div>
-                        No products found!
+                        No FAQ's found.  Create one by clicking the link above.
                     </div>
                     @else
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Categorie</th>
-                                <th>Product</th>
-                                <th>Prijs</th>
+                                <th>Question</th>
+                                <th>Answer</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($products as $product)
-                            <?php $name = 'name_' . App::getLocale(); ?>
+                            @foreach($faqs as $faq)
                             <tr>
-                                <td>{{$product->category->$name}}</td>
-                                <td>{{$product->$name}}</td>
-                                <td>{{$product->price}}</td>
+                                <td>{{str_limit($faq->question, 50)}}</td>
+                                <td>{{str_limit($faq->answer, 40)}}</td>
                                 <td>
                                     <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>                                                 
@@ -43,6 +40,7 @@
                         </tbody>
                     </table>
                     @endif
+                    
                     
                 </div>
             </div>

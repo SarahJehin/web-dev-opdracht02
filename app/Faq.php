@@ -15,8 +15,13 @@ class Faq extends Model
     ];
     
     
-    public function product()
+    public function products()
     {
         return $this->belongsToMany('App\Product');
+    }
+    
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
     }
 }

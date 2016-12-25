@@ -29,3 +29,5 @@ Route::get('/admin/edit_product/{id}', 'ProductController@view_edit_product');
 Route::get('/admin/faqs_overview', 'FaqController@view_faqs');
 Route::get('/admin/add_faq', 'FaqController@view_add_faq');
 Route::post('/admin/add_faq', 'FaqController@add_faq');
+Route::get('/admin/edit_faq/{id}', 'FaqController@view_edit_faq');
+Route::post('/admin/edit_faq', 'FaqController@edit_faq');

@@ -75,7 +75,7 @@
                         -->
                         @foreach($categories as $category)
                         @if($category->name_en != "Other")
-                        <li><a href="{{url('/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name_nl}}</span></a></li>
+                        <li><a href="{{url('/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
                         @endif
                         @endforeach
                         <!--

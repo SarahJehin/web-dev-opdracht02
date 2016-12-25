@@ -3,18 +3,16 @@
 @section('content')
 <div class="">
     @include('sub_views.header')
-    
-    <?php $name = 'name_' . App::getLocale(); ?>
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
                 <div class="kowloon_logo"></div>
-                <span class="breadcrumb">{{$category->$name}}</span>
+                <span class="breadcrumb">{{$category->name}}</span>
                 <span class="breadcrumb">Splash 'n fun</span>
             </div>
             
             <div class="row">
-                <h1>{{$category->$name}} @lang('products.articles')</h1>
+                <h1>{{$category->name}} @lang('products.articles')</h1>
             </div>
             
             <div class="row filter">
@@ -51,7 +49,7 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    {{$category->$name}} @lang('products.items'): 5 of 56
+                    {{$category->name}} @lang('products.items'): 5 of 56
                 </div>
             </div>
             
@@ -105,7 +103,7 @@
                                 </figure>
                             </a>
                         </div>
-                        @foreach($category->products as $product)
+                        @foreach($products as $product)
                         <div class="hot_item">
                             <a href="{{url('/product_details/' . $product->id)}}">
                                 <figure>
@@ -114,7 +112,7 @@
                                          <div class="overlay"></div>
                                          <div class="overlay_icon"><span>View details</span></div>
                                      </div>
-                                     <figcaption><span class="title">{{$product->$name}}</span><span class="price">&euro;{{$product->price}}</span></figcaption>
+                                     <figcaption><span class="title">{{$product->name}}</span><span class="price">&euro;{{$product->price}}</span></figcaption>
                                 </figure>
                             </a>
                         </div>

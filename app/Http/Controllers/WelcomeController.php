@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App;
 use App\Category;
 use App\Product;
+use App\Specification;
 use DB;
 
 class WelcomeController extends Controller
@@ -38,16 +39,42 @@ class WelcomeController extends Controller
     
     public function category_products($category_id)
     {
-        $categories = Category::all();
-        $category = Category::find($category_id);
-        return view('category_products', ['category' => $category, 'categories' => $categories]);
+        //$categories = Category::all();
+        //$category = Category::find($category_id);
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $category = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name')->where('id', $category_id)->first();
+        $products = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'price')->where('category_id', $category_id)->get();
+        //dd($categories, $category, $products);
+        return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products]);
     }
     
     public function product_details($product_id) {
         //
-        $categories = Category::all();
-        $product = Product::find($product_id);
-        return view('product_details', ['product' => $product, 'categories' => $categories]);
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        //$product = Product::find($product_id);
+        //$product = Product::with('images')->with('specifications')->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'category_id')->get();
+        
+        /*$product = DB::table('products')
+            ->join('images', 'products.id', '=', 'images.product_id')
+            ->join('specifications', 'products.id', '=', 'specifications.product_id')
+            ->select('products.*', 'images.product_id', 'specifications.title_' . App::getLocale() . ' as title')
+            ->get();*/
+        
+        /*$product = Product::select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'category_id')
+            ->where('id', $product_id)
+            ->with(['specifications' => function($query) {
+            $query->where('description_en', 'nylon');
+            //$query->select('description_nl as test');
+            }])->get();*/
+        
+        $product = Product::with('images')
+            ->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'price', 'category_id')
+            ->where('id', $product_id)->first();
+        
+        $specifications = Specification::where('product_id', $product_id)
+            ->select('id', 'title_' . App::getLocale() . ' AS title', 'description_' . App::getLocale() . ' AS description')->get();
+        
+        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories]);
     }
     
 }

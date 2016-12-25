@@ -32,7 +32,7 @@
                                 <td>{{str_limit($faq->question, 50)}}</td>
                                 <td>{{str_limit($faq->answer, 40)}}</td>
                                 <td>
-                                    <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="{{url('/admin/edit_faq/' . $faq->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>                                                 
                                 </td>
                             </tr>

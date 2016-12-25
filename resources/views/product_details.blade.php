@@ -38,7 +38,7 @@
                         <span class="breadcrumb">Splash 'n fun</span>
                     </div>
                     <div class="row">
-                        <h1>{{$product->name_nl}}</h1>
+                        <h1>{{$product->name}}</h1>
                         <h3>&euro; {{ $product->price }}</h3>
                     </div>
                     <div class="row">
@@ -52,7 +52,7 @@
                     <div class="row">
                         <h4>@lang('products.product_title02')</h4>
                         <div>
-                            {{$product->description_nl}}
+                            {{$product->description}}
                         </div>
                     </div>
                 </div>
@@ -60,11 +60,11 @@
             
             <div class="row specifications">
                 <h4>@lang('products.product_title03')</h4>
-                @foreach($product->specifications as $specification)
+                @foreach($specifications as $specification)
                 <div class="spec">
-                    <h5>{{strtoupper($specification->title_nl)}}</h5>
+                    <h5>{{strtoupper($specification->title)}}</h5>
                     <div class="spec_desc">
-                        {{$specification->description_nl}}
+                        {{$specification->description}}
                     </div>
                 </div>
                 @endforeach

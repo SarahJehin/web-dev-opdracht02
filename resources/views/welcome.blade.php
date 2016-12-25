@@ -8,13 +8,7 @@
         <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 intro">
-                @if(App::isLocale('nl'))
-                 NL (Nederlands) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
-                @elseif(App::isLocale('fr'))
-                FR (Français) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
-                @elseif(App::isLocale('en'))
-                EN (English) - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.
-                @endif
+                @lang('welcome.intro')
             </div>
         </div>
         <div class="row categories">
@@ -26,7 +20,7 @@
                     <div class="col-md-2 category">
                         <a href="{{url('products/' . $category->id)}}">
                             <div class="cat_{{str_replace(' ', '_', strtolower($category->name_en))}}"></div>
-                            <div>{{strtoupper($category->$name)}}</div>
+                            <div>{{strtoupper($category->name)}}</div>
                         </a>
                     </div>
                     @endforeach
@@ -63,7 +57,7 @@
         
         <div class="row hot_items">
             <div class="col-md-12">
-                    <div><h1>Hot items.</h1></div>
+                    <div><h1>@lang('welcome.subtitle01')</h1></div>
 
                     <div class="items">
                         <div class="hot_item">
@@ -120,22 +114,22 @@
         
         <div class="row">
             <div class="col-md-12 visit_store">
-                <a href="#">Visit the store</a>
+                <a href="#">@lang('welcome.visit_store')</a>
             </div>
         </div>
         
         <div class="row bottom">
             <div class="col-md-8 deals">
                 <div class="col-md-8 col-md-offset-2">
-                    discover amazing Kowloon deals!
+                    @lang('welcome.banner_part01')
                 </div>
                 <div class="col-md-6 col-md-offset-3">
-                    only in our newsletter
+                    @lang('welcome.banner_part02')
                 </div>
             </div>
             <div class="col-md-4 newsletter">
-                <h3>Subscribe to our newsletter</h3>
-                <div>Lorem ipsum dolor sit amet.</div>
+                <h3>@lang('welcome.newsletter')</h3>
+                <div>@lang('welcome.newsletter_description')</div>
                 <div>
                     <form method="post" action="#">
                         {{ csrf_field() }}

@@ -14,27 +14,27 @@
             </div>
             
             <div class="row">
-                <h1>{{$category->$name}} articles</h1>
+                <h1>{{$category->$name}} @lang('products.articles')</h1>
             </div>
             
             <div class="row filter">
                 <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
-                    <span class="text">Filter</span>
+                    <span class="text">@lang('products.filter')</span>
                     <span class="arrow"></span>
                 </div>
                 <div id="filters" class="col-md-11 col-md-offset-1 collapse">
                     <div class="row">
-                        <h4>By collection</h4>
+                        <h4>@lang('products.collection')</h4>
                         <form>
                             <input type="checkbox" value="1" id="1"><label for="1">Splash 'n fun</label>
                             <input type="checkbox" value="2" id="2"><label for="2">Luxury</label>
                         </form>
                     </div>
                     <div class="row">
-                        <h4>price range</h4>
-                        <label for="from">between:</label>
+                        <h4>@lang('products.price_range')</h4>
+                        <label for="from">@lang('products.between'):</label>
                         <input type="number" id="from" name="from" min="1">
-                        <label for="from">and:</label>
+                        <label for="from">@lang('products.and'):</label>
                         <input type="number" id="from" name="from" min="1">
                     </div>
                 </div>
@@ -43,15 +43,15 @@
             <div class="row sort">
                 <div class="col-md-2">
                     <select>
-                        <option disabled selected>Sort by relevance</option>
-                        <option>Price: low to high</option>
-                        <option>Price: high to low</option>
-                        <option>Latest</option>
-                        <option>Oldest</option>
+                        <option disabled selected>@lang('products.select_placeholder')</option>
+                        <option>@lang('products.select_option01')</option>
+                        <option>@lang('products.select_option02')</option>
+                        <option>@lang('products.select_option03')</option>
+                        <option>@lang('products.select_option04')</option>
                     </select>
                 </div>
                 <div class="col-md-2">
-                    Dog items: 5 of 56
+                    {{$category->$name}} @lang('products.items'): 5 of 56
                 </div>
             </div>
             

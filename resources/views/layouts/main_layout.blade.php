@@ -29,6 +29,25 @@
 <body>
     <div id="app">
         
+        @if (!isset($_COOKIE["client_ip"]))
+        <div class="cookies">
+            <div class="left">
+                <img src="{{url('/images/cookie_img.png')}}" alt="cookie bone">
+            </div>
+            <div class="right">
+                <h3>Cookies</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </p>
+                <div>
+                    <a href="{{url('/set_cookie')}}">ok, verder surfen</a>
+                </div>
+            </div>
+            <div class="close_tag">
+                <a href="{{url('/set_cookie')}}">X</a>
+            </div>
+        </div>
+        @endif
         
         <input type="checkbox" name="hamburger" id="hamburger">
         <label for="hamburger"><span class="hamburger"></span></label>

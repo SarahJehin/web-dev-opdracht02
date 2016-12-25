@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/set_cookie', 'WelcomeController@set_cookie');
 
 Route::get('/products/{id}', 'WelcomeController@category_products');
 Route::get('/product_details/{id}', 'WelcomeController@product_details');

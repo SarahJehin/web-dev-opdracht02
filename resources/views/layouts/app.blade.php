@@ -53,7 +53,7 @@
                         &nbsp;
                         @if(Auth::user())
                         <li><a href="{{url('/admin/products_overview')}}">Products</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="{{url('/admin/faqs_overview')}}">FAQ</a></li>
                         @endif
                     </ul>
 

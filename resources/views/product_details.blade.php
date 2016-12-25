@@ -42,7 +42,7 @@
                         <h3>&euro; {{ $product->price }}</h3>
                     </div>
                     <div class="row">
-                        <h4>Colors</h4>
+                        <h4>@lang('products.product_title01')</h4>
                         <div class="colors">
                             @foreach($product->colors as $color)
                             <div class="color_bullet" style="background-color:{{$color->hexcode}}"></div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h4>Beschrijving</h4>
+                        <h4>@lang('products.product_title02')</h4>
                         <div>
                             {{$product->description_nl}}
                         </div>
@@ -59,7 +59,7 @@
             </div>
             
             <div class="row specifications">
-                <h4>Specifications</h4>
+                <h4>@lang('products.product_title03')</h4>
                 @foreach($product->specifications as $specification)
                 <div class="spec">
                     <h5>{{strtoupper($specification->title_nl)}}</h5>
@@ -68,6 +68,35 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+            
+            <h3>@lang('products.subtitle01')</h3>
+            
+            <div class="row related_products">
+                blab
+            </div>
+            
+            <h3>@lang('about_us.faq')</h3>
+            
+            <div class="row faqs">
+                <div class="row questionblock">
+                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo1">
+                        <h4>Dit is een vraag</h4>
+                        <span class="arrow"></span>
+                    </div>
+                    <div id="demo1" class="collapse answer">
+                        Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
+                    </div>
+                </div>
+                <div class="row questionblock">
+                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo2">
+                        <h4>Dit is een vraag</h4>
+                        <span class="arrow"></span>
+                    </div>
+                    <div id="demo2" class="collapse answer">
+                        Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
+                    </div>
+                </div>
             </div>
             
         </div>

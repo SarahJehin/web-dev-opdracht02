@@ -8,6 +8,8 @@
     src: url('../fonts/Choplin-Medium-DEMO.otf');
 }
 
+$cookie_bg_color: #e6cfb9;
+$cookie_second_color: #e27500;
 $nav_color: #323232;
 $nav_general_hover: #ededed;
 $dog_color: #ff6f9e;
@@ -39,6 +41,64 @@ body {
     padding: 0;
     font-family: $basic_font;
     color: $basic_color;
+}
+
+.cookies {
+    z-index: 50;
+    background-color: $cookie_bg_color;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    padding: 20px;
+    color: $theme01;
+    
+    .left, .right {
+        float: left;
+    }
+    
+    .left {
+        width: 20%;
+        padding-left: 50px;
+        
+        img {
+            padding: 15px;
+        }
+    }
+    
+    .right {
+        width: 80%;
+        
+        h3 {
+            color: $cookie_second_color;
+            font-size: 2.2em;
+        }
+        
+        a {
+            display: block;
+            width: 250px;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: $cookie_second_color;
+            color: #fff;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+    }
+    
+    .close_tag {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        a {
+            color: $cookie_second_color;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+    
 }
 
 .content {
@@ -110,33 +170,41 @@ ul {
 .page_content {
     padding-bottom: 100px;
     
+    .intro {
+        padding-top: 25px;
+    }
+    
     .categories .category {
         border-right: 1px solid $grey_divider;
         
-        div {
-            &:first-child {
-                width: 100px;
-                height: 100px;
-            }
-        }
+        a {
+            color: #fff;
         
-        .cat_dogs {
-            background: url('../images/icons/category_icons_sprite.png') -100px -250px;
-        }
-        .cat_cats {
-            background: url('../images/icons/category_icons_sprite.png') -100px -350px;
-        }
-        .cat_fish {
-            background: url('../images/icons/category_icons_sprite.png') -100px -450px;
-        }
-        .cat_birds {
-            background: url('../images/icons/category_icons_sprite.png') -100px -550px;
-        }
-        .cat_small_animals {
-            background: url('../images/icons/category_icons_sprite.png') -100px -650px;
-        }
-        .cat_other {
-            background: url('../images/icons/category_icons_sprite.png') -100px -750px;
+            div {
+                &:first-child {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+
+            .cat_dogs {
+                background: url('../images/icons/category_icons_sprite.png') -100px -250px;
+            }
+            .cat_cats {
+                background: url('../images/icons/category_icons_sprite.png') -100px -350px;
+            }
+            .cat_fish {
+                background: url('../images/icons/category_icons_sprite.png') -100px -450px;
+            }
+            .cat_birds {
+                background: url('../images/icons/category_icons_sprite.png') -100px -550px;
+            }
+            .cat_small_animals {
+                background: url('../images/icons/category_icons_sprite.png') -100px -650px;
+            }
+            .cat_other {
+                background: url('../images/icons/category_icons_sprite.png') -100px -750px;
+            }
         }
         
     }
@@ -289,6 +357,7 @@ ul {
 
 /* **********    CLEARFIX     ********** */
 
+.cookies::before, .cookies::after,
 .general a::before, .general a::after,
 .categories a::before, .categories a::after,
 .hot_items .items::before, .hot_items .items::after,
@@ -298,6 +367,7 @@ figure figcaption::before, figure figcaption::after {
     display: table;
 }
 
+.cookies::after,
 .general a::after,
 .categories a::after,
 .hot_items .items::after,

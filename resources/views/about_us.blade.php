@@ -13,19 +13,18 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
                 <div class="kowloon_logo"></div>
-                <span class="breadcrumb">about us</span>
+                <span class="breadcrumb">@lang('about_us.title')</span>
             </div>
             
             <div class="row">
-                <h1>About us</h1>
+                <h1>@lang('about_us.title')</h1>
             </div>
             
             <div class="row">
                 <div class="col-md-9 about_us">
                     <h3>Kowloon</h3>
                     <div>
-                        <p>Pet Concept, active since 1998, is developing, importing and exporting products for pets worldwide.</p>
-                        <p>natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae sequi nesciunt.</p>
+                        @lang('about_us.text')
                     </div>
                 </div>
                 <div class="col-md-2 col-md-offset-1 contact">
@@ -41,27 +40,27 @@
             </div>
             
             <div class="row">
-                <h3>Leave us a message</h3>
+                <h3>@lang('about_us.subtitle01')</h3>
             </div>
             
             <div class="row contact_form">
                 <form method="post" action="#">
                     <div>
-                        <label for="email">E-mail</label>
+                        <label for="email">@lang('about_us.label01')</label>
                         <input type="email" name="email" id="email" placeholder="name@domain.com">
                     </div>
                     <div>
-                        <label for="message">Your message</label>
-                        <textarea name="message" id="message" placeholder="Write your message here."></textarea>
+                        <label for="message">@lang('about_us.label02')</label>
+                        <textarea name="message" id="message" placeholder="@lang('about_us.placeholder02')"></textarea>
                     </div>
                     <div>
-                        <input type="submit" value="Send">
+                        <input type="submit" value="@lang('about_us.submit_value')">
                     </div>
                 </form>
             </div>
             
             <div class="row">
-                <h3>Frequently asked questions</h3>
+                <h3>@lang('about_us.faq')</h3>
             </div>
             
             <div class="faqs">

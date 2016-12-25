@@ -16,9 +16,19 @@ class WelcomeController extends Controller
         $categories = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name')->get();
         dd($categories);
         dd(DB::getQueryLog());*/
-        $categories = Category::all();
+        //$categories = Category::all();
         $name = 'name_' . App::getLocale();
+        $categories = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         return view('welcome', ['categories' => $categories]);
+    }
+    
+    public function set_cookie() {
+        //dd(request()->ip());
+        //$cookie = cookie('client_ip', request()->ip(), 2000);
+        //setCookie that expires in 30 days
+        setcookie("client_ip", request()->ip(), time()+(3600*24*30));
+        //dd($cookie);
+        return back();
     }
     
     public function about_us() {

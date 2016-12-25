@@ -143,6 +143,47 @@ body {
   font-family: "Arial", sans-serif;
   color: #cecece; }
 
+.cookies {
+  z-index: 50;
+  background-color: #e6cfb9;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  padding: 20px;
+  color: #454545; }
+  .cookies .left, .cookies .right {
+    float: left; }
+  .cookies .left {
+    width: 20%;
+    padding-left: 50px; }
+    .cookies .left img {
+      padding: 15px; }
+  .cookies .right {
+    width: 80%; }
+    .cookies .right h3 {
+      color: #e27500;
+      font-size: 2.2em; }
+    .cookies .right a {
+      display: block;
+      width: 250px;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e27500;
+      color: #fff;
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold; }
+  .cookies .close_tag {
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+    .cookies .close_tag a {
+      color: #e27500;
+      font-size: 1.2em;
+      font-weight: bold; }
+
 .content {
   margin-left: 60px;
   background-color: #454545;
@@ -225,23 +266,27 @@ h2 {
 
 .page_content {
   padding-bottom: 100px; }
+  .page_content .intro {
+    padding-top: 25px; }
   .page_content .categories .category {
     border-right: 1px solid #616161; }
-    .page_content .categories .category div:first-child {
-      width: 100px;
-      height: 100px; }
-    .page_content .categories .category .cat_dogs {
-      background: url("../images/icons/category_icons_sprite.png") -100px -250px; }
-    .page_content .categories .category .cat_cats {
-      background: url("../images/icons/category_icons_sprite.png") -100px -350px; }
-    .page_content .categories .category .cat_fish {
-      background: url("../images/icons/category_icons_sprite.png") -100px -450px; }
-    .page_content .categories .category .cat_birds {
-      background: url("../images/icons/category_icons_sprite.png") -100px -550px; }
-    .page_content .categories .category .cat_small_animals {
-      background: url("../images/icons/category_icons_sprite.png") -100px -650px; }
-    .page_content .categories .category .cat_other {
-      background: url("../images/icons/category_icons_sprite.png") -100px -750px; }
+    .page_content .categories .category a {
+      color: #fff; }
+      .page_content .categories .category a div:first-child {
+        width: 100px;
+        height: 100px; }
+      .page_content .categories .category a .cat_dogs {
+        background: url("../images/icons/category_icons_sprite.png") -100px -250px; }
+      .page_content .categories .category a .cat_cats {
+        background: url("../images/icons/category_icons_sprite.png") -100px -350px; }
+      .page_content .categories .category a .cat_fish {
+        background: url("../images/icons/category_icons_sprite.png") -100px -450px; }
+      .page_content .categories .category a .cat_birds {
+        background: url("../images/icons/category_icons_sprite.png") -100px -550px; }
+      .page_content .categories .category a .cat_small_animals {
+        background: url("../images/icons/category_icons_sprite.png") -100px -650px; }
+      .page_content .categories .category a .cat_other {
+        background: url("../images/icons/category_icons_sprite.png") -100px -750px; }
   .page_content .hot_items .hot_item,
   .page_content .items .hot_item {
     width: calc((100% - 15px)/4);
@@ -523,6 +568,7 @@ h2 {
   clear: both; }
 
 /* **********    CLEARFIX     ********** */
+.cookies::before, .cookies::after,
 .general a::before, .general a::after,
 .categories a::before, .categories a::after,
 .hot_items .items::before, .hot_items .items::after,
@@ -531,6 +577,7 @@ figure figcaption::before, figure figcaption::after {
   line-height: 0;
   display: table; }
 
+.cookies::after,
 .general a::after,
 .categories a::after,
 .hot_items .items::after,

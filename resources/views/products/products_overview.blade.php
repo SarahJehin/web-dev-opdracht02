@@ -35,7 +35,7 @@
                                 <td>{{$product->$name}}</td>
                                 <td>{{$product->price}}</td>
                                 <td>
-                                    <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="{{url('/admin/edit_product/' . $product->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>                                                 
                                 </td>
                             </tr>

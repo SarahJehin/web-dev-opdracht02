@@ -26,32 +26,6 @@
                     @endforeach
                 </div>
                 
-                <!--
-                <div class="col-md-2 category">
-                    <div class="cat_dogs"></div>
-                    <div>DOGS</div>
-                </div>
-                <div class="col-md-2 category">
-                    <div class="cat_cats"></div>
-                    <div>CATS</div>
-                </div>
-                <div class="col-md-2 category">
-                    <div class="cat_fish"></div>
-                    <div>FISH</div>
-                </div>
-                <div class="col-md-2 category">
-                    <div class="cat_birds"></div>
-                    <div>BIRDS</div>
-                </div>
-                <div class="col-md-2 category">
-                    <div class="cat_small_animals"></div>
-                    <div>SMALL ANIMALS</div>
-                </div>
-                <div class="col-md-2 category">
-                    <div class="cat_other"></div>
-                    <div>OTHER</div>
-                </div>
-                -->
             </div>
         </div>
         

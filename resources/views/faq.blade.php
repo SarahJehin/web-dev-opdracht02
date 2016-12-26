@@ -8,7 +8,7 @@
             <h2>FREQUENTLY ASKED QUESTIONS</h2>
         </div>
         <div class="row search">
-            <form method="post" action="{{url('search_faq')}}">
+            <form method="post" action="{{url(App::getLocale().'search_faq')}}">
                 {{ csrf_field() }}
                 <div class="input">
                     <span class="search_icon"></span>

@@ -5,7 +5,7 @@
     <div class="row searchpage">
     <div class="col-md-10 col-md-offset-1">
         
-        <form method="post" action="{{url('search_products')}}">
+        <form method="post" action="{{url(App::getLocale().'/search_products')}}">
         <div class="row filter">
             <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
                 <span class="text">Advanced filter</span>
@@ -57,7 +57,7 @@
                     <img src="{{url('/images/products/' . $product_result->images[0]->image_path)}}" alt="{{$product_result->name}}">
                 </div>
                 <div class="col-md-10">
-                    <h4><a href="{{url('/product_details/' . $product_result->id)}}">{{$product_result->name}}</a></h4>
+                    <h4><a href="{{url(App::getLocale().'/product_details/' . $product_result->id)}}">{{$product_result->name}}</a></h4>
                     <p>
                         {{$product_result->description}}
                     </p>

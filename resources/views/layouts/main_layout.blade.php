@@ -55,13 +55,12 @@
         
         <div class="side_nav">
             
-            
             <nav>
                 <div class="general">
                     <ul>
-                        <li><a href="{{url('search')}}"><span class="search"></span><span class="text">Search</span></a></li>
-                        <li><a href="{{url('faq')}}" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
-                        <li><a href="{{url('about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/search')}}"><span class="search"></span><span class="text">Search</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/faq')}}" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
                     </ul>
                 </div>
                 
@@ -76,7 +75,7 @@
                         -->
                         @foreach($categories as $category)
                         @if($category->name_en != "Other")
-                        <li><a href="{{url('/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
                         @endif
                         @endforeach
                         <!--
@@ -89,7 +88,7 @@
             </nav>
             
             <div class="logo">
-                <a href="{{url('/')}}"></a>
+                <a href="{{url(App::getLocale().'/')}}"></a>
             </div>
             
         </div>

@@ -5,7 +5,7 @@
    
     <div class="col-md-12 header_product_detail">
         <div class="kowloon_logo">
-            <a href="{{url('/')}}"><img src="{{url('images/kowloon_logo_full.png')}}" alt="kowloon logo"></a>
+            <a href="{{url(App::getLocale().'/')}}"><img src="{{url('images/kowloon_logo_full.png')}}" alt="kowloon logo"></a>
         </div>
     </div>
     
@@ -70,7 +70,7 @@
                 <div class="items">
                         @foreach($related_products as $related_product)
                         <div class="hot_item">
-                            <a href="{{url('/product_details/' . $related_product->id)}}">
+                            <a href="{{url(App::getLocale().'/product_details/' . $related_product->id)}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('images/products/' . $related_product->images[0]->image_path)}}" alt="{{$related_product->name}}">

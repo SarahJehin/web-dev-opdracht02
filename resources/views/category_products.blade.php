@@ -58,7 +58,7 @@
                 <div class="items">
                         @foreach($products as $product)
                         <div class="hot_item">
-                            <a href="{{url('/product_details/' . $product->id)}}">
+                            <a href="{{url(App::getLocale().'/product_details/' . $product->id)}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('images/products/' . $product->images[0]->image_path)}}" alt="cooling_mat">

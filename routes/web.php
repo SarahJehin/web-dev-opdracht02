@@ -17,7 +17,10 @@ Route::get('/set_cookie', 'WelcomeController@set_cookie');
 Route::get('/products/{id}', 'WelcomeController@category_products');
 Route::get('/product_details/{id}', 'WelcomeController@product_details');
 
-Route::get('/about_us', 'WelcomeController@about_us');
+Route::get('/search', 'WelcomeController@view_search');
+Route::get('/faq', 'WelcomeController@view_faq');
+Route::post('/search_faq', 'WelcomeController@search_faq');
+Route::get('/about_us', 'WelcomeController@view_about_us');
 
 Auth::routes();
 

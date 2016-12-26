@@ -79,24 +79,23 @@
             <h3>@lang('about_us.faq')</h3>
             
             <div class="row faqs">
+                @if(!$faqs->isEmpty())
+                @foreach($faqs as $faq)
                 <div class="row questionblock">
-                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo1">
-                        <h4>Dit is een vraag</h4>
+                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#question{{$faq->id}}">
+                        <h4>{{ $faq->question }}</h4>
                         <span class="arrow"></span>
                     </div>
-                    <div id="demo1" class="collapse answer">
-                        Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
+                    <div id="question{{$faq->id}}" class="collapse answer">
+                        {{ $faq->answer }}
                     </div>
                 </div>
-                <div class="row questionblock">
-                    <div type="button" class="question collapsed" data-toggle="collapse" data-target="#demo2">
-                        <h4>Dit is een vraag</h4>
-                        <span class="arrow"></span>
-                    </div>
-                    <div id="demo2" class="collapse answer">
-                        Dit is het antwoord op de vraag en mag dus enkel zichtbaar zijn als de vraag is opengeklapt.
-                    </div>
+                @endforeach
+                @else
+                <div>
+                    No questions found...
                 </div>
+                @endif
             </div>
             
         </div>

@@ -7,6 +7,7 @@ use App;
 use App\Category;
 use App\Product;
 use App\Specification;
+use App\Faq;
 use DB;
 
 class WelcomeController extends Controller
@@ -32,9 +33,31 @@ class WelcomeController extends Controller
         return back();
     }
     
-    public function about_us() {
-        $categories = Category::all();
+    public function view_search() {
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         return view('about_us', ['categories' => $categories]);
+    }
+    
+    public function view_faq() {
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $faqs = Faq::select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->paginate(10);
+        
+        return view('faq', ['categories' => $categories, 'faqs' => $faqs]);
+    }
+    
+    public function search_faq(Request $request) {
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $faqs = Faq::select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')
+            ->where('question_' . App::getLocale(), 'like', '%' . $request->searchword . '%')
+            ->paginate(10);
+        
+        return view('faq', ['categories' => $categories, 'faqs' => $faqs, 'searchword' => $request->searchword]);
+    }
+    
+    public function view_about_us() {
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $faqs = Faq::select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->paginate(5);
+        return view('about_us', ['categories' => $categories, 'faqs' => $faqs]);
     }
     
     public function category_products($category_id)
@@ -74,7 +97,11 @@ class WelcomeController extends Controller
         $specifications = Specification::where('product_id', $product_id)
             ->select('id', 'title_' . App::getLocale() . ' AS title', 'description_' . App::getLocale() . ' AS description')->get();
         
-        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories]);
+        //select faqs associated with this product
+        $faqs = Faq::whereHas('products', function($q) use ($product_id){
+            $q->where('products.id', $product_id);
+        })->select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->get();
+        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories, 'faqs' => $faqs]);
     }
     
 }

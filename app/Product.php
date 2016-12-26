@@ -36,4 +36,8 @@ class Product extends Model
     public function specifications() {
         return $this->hasMany('App\Specification');
     }
+    
+    public function faqs() {
+        return $this->belongsToMany('App\Faq');
+    }
 }

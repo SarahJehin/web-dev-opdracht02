@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="{{url('/css/main.css')}}" rel="stylesheet">
     @yield('custom_css')
@@ -58,8 +59,8 @@
             <nav>
                 <div class="general">
                     <ul>
-                        <li><a href="#"><span class="search"></span><span class="text">Search</span></a></li>
-                        <li><a href="#" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
+                        <li><a href="{{url('search')}}"><span class="search"></span><span class="text">Search</span></a></li>
+                        <li><a href="{{url('faq')}}" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
                         <li><a href="{{url('about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
                     </ul>
                 </div>
@@ -95,7 +96,7 @@
         
 
         <div class="content">
-            @include('sub_views.faq_overlay')
+            {{--@include('sub_views.faq_overlay')--}}
             
             @yield('content')
         </div>
@@ -106,6 +107,7 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{url('/js/app.js')}}"></script>
     <script src="{{url('/js/side_nav.js')}}"></script>
+    <script src="{{url('/js/main.js')}}"></script>
     @yield('custom_js')
 </body>
 </html>

@@ -14,7 +14,7 @@
             clear
         </div>
         <div class="row info">
-            <p>Don’t find what you’re looking for?You can always contact our customer service. We’re happy to help you!</p>
+            <p>Don’t find what you’re looking for? You can always contact our customer service. We’re happy to help you!</p>
         </div>
         <div class="row results">
             <div class="questionblock">

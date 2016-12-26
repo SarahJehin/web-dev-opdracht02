@@ -21,7 +21,8 @@
     });
     
     
-    
+    //faq overlay -> not necessary anymore, will be in different blade
+    /*
     $('nav a').click(function () {
         $(".faq_overlay").hide();
         $(".general .faq_link").removeClass( "active" );
@@ -41,6 +42,6 @@
         }
         faq_open = !faq_open;
 
-    });
+    });*/
     
 })(window, window.document, window.jQuery);

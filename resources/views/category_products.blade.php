@@ -15,6 +15,7 @@
                 <h1>{{$category->name}} @lang('products.articles')</h1>
             </div>
             
+            @if(!$products->isEmpty())
             <div class="row filter">
                 <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
                     <span class="text">@lang('products.filter')</span>
@@ -55,54 +56,6 @@
             
             <div class="row products">
                 <div class="items">
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
                         @foreach($products as $product)
                         <div class="hot_item">
                             <a href="{{url('/product_details/' . $product->id)}}">
@@ -117,8 +70,14 @@
                             </a>
                         </div>
                         @endforeach
-                    </div>
+                        {{ $products->links() }}
+                </div>
             </div>
+            @else
+            <div class="row nothing_available">
+                Sorry, no products available
+            </div>
+            @endif
             
         </div>
     </div>

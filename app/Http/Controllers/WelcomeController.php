@@ -35,7 +35,62 @@ class WelcomeController extends Controller
     
     public function view_search() {
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
-        return view('about_us', ['categories' => $categories]);
+        return view('search', ['categories' => $categories]);
+    }
+    
+    public function search_products(Request $request) {
+        //dd($request);
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        
+        
+        
+        $query = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description')->where('name_' . App::getLocale(), 'like', '%' . $request->searchword . '%');
+        
+        
+        if($request->from != "" && $request->to != "") {
+            $query = $query->whereBetween('price', [$request->from, $request->to]);
+        }
+        
+        
+        if(isset($request->category)) {
+            $cats = "";
+            //dd($request->category);
+            foreach($request->category as $cat){
+                //echo($cat);
+                $cats = $cats . $cat . ",";
+            }
+            $cats = rtrim($cats, ",");
+            
+            $query = $query->whereIn('category_id', [$cats]);
+        }
+        
+        //$product_results = $query->toSql();
+        $product_results = $query->paginate(10);
+        //dd($product_results);
+        /*
+        $extra = "";
+        
+        if(isset($request->category)) {
+            $extra = "->whereIn('category_id', [";
+        
+            foreach($request->category as $category){
+                $extra = $extra . $category . ",";
+            }
+            $extra = rtrim($extra, ",");
+            $extra = $extra . "])";
+        }
+        
+        if($request->from != "" && $request->to != "") {
+            $extra = $extra . "->whereBetween('price', [" . $request->from . ", " . $request->to . "])";
+        }
+        dd($extra);
+        */
+        
+        /*$product_results = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description')
+            ->where('name_' . App::getLocale(), 'like', '%' . $request->searchword . '%')
+            ->paginate(10);*/
+        //dd($product_results);
+        return view('search', ['categories' => $categories, 'product_results' => $product_results]);
     }
     
     public function view_faq() {
@@ -66,7 +121,7 @@ class WelcomeController extends Controller
         //$category = Category::find($category_id);
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $category = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name')->where('id', $category_id)->first();
-        $products = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'price')->where('category_id', $category_id)->get();
+        $products = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'price')->where('category_id', $category_id)->paginate(12);
         //dd($categories, $category, $products);
         return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products]);
     }
@@ -97,11 +152,14 @@ class WelcomeController extends Controller
         $specifications = Specification::where('product_id', $product_id)
             ->select('id', 'title_' . App::getLocale() . ' AS title', 'description_' . App::getLocale() . ' AS description')->get();
         
+        //get related products (products of same category)
+        $related_products = Product::where('category_id', $product->category_id)->select('id', 'name_' . App::getLocale() . ' AS name')->where('id', '<>', $product_id)->limit(4) ->get();
+        
         //select faqs associated with this product
         $faqs = Faq::whereHas('products', function($q) use ($product_id){
             $q->where('products.id', $product_id);
         })->select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->get();
-        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories, 'faqs' => $faqs]);
+        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories, 'faqs' => $faqs, 'related_products' => $related_products]);
     }
     
 }

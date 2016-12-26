@@ -13,6 +13,11 @@
 .product {
     .images {
         
+        padding: 5px;
+        background-color: $theme02;
+        margin-bottom: 20px;
+        border: 1px $main_border_color solid;
+        
         .big_img {
             img {
                 width: 100%;
@@ -22,9 +27,17 @@
         
         .small_img {
             padding: 0;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 2%;
+            width: 32%;
+            float: left;
             img {
                 width: 100%;
                 height: auto;
+            }
+            &:nth-child(3n+3) {
+                margin-right: 0;
             }
         }
     }
@@ -58,13 +71,15 @@
 
 
 /* CLEARFIX */
-.colors::before, .colors::after {
+.colors::before, .colors::after,
+.small_images::before, .small_images::after {
     content: "";
     line-height: 0;
     display: table;
 }
 
-.colors::after {
+.colors::after,
+.small_images::after {
     clear: both;
 }
 

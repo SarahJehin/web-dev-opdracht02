@@ -18,6 +18,7 @@ Route::get('/products/{id}', 'WelcomeController@category_products');
 Route::get('/product_details/{id}', 'WelcomeController@product_details');
 
 Route::get('/search', 'WelcomeController@view_search');
+Route::post('/search_products', 'WelcomeController@search_products');
 Route::get('/faq', 'WelcomeController@view_faq');
 Route::post('/search_faq', 'WelcomeController@search_faq');
 Route::get('/about_us', 'WelcomeController@view_about_us');

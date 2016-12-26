@@ -14,21 +14,14 @@
             <div class="row product">
                 <div class="col-md-6 images">
                     <div class="col-md-12 big_img">
-                        <img src="{{url('/images/products/' . $product->images[0]->image_path)}}" alt="{{$product->category->name_nl}}">
+                        <img src="{{url('/images/products/' . $product->images[0]->image_path)}}" alt="{{$product->name_en}}">
                     </div>
-                    @foreach($product->images as $image)
-                    <div class="col-md-4 small_img">
-                        <img src="{{url('/images/products/' . $image->image_path)}}" alt="{{$product->name_en}}">
-                    </div>
-                    @endforeach
-                    <div class="col-md-4">
-                        kleine foto 1
-                    </div>
-                    <div class="col-md-4">
-                        kleine foto 2
-                    </div>
-                    <div class="col-md-4">
-                        kleine foto 3
+                    <div class="small_images">
+                        @foreach($product->images as $image)
+                        <div class="small_img">
+                            <img src="{{url('/images/products/' . $image->image_path)}}" alt="{{$product->name_en}}">
+                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -72,14 +65,38 @@
             
             <h3>@lang('products.subtitle01')</h3>
             
+            @if(!$related_products->isEmpty())
             <div class="row related_products">
-                blab
+                <div class="items">
+                        @foreach($related_products as $related_product)
+                        <div class="hot_item">
+                            <a href="{{url('/product_details/' . $related_product->id)}}">
+                                <figure>
+                                     <div class="img">
+                                         <img src="{{url('images/products/' . $related_product->images[0]->image_path)}}" alt="{{$related_product->name}}">
+                                         <div class="overlay"></div>
+                                         <div class="overlay_icon"><span>View details</span></div>
+                                     </div>
+                                </figure>
+                            </a>
+                        </div>
+                        @endforeach
+                </div>
             </div>
+            
+            <div class="row view_more">
+                <a href="#">@lang('products.view_more')</a>
+            </div>
+            @else
+            <div>
+                No related products found...
+            </div>
+            @endif
             
             <h3>@lang('about_us.faq')</h3>
             
+            @if(!$faqs->isEmpty())
             <div class="row faqs">
-                @if(!$faqs->isEmpty())
                 @foreach($faqs as $faq)
                 <div class="row questionblock">
                     <div type="button" class="question collapsed" data-toggle="collapse" data-target="#question{{$faq->id}}">
@@ -91,12 +108,16 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <div>
-                    No questions found...
-                </div>
-                @endif
             </div>
+            
+            <div class="row more_questions">
+                <a href="#">@lang('products.more_questions')</a>
+            </div>
+            @else
+            <div>
+                No questions found...
+            </div>
+            @endif
             
         </div>
     </div>

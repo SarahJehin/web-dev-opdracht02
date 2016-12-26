@@ -26,6 +26,7 @@ $basic_color: #cecece;
 $choplin_medium: choplin-medium;
 
 $theme01: #454545;
+$theme02: #565656;
 $grey_divider: #616161;
 $grey_faq: #717171;
 $main_border_color: #717171;
@@ -171,7 +172,8 @@ ul {
 /*  FAQ  */
 @import "_faq_overlay";
 
-
+/* SEARCH */
+@import "_search";
 
 .page_content {
     padding-bottom: 100px;
@@ -223,7 +225,7 @@ ul {
             padding: 4px;
             border: 1px solid $main_border_color;
             margin-right: 5px;
-            background-color: #565656;
+            background-color: $theme02;
             float: left;
             
             &:nth-child(4)  {

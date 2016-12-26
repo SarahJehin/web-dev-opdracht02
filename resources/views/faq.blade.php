@@ -10,7 +10,8 @@
         <div class="row search">
             <form method="post" action="{{url('search_faq')}}">
                 {{ csrf_field() }}
-                <div>
+                <div class="input">
+                    <span class="search_icon"></span>
                     <input type="text" name="searchword" id="searchword" placeholder="Search on keyword">
                 </div>
                 <input type="submit" value="Search" hidden="hidden">
@@ -37,13 +38,14 @@
                 </div>
             </div>
             @endforeach
+            {{ $faqs->links() }}
             @else
             <div>
                 Sorry, no results matched your query...
             </div>
             @endif
             
-            {{ $faqs->links() }}
+            
         </div>
     </div>
 </div>

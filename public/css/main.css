@@ -184,6 +184,52 @@ body {
       font-size: 1.2em;
       font-weight: bold; }
 
+.breadcrumbs .kowloon_logo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
+  float: left; }
+.breadcrumbs .breadcrumb {
+  position: relative;
+  background: #323232;
+  float: left;
+  padding: 2px 15px;
+  margin-top: 10px;
+  margin-right: 10px; }
+  .breadcrumbs .breadcrumb:after {
+    right: 97%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(66, 66, 66, 0);
+    border-right-color: #323232;
+    border-width: 12px;
+    margin-top: -12px; }
+  .breadcrumbs .breadcrumb span {
+    float: left; }
+    .breadcrumbs .breadcrumb span[class^="dot"] {
+      width: 10px;
+      height: 10px;
+      margin-top: 5px;
+      margin-right: 5px;
+      display: block;
+      border-radius: 50%; }
+    .breadcrumbs .breadcrumb span.dot_dogs {
+      background-color: #ff6f9e; }
+    .breadcrumbs .breadcrumb span.dot_cats {
+      background-color: #8787ff; }
+    .breadcrumbs .breadcrumb span.dot_fish {
+      background-color: #ffb93f; }
+    .breadcrumbs .breadcrumb span.dot_birds {
+      background-color: #7bff81; }
+    .breadcrumbs .breadcrumb span.dot_small_animals {
+      background-color: #7be5ff; }
+
 .content {
   margin-left: 60px;
   background-color: #454545;
@@ -446,33 +492,6 @@ h2 {
     top: 50px;
     left: calc(50% - 150px); }
 
-.breadcrumbs .kowloon_logo {
-  display: block;
-  width: 50px;
-  height: 50px;
-  background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
-  float: left; }
-.breadcrumbs .breadcrumb {
-  position: relative;
-  background: #323232;
-  float: left;
-  padding: 2px 15px;
-  margin-top: 10px;
-  margin-right: 10px; }
-  .breadcrumbs .breadcrumb:after {
-    right: 97%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(66, 66, 66, 0);
-    border-right-color: #323232;
-    border-width: 12px;
-    margin-top: -12px; }
-
 .about_us {
   padding: 0; }
 
@@ -537,30 +556,32 @@ h2 {
   clear: both; }
 
 /*    PRODUCTS OVERVIEW     */
-.filter .title .text {
+.product_filter input {
+  color: #454545; }
+.product_filter .filter .title .text {
   float: left; }
-.filter .title .arrow {
+.product_filter .filter .title .arrow {
   display: block;
   width: 25px;
   height: 25px;
   margin-top: -3px;
   float: left;
   background: url("../images/icons/general_menu_icons_sprite.png") -125px 0; }
-.filter .title.collapsed .arrow {
+.product_filter .filter .title.collapsed .arrow {
   background: url("../images/icons/general_menu_icons_sprite.png") -100px 0px; }
-
-.sort {
-  border-top: #616161 1px solid; }
-  .sort select {
+.product_filter .sort {
+  border-top: #616161 1px solid;
+  padding-top: 10px; }
+  .product_filter .sort select {
     color: #cecece;
     background-color: #616161;
     padding: 10px 20px; }
-    .sort select option {
+    .product_filter .sort select option {
       background-color: #fff;
       color: #454545; }
-      .sort select option[disabled]:first-child {
+      .product_filter .sort select option[disabled]:first-child {
         display: none; }
-      .sort select option:hover {
+      .product_filter .sort select option:hover {
         background-color: #e9e9e9;
         color: blue; }
 
@@ -637,6 +658,7 @@ h2 {
 /* **********    CLEARFIX     ********** */
 .cookies::before, .cookies::after,
 .general a::before, .general a::after,
+.breadcrumb::before, .breadcrumb::after,
 .categories a::before, .categories a::after,
 .hot_items .items::before, .hot_items .items::after,
 figure figcaption::before, figure figcaption::after {
@@ -646,6 +668,7 @@ figure figcaption::before, figure figcaption::after {
 
 .cookies::after,
 .general a::after,
+.breadcrumb::after,
 .categories a::after,
 .hot_items .items::after,
 figure figcaption::after {

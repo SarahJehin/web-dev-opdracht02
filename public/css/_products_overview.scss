@@ -2,50 +2,59 @@
 //.items is styled in main.scss --> same styling as .hot_items
 
 
-.filter {
-    .title {
-        .text {
-            float: left;
-        }
-        .arrow {
-            display: block;
-            width: 25px;
-            height: 25px;
-            margin-top: -3px;
-            float: left;
-            background: url('../images/icons/general_menu_icons_sprite.png') -125px 0;
-        }
-        &.collapsed {
+.product_filter {
+    
+    input {
+        color: $theme01;
+    }
+    
+    .filter {
+        .title {
+            .text {
+                float: left;
+            }
             .arrow {
-                background: url('../images/icons/general_menu_icons_sprite.png') -100px 0px;
+                display: block;
+                width: 25px;
+                height: 25px;
+                margin-top: -3px;
+                float: left;
+                background: url('../images/icons/general_menu_icons_sprite.png') -125px 0;
+            }
+            &.collapsed {
+                .arrow {
+                    background: url('../images/icons/general_menu_icons_sprite.png') -100px 0px;
+                }
             }
         }
+    }
+
+    .sort {
+        border-top: $grey_divider 1px solid;
+        padding-top: 10px;
+
+        select {
+            color: #cecece;
+            background-color: $grey_divider;
+            padding: 10px 20px;
+
+            option {
+                background-color: #fff;
+                color: $theme01;
+                &[disabled]:first-child {
+                    display: none;
+                }
+                &:hover {
+                    background-color: #e9e9e9;
+                    color: blue;
+                }
+            }
+
+        }
+
     }
 }
 
-.sort {
-    border-top: $grey_divider 1px solid;
-    
-    select {
-        color: #cecece;
-        background-color: $grey_divider;
-        padding: 10px 20px;
-        
-        option {
-            background-color: #fff;
-            color: $theme01;
-            &[disabled]:first-child {
-                display: none;
-            }
-            &:hover {
-                background-color: #e9e9e9;
-                color: blue;
-            }
-        }
-        
-    }
-    
-}
 
 .nothing_available {
     margin-bottom: 100px;

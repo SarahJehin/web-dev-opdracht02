@@ -27,12 +27,12 @@
                 <div class="col-md-6">
                     <div class="row breadcrumbs">
                         <div class="kowloon_logo"></div>
-                        <span class="breadcrumb">{{$product->category->name_nl}}</span>
+                        <span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span>
                         <span class="breadcrumb">Splash 'n fun</span>
                     </div>
                     <div class="row">
                         <h1>{{$product->name}}</h1>
-                        <h3>&euro; {{ $product->price }}</h3>
+                        <h3>&euro; {{ number_format((float)$product->price, 2, '.', '') }}</h3>
                     </div>
                     <div class="row">
                         <h4>@lang('products.product_title01')</h4>
@@ -51,6 +51,7 @@
                 </div>
             </div>
             
+            @if(!$specifications->isEmpty())
             <div class="row specifications">
                 <h4>@lang('products.product_title03')</h4>
                 @foreach($specifications as $specification)
@@ -62,6 +63,7 @@
                 </div>
                 @endforeach
             </div>
+            @endif
             
             <h3>@lang('products.subtitle01')</h3>
             
@@ -89,7 +91,7 @@
             </div>
             @else
             <div>
-                No related products found...
+                @lang('products.no_products')
             </div>
             @endif
             
@@ -115,7 +117,7 @@
             </div>
             @else
             <div>
-                No questions found...
+                @lang('products.no_questions')
             </div>
             @endif
             

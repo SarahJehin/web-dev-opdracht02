@@ -18,6 +18,8 @@ return [
     'product_title02' => 'Description',
     'product_title03' => 'Spécifications',
     'subtitle01' => 'Produits apparenté',
+    'no_products' => 'Pas de produits apparenté...',
+    'no_questions' => 'Pas de questions...',
     'view_more' => 'Montrez plus',
     'more_questions' => 'Plus de questions?',
 ];

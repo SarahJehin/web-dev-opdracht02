@@ -104,6 +104,68 @@ body {
     
 }
 
+
+.breadcrumbs {
+    .kowloon_logo {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
+        float: left;
+    }
+    
+    .breadcrumb {
+        position: relative;
+	    background: #323232;
+        float: left;
+        padding: 2px 15px;
+        margin-top: 10px;
+        margin-right: 10px;
+        
+        &:after {
+            right: 97%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(66, 66, 66, 0);
+            border-right-color: #323232;
+            border-width: 12px;
+            margin-top: -12px;
+        }
+        
+        span {
+            float: left;
+            &[class^="dot"] {
+                width: 10px;
+                height: 10px;
+                margin-top: 5px;
+                margin-right: 5px;
+                display: block;
+                border-radius: 50%;
+            }
+            &.dot_dogs {
+                background-color: $dog_color;
+            }
+            &.dot_cats {
+                background-color: $cat_color;
+            }
+            &.dot_fish {
+                background-color: $fish_color;
+            }
+            &.dot_birds {
+                background-color: $bird_color;
+            }
+            &.dot_small_animals {
+                background-color: $small_animal_color;
+            }
+        }
+    }
+}
+
 .content {
     margin-left: 60px;
     background-color: $theme01;
@@ -367,6 +429,7 @@ ul {
 
 .cookies::before, .cookies::after,
 .general a::before, .general a::after,
+.breadcrumb::before, .breadcrumb::after,
 .categories a::before, .categories a::after,
 .hot_items .items::before, .hot_items .items::after,
 figure figcaption::before, figure figcaption::after {
@@ -377,6 +440,7 @@ figure figcaption::before, figure figcaption::after {
 
 .cookies::after,
 .general a::after,
+.breadcrumb::after,
 .categories a::after,
 .hot_items .items::after,
 figure figcaption::after {

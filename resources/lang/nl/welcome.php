@@ -9,4 +9,17 @@ return [
     'banner_part02' => 'enkel in onze nieuwsbrief',
     'newsletter' => 'Meld je aan voor onze nieuwsbrief',
     'newsletter_description' => 'Lorem ipsum dolor sit amet.',
+    
+    //search
+    'advanced_filter' => 'Geavanceerde filter',
+    'category' => 'Categorie',
+    'search_products_placeholder' => "Start met typen en druk op 'enter' om te zoeken",
+    'clear' => 'Leegmaken',
+    'search_info' => 'Vind je niet wat je zoekt?  Probeer misschien eens met minder woorden of een algemenere term.<br>Als je nog niet vindt wat je zoekt, contacteer dan onze klantendienst.',
+    'no_search_results' => 'Sorry, er werden geen resultaten gevonden...',
+    
+    //faq
+    'search_faq_placeholder' => 'Zoek op kernwoord',
+    'search_faq_info' => 'Vind je niet wat je zoekt?<br>Je kan altijd onze klantendienst contacteren.  We helpen je graag verder!',
+    'results_for' => 'Resultaten voor',
 ];

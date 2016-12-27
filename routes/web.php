@@ -18,6 +18,7 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/set_cookie', 'WelcomeController@set_cookie');
 
     Route::get('/products/{id}', 'WelcomeController@category_products');
+    Route::post('/products_filter', 'WelcomeController@products_filter');
     Route::get('/product_details/{id}', 'WelcomeController@product_details');
     
     Route::get('/search', 'WelcomeController@view_search');

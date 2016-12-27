@@ -17,40 +17,6 @@
     }
 }
 
-.breadcrumbs {
-    .kowloon_logo {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
-        float: left;
-    }
-    
-    .breadcrumb {
-        position: relative;
-	    background: #323232;
-        float: left;
-        padding: 2px 15px;
-        margin-top: 10px;
-        margin-right: 10px;
-        
-        &:after {
-            right: 97%;
-            top: 50%;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-            border-color: rgba(66, 66, 66, 0);
-            border-right-color: #323232;
-            border-width: 12px;
-            margin-top: -12px;
-        }
-    }
-}
-
 .about_us {
     padding: 0;
 }

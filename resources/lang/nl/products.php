@@ -18,6 +18,8 @@ return [
     'product_title02' => 'Beschrijving',
     'product_title03' => 'Specificaties',
     'subtitle01' => 'Gerelateerde producten',
+    'no_products' => 'Er bestaan nog geen gerelateerde producten...',
+    'no_questions' => 'Er bestaan nog geen vragen...',
     'view_more' => 'Toon meer',
     'more_questions' => 'Meer vragen?',
 ];

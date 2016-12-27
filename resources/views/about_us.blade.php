@@ -5,7 +5,7 @@
     <div class="col-md-12 header_img">
         <img src="{{url('/images/header_about_us.jpg')}}" alt="header image">
         <div class="kowloon_logo">
-            <a href="{{url('/')}}"><img src="{{url('images/kowloon_logo_full.png')}}" alt="kowloon logo"></a>
+            <a href="{{url(App::getLocale().'/')}}"><img src="{{url('images/kowloon_logo_full.png')}}" alt="kowloon logo"></a>
         </div>
     </div>
     

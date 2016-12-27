@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Category;
+use App\Collection;
 use App\Product;
 use App\Specification;
 use App\Faq;
@@ -45,12 +46,11 @@ class WelcomeController extends Controller
         
         
         if(isset($request->category)) {
-            $cats = "";
+            $cats = array();
             foreach($request->category as $cat){
-                $cats = $cats . $cat . ",";
+                array_push($cats, $cat);
             }
-            $cats = rtrim($cats, ",");
-            $query = $query->whereIn('category_id', [$cats]);
+            $query = $query->whereIn('category_id', $cats);
         }
         
         //$product_results = $query->toSql();
@@ -84,10 +84,65 @@ class WelcomeController extends Controller
     public function category_products($lang, $category_id)
     {
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
-        $category = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name')->where('id', $category_id)->first();
+        $category = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->where('id', $category_id)->first();
         $products = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'price')->where('category_id', $category_id)->paginate(12);
+        $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         //dd($categories, $category, $products);
-        return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products]);
+        return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products, 'collections' => $collections]);
+    }
+    
+    public function products_filter(Request $request) {
+        //dd($request);
+        
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $category = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->where('id', $request->category_id)->first();
+        $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        
+        $query = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'price')->where('category_id', $request->category_id);
+        
+        //price filter
+        if($request->from != "" && $request->to != "") {
+            $query = $query->whereBetween('price', [$request->from, $request->to]);
+        }
+        
+        //collection filter
+        if(isset($request->collection)) {
+            $cols = array();
+            foreach($request->collection as $col){
+                array_push($cols, $col);
+            }
+            //dd($cols);
+            $query = $query->whereHas('collections', function($q) use ($cols){
+                $q->whereIn('collections.id', $cols);
+            });
+        }
+        
+        //sort filter
+        if(isset($request->sort)) {
+            if($request->sort != "none") {
+                switch ($request->sort) {
+                    case "low_high":
+                        $query = $query->orderBy('price', 'asc');
+                        break;
+                    case "high_low":
+                        $query = $query->orderBy('price', 'desc');
+                        break;
+                    case "latest":
+                        $query = $query->latest();
+                        break;
+                    case "oldest":
+                        $query = $query->oldest();
+                        break;
+                    default:
+                        //do nothing;
+                }
+            }
+        }
+        
+        $products = $query->paginate(12);
+        //dd($products);
+        return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products, 'collections' => $collections]);
+        
     }
     
     public function product_details($lang, $product_id) {
@@ -96,6 +151,8 @@ class WelcomeController extends Controller
         $product = Product::with('images')
             ->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'price', 'category_id')
             ->where('id', $product_id)->first();
+        
+        $category = Category::where('id', $product->category_id)->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->first();
         
         $specifications = Specification::where('product_id', $product_id)
             ->select('id', 'title_' . App::getLocale() . ' AS title', 'description_' . App::getLocale() . ' AS description')->get();
@@ -107,7 +164,7 @@ class WelcomeController extends Controller
         $faqs = Faq::whereHas('products', function($q) use ($product_id){
             $q->where('products.id', $product_id);
         })->select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->get();
-        return view('product_details', ['product' => $product, 'specifications' => $specifications, 'categories' => $categories, 'faqs' => $faqs, 'related_products' => $related_products]);
+        return view('product_details', ['product' => $product, 'category' => $category, 'specifications' => $specifications, 'categories' => $categories, 'faqs' => $faqs, 'related_products' => $related_products]);
     }
     
 }

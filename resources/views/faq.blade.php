@@ -8,25 +8,25 @@
             <h2>FREQUENTLY ASKED QUESTIONS</h2>
         </div>
         <div class="row search">
-            <form method="post" action="{{url(App::getLocale().'search_faq')}}">
+            <form method="post" action="{{url(App::getLocale().'/search_faq')}}">
                 {{ csrf_field() }}
                 <div class="input">
                     <span class="search_icon"></span>
-                    <input type="text" name="searchword" id="searchword" placeholder="Search on keyword">
+                    <input type="text" name="searchword" id="searchword" placeholder="@lang('welcome.search_faq_placeholder')">
                 </div>
                 <input type="submit" value="Search" hidden="hidden">
             </form>
         </div>
         <div class="row clear">
-            <i class="fa fa-window-close-o" aria-hidden="true"></i><span> Clear</span>
+            <i class="fa fa-window-close-o" aria-hidden="true"></i><span> @lang('welcome.clear')</span>
         </div>
         <div class="row info">
-            <p>Don’t find what you’re looking for?<br>You can always contact our customer service. We’re happy to help you!</p>
+            <p>@lang('welcome.search_faq_info')</p>
         </div>
         <div class="row results">
             
             @if(isset($searchword))
-            <h4>Results for "{{$searchword}}"</h4>
+            <h4>@lang('welcome.results_for') "{{$searchword}}"</h4>
             @endif
             
             @if(!$faqs->isEmpty())
@@ -41,7 +41,7 @@
             {{ $faqs->links() }}
             @else
             <div>
-                Sorry, no results matched your query...
+                @lang('welcome.no_search_results')
             </div>
             @endif
             

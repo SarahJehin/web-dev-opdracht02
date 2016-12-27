@@ -8,12 +8,12 @@
         <form method="post" action="{{url(App::getLocale().'/search_products')}}">
         <div class="row filter">
             <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
-                <span class="text">Advanced filter</span>
+                <span class="text">@lang('welcome.advanced_filter')</span>
                 <span class="arrow"></span>
             </div>
             <div id="filters" class="row collapse">
                 <div class="col-md-6">
-                    <h4>Category</h4>
+                    <h4>@lang('welcome.category')</h4>
                     @foreach($categories as $category)
                     <input name="category[]" type="checkbox" value="{{$category->id}}" id="{{$category->id}}"><label for="{{$category->id}}">{{$category->name}}</label>
                     @endforeach
@@ -32,21 +32,21 @@
             {{ csrf_field() }}
             <div class="input">
                 <span class="search_icon"></span>
-                <input type="text" name="searchword" id="searchword" placeholder="Just start typing and hit 'enter' to search">
+                <input type="text" name="searchword" id="searchword" placeholder="@lang('welcome.search_products_placeholder')">
             </div>
             <input type="submit" value="Search" hidden="hidden">
         </div>
         </form>
         <div class="row clear">
-            <i class="fa fa-window-close-o" aria-hidden="true"></i><span> Clear</span>
+            <i class="fa fa-window-close-o" aria-hidden="true"></i><span> @lang('welcome.clear')</span>
         </div>
         <div class="row info">
-            <p>Don’t find what you’re looking for? Maybe use fewer words or a more general search term.<br>If you still have no luck you can contact our customer service.</p>
+            <p>@lang('welcome.search_info')</p>
         </div>
         <div class="row results">
             
             @if(isset($searchword))
-            <h4>Results for "{{$searchword}}"</h4>
+            <h4>@lang('welcome.results_for') "{{$searchword}}"</h4>
             @endif
             
             @if(isset($product_results))
@@ -68,7 +68,7 @@
             {{ $product_results->links() }}
             @else
             <div>
-                Sorry, no results matched your query...
+                @lang('welcome.no_search_results')
             </div>
             @endif
             @endif

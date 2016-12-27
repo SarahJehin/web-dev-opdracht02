@@ -18,6 +18,8 @@ return [
     'product_title02' => 'Description',
     'product_title03' => 'Specifications',
     'subtitle01' => 'Related products',
+    'no_products' => 'No related products found...',
+    'no_questions' => 'No questions found...',
     'view_more' => 'View more',
     'more_questions' => 'More questions?',
 ];

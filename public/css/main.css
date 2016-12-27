@@ -190,6 +190,8 @@ body {
   height: 50px;
   background: url("../images/icons/general_menu_icons_sprite.png") -50px -150px;
   float: left; }
+.breadcrumbs a {
+  color: #cecece; }
 .breadcrumbs .breadcrumb {
   position: relative;
   background: #323232;

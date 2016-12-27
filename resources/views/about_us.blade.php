@@ -12,7 +12,7 @@
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
-                <div class="kowloon_logo"></div>
+                <a href="{{url(App::getLocale().'/')}}"><div class="kowloon_logo"></div></a>
                 <span class="breadcrumb">@lang('about_us.title')</span>
             </div>
             

@@ -148,9 +148,18 @@ class WelcomeController extends Controller
     public function product_details($lang, $product_id) {
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         
+        /*$product = Product::with('images')
+            ->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'price', 'category_id')
+            ->where('id', $product_id)->first();*/
+        
+        
         $product = Product::with('images')
             ->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'price', 'category_id')
-            ->where('id', $product_id)->first();
+            ->where('id', $product_id)->with(['collections' => function($q) {
+                $q->select('collections.id', 'collections.name_' . App::getLocale() . ' as name');
+            }])->first();
+        
+        //dd($product);
         
         $category = Category::where('id', $product->category_id)->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->first();
         

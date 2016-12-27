@@ -11,6 +11,10 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
 
 Route::group(['prefix' => '{language}'], function () {
     
@@ -29,9 +33,7 @@ Route::group(['prefix' => '{language}'], function () {
 });
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/products_overview', 'ProductController@view_products');

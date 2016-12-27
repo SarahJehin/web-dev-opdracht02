@@ -114,6 +114,10 @@ body {
         float: left;
     }
     
+    a {
+        color: $basic_color;
+    }
+    
     .breadcrumb {
         position: relative;
 	    background: #323232;

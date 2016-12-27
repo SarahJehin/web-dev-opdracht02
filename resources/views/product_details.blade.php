@@ -26,9 +26,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="row breadcrumbs">
-                        <div class="kowloon_logo"></div>
-                        <span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span>
-                        <span class="breadcrumb">Splash 'n fun</span>
+                        <a href="{{url(App::getLocale().'/')}}"><div class="kowloon_logo"></div></a>
+                        <a href="{{url(App::getLocale().'/products/' . $category->id)}}"><span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span></a>
+                        @foreach($product->collections as $collection)
+                        <span class="breadcrumb">{{$collection->name}}</span>
+                        @endforeach
                     </div>
                     <div class="row">
                         <h1>{{$product->name}}</h1>

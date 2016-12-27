@@ -6,8 +6,8 @@
     <div class="row page_content">
         <div class="col-md-10 col-md-offset-1">
             <div class="row breadcrumbs">
-                <div class="kowloon_logo"></div>
-                <span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span>
+                <a href="{{url(App::getLocale().'/')}}"><div class="kowloon_logo"></div></a>
+                <a href="{{url(App::getLocale().'/products/' . $category->id)}}"><span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span></a>
                 <!--<span class="breadcrumb">Splash 'n fun</span>-->
             </div>
             

@@ -36,7 +36,7 @@
                                 <td>{{$product->price}}</td>
                                 <td>
                                     <a href="{{url('/admin/edit_product/' . $product->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>                                                 
+                                    <a href="#" class="delete_product" product_id="{{$product->id}}"><i class="fa fa-times delete" aria-hidden="true"></i></a>                                                 
                                 </td>
                             </tr>
                             @endforeach
@@ -44,9 +44,22 @@
                     </table>
                     @endif
                     
+                    <div class="alert alert-info delete_alert">
+                        <a href="#" class="close" aria-label="close">×</a>
+                        <p>Sure you want to delete this product:</p>
+                        <p class="product_to_delete"></p>
+                        <a href="#" class="btn btn-info" role="button">Yes, delete!</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('custom_js')
+<script type="text/javascript">
+    var APP_URL = {!! json_encode(url('/')) !!};
+</script>
+<script src="{{url('js/admin.js')}}"></script>
 @endsection

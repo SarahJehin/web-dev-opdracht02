@@ -12,6 +12,17 @@
                     <div>
                         <form method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            
                             <div class="col-md-6">
                                 <h3>Nederlands</h3>
                                 <div>

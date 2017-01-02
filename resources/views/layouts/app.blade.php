@@ -42,7 +42,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/' . App::getLocale()) }}">
                         {{ config('app.name', 'Kowloon') }}
                     </a>
                 </div>
@@ -53,6 +53,7 @@
                         &nbsp;
                         @if(Auth::user())
                         <li><a href="{{url('/admin/products_overview')}}">Products</a></li>
+                        <li><a href="{{url('/admin/set_hot_items')}}">Hot items</a></li>
                         <li><a href="{{url('/admin/faqs_overview')}}">FAQ</a></li>
                         @endif
                     </ul>

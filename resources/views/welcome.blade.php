@@ -34,54 +34,20 @@
                     <div><h1>@lang('welcome.subtitle01')</h1></div>
 
                     <div class="items">
+                        @foreach($hot_items as $hot_item)
                         <div class="hot_item">
-                            <a href="#">
+                            <a href="{{url(App::getLocale().'/product_details/' . $hot_item->product->id)}}">
                                 <figure>
                                      <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
+                                         <img src="{{url('/images/products/' . $hot_item->product->images[0]->image_path)}}" alt="{{$hot_item->product->name}}">
                                          <div class="overlay"></div>
                                          <div class="overlay_icon"><span>View details</span></div>
                                      </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
+                                     <figcaption><span class="title">{{$hot_item->product->name}}</span><span class="price">&euro;{{$hot_item->product->price}}</span></figcaption>
                                 </figure>
                             </a>
                         </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="hot_item">
-                            <a href="#">
-                                <figure>
-                                     <div class="img">
-                                         <img src="{{url('images/products/cooling_mat.jpg')}}" alt="cooling_mat">
-                                         <div class="overlay"></div>
-                                         <div class="overlay_icon"><span>View details</span></div>
-                                     </div>
-                                     <figcaption><span class="title">Cooling mat</span><span class="price">&euro;15,49</span></figcaption>
-                                </figure>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
             </div>
         </div>

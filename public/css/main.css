@@ -232,6 +232,9 @@ body {
     .breadcrumbs .breadcrumb span.dot_small_animals {
       background-color: #7be5ff; }
 
+.pagination_block {
+  text-align: center; }
+
 .content {
   margin-left: 60px;
   background-color: #454545;

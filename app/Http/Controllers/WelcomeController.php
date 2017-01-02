@@ -7,6 +7,7 @@ use App;
 use App\Category;
 use App\Collection;
 use App\Product;
+use App\HotItem;
 use App\Specification;
 use App\Faq;
 use DB;
@@ -17,7 +18,10 @@ class WelcomeController extends Controller
     {
         $name = 'name_' . App::getLocale();
         $categories = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
-        return view('welcome', ['categories' => $categories]);
+        $hot_items = HotItem::orderBy('position')->with(array('product'=>function($query){
+            $query->select('id','name_' . App::getLocale() . ' AS name', 'price')->with('images');
+        }))->get();
+        return view('welcome', ['categories' => $categories, 'hot_items' => $hot_items]);
     }
     
     public function set_cookie() {

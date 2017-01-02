@@ -1,0 +1,18 @@
+
+$alert_width: 60%;
+$alert_height: 100px;
+
+
+
+
+.delete_alert {
+    position: absolute;
+    width: $alert_width;
+    left: 50%-($alert_width/2);
+    top: 50%;
+    
+    .question_to_delete {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+}

@@ -8,7 +8,6 @@
                 <div class="panel-heading">Add product</div>
 
                 <div class="panel-body">
-                    
                     <div>
                         <form method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -83,7 +82,7 @@
                                     <h3>Kleuren</h3>
                                     @foreach($colors as $color)
                                     <div>
-                                        <input type="checkbox" name="color[]" id="color{{$color->id}}" value="{{$color->id}}">
+                                        <input type="checkbox" name="color[]" id="color{{$color->id}}" value="{{$color->id}}" <?php if(in_array($color->id, $product_colors)){echo("checked");}?>>
                                         <label style="background-color:{{$color->hexcode}}" for="color{{$color->id}}"></label>
                                     </div>
                                     @endforeach

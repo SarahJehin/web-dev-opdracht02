@@ -9,5 +9,10 @@ table {
     }
 }
 
+.item {
+    margin-bottom: 10px;
+}
+
 @import "_admin_add_product";
 
+@import "_admin_faq";

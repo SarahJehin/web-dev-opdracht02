@@ -50,8 +50,8 @@
                         <option value="oldest">@lang('products.select_option04')</option>
                     </select>
                 </div>
-                <div class="col-md-2">
-                    {{$category->name}} @lang('products.items'): 5 of 56
+                <div class="col-md-6">
+                    {{$category->name}} @lang('products.items'): {{--{{$products->perPage()*($products->currentPage()-1)}}-{{$products->perPage()*$products->currentPage()}} of {{$products->total()}}--}} {{$products->count()*$products->currentPage()}} of {{$products->total()}}
                 </div>
             </div>
             <input type="hidden" name="category_id" value="{{$category->id}}">
@@ -59,7 +59,7 @@
             </form>
             
             <div class="row products">
-                <div class="items">
+                <div class="col-md-12 items">
                         @foreach($products as $product)
                         <div class="hot_item">
                             <a href="{{url(App::getLocale().'/product_details/' . $product->id)}}">
@@ -74,7 +74,9 @@
                             </a>
                         </div>
                         @endforeach
-                        {{ $products->links() }}
+                        <div class="col-md-12 pagination_block">
+                            {{ $products->links() }}
+                        </div>
                 </div>
             </div>
             @else

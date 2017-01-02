@@ -109,4 +109,10 @@ class FaqController extends Controller
         return redirect('/admin/faqs_overview');
     }
     
+    public function delete_faq($id) {
+        $faq = Faq::find($id);
+        $faq->delete();
+        return redirect('/admin/faqs_overview')->with("message", "Question deleted successfully");
+    }
+    
 }

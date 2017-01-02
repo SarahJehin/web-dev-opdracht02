@@ -40,11 +40,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/add_product', 'ProductController@view_add_product');
     Route::post('/add_product', 'ProductController@add_product');
     Route::get('/edit_product/{id}', 'ProductController@view_edit_product');
+    Route::get('/delete_product/{id}', 'ProductController@delete_product');
     Route::get('/faqs_overview', 'FaqController@view_faqs');
     Route::get('/add_faq', 'FaqController@view_add_faq');
     Route::post('/add_faq', 'FaqController@add_faq');
     Route::get('/edit_faq/{id}', 'FaqController@view_edit_faq');
     Route::post('/edit_faq', 'FaqController@edit_faq');
+    Route::get('/delete_faq/{id}', 'FaqController@delete_faq');
+    Route::get('/set_hot_items', 'ProductController@view_set_hot_items');
+    Route::post('/set_hot_items', 'ProductController@set_hot_items');
 });
 
 

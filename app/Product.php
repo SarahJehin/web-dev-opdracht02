@@ -40,4 +40,8 @@ class Product extends Model
     public function faqs() {
         return $this->belongsToMany('App\Faq');
     }
+    
+    public function hot_items() {
+        return $this->hasMany('App\HotItem');
+    }
 }

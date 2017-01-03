@@ -10,37 +10,81 @@
                 <div class="panel-body">
                     
                     <div class="row">
-                        <form method="post" action="{{url('/admin/add_faq')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{url('/admin/add_faq')}}" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
+                            
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <!--
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>*{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    -->
+                                    The form wasn't filled in correctly, check the errors below.
+                                </div>
+                            @endif
+                            
                             <div class="col-md-12">
                                 <h3>Nederlands</h3>
                                 <div>
                                     <label for="question_nl">Vraag:</label>
-                                    <input class="form-control" type="text" name="question_nl" id="question_nl" required>
+                                    <input class="form-control" type="text" name="question_nl" id="question_nl" value="{{ old('question_nl') }}" required>
+                                    @if ($errors->has('question_nl'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_nl') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_nl">Antwoord:</label>
-                                    <textarea class="form-control" name="answer_nl" id="answer_nl" required></textarea>
+                                    <textarea class="form-control" name="answer_nl" id="answer_nl" required>{{ old('answer_nl') }}</textarea>
+                                    @if ($errors->has('answer_nl'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_nl') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <h3>Français</h3>
                                 <div>
                                     <label for="question_fr">La question:</label>
-                                    <input class="form-control" type="text" name="question_fr" id="question_fr" required>
+                                    <input class="form-control" type="text" name="question_fr" id="question_fr" value="{{ old('question_fr') }}" required>
+                                    @if ($errors->has('question_fr'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_fr') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_fr">La réponse:</label>
-                                    <textarea class="form-control" name="answer_fr" id="answer_fr" required></textarea>
+                                    <textarea class="form-control" name="answer_fr" id="answer_fr" required>{{ old('answer_fr') }}</textarea>
+                                    @if ($errors->has('answer_fr'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_fr') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <h3>English</h3>
                                 <div>
                                     <label for="question_en">Question:</label>
-                                    <input class="form-control" type="text" name="question_en" id="question_en" required>
+                                    <input class="form-control" type="text" name="question_en" id="question_en" value="{{ old('question_en') }}" required>
+                                    @if ($errors->has('question_en'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_en') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_en">Answer:</label>
-                                    <textarea class="form-control" name="answer_en" id="answer_en" required></textarea>
+                                    <textarea class="form-control" name="answer_en" id="answer_en" required>{{ old('answer_en') }}</textarea>
+                                    @if ($errors->has('answer_en'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_en') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             

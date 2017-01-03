@@ -15,11 +15,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/', 'WelcomeController@view_landing');
+Route::get('/choose_lang/{locale}', 'WelcomeController@choose_lang');
 
-Route::group(['prefix' => '{language}'], function () {
+
+Route::group(['prefix' => '{language}', 'middleware' => 'verifyLocale'], function () {
     
     Route::get('/', 'WelcomeController@index');
     Route::get('/set_cookie', 'WelcomeController@set_cookie');
+    Route::post('/add_subscriber', 'WelcomeController@add_subscriber');
 
     Route::get('/products/{id}', 'WelcomeController@category_products');
     Route::post('/products_filter', 'WelcomeController@products_filter');

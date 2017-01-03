@@ -11,7 +11,7 @@
                     <div>
                         <form method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <h3>Nederlands</h3>
                                 <div>
                                     <label for="name_nl">Naam:</label>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div>
                                     <label for="price"><h3>Prijs/Prix/Price:</h3></label>
                                     <input class="form-control" type="number" step="0.01" min="1" name="price" id="price" value="{{$product->price}}" required>
@@ -61,8 +61,7 @@
                                     <label for="category"><h3>Categorie</h3></label>
                                     <select class="form-control" name="category" id="category">
                                         @foreach($categories as $category)
-                                        <?php $cat_name = 'name_' . App::getLocale(); ?>
-                                        <option value="{{ $category->id }}" <?php if($category->id === $product->category->id){echo('selected');}?> >{{ $category->$cat_name}}</option>
+                                        <option value="{{ $category->id }}" <?php if($category->id === $product->category->id){echo('selected');}?> >{{ $category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -71,9 +70,8 @@
                                     <h3>Collecties</h3>
                                     @foreach($collections as $collection)
                                     <div>
-                                        <?php $col_name = 'name_' . App::getLocale(); ?>
-                                        <input type="checkbox" name="collection[]" id="collection{{$collection->id}}" value="{{$collection->id}}">
-                                        <label for="collection{{$collection->id}}">{{$collection->$col_name}}</label>
+                                        <input type="checkbox" name="collection[]" id="collection{{$collection->id}}" value="{{$collection->id}}" <?php if(in_array($collection->id, $product_collections)){echo("checked");}?>>
+                                        <label for="collection{{$collection->id}}"><i class="fa fa-check" aria-hidden="true"></i>{{$collection->name}}</label>
                                     </div>
                                     @endforeach
                                 </div>

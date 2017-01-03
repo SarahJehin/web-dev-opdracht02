@@ -179,6 +179,36 @@ body {
     margin-left: 60px;
     background-color: $theme01;
     position: relative;
+    
+    &.landing {
+        margin-left: 0;
+        
+        .language_box {
+            background-color: $cookie_bg_color;
+            width: 400px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 200px;
+            
+            a {
+                display: block;
+                color: $cookie_second_color;
+                font-size: 1.3em;
+                padding: 15px;
+                border-bottom: 2px $cookie_second_color solid;
+                
+                &:last-child {
+                    border-bottom: none;
+                }
+                
+                &:hover {
+                    background-color: $cookie_second_color;
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }
 
 
@@ -412,6 +442,10 @@ ul {
                     border: 1px solid $nav_color;
                     margin-left: -5px;
                 }
+            }
+            
+            .subscriber_error {
+                color: #e87b7b;
             }
         }
         

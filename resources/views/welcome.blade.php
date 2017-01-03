@@ -32,7 +32,6 @@
         <div class="row hot_items">
             <div class="col-md-12">
                     <div><h1>@lang('welcome.subtitle01')</h1></div>
-
                     <div class="items">
                         @foreach($hot_items as $hot_item)
                         <div class="hot_item">
@@ -71,12 +70,21 @@
                 <h3>@lang('welcome.newsletter')</h3>
                 <div>@lang('welcome.newsletter_description')</div>
                 <div>
-                    <form method="post" action="#">
+                    <form method="post" action="{{url(App::getLocale().'/add_subscriber')}}" novalidate>
                         {{ csrf_field() }}
                         <div>
-                            <input type="email" name="email" placeholder="Name@domain.com">
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Name@domain.com">
                             <input type="submit" value="OK">
                         </div>
+                        @if (count($errors) > 0)
+                            <div class="subscriber_error">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>*{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

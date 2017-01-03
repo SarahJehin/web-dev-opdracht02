@@ -25,8 +25,8 @@ class ProductController extends Controller
     }
     
     public function view_add_product() {
-        $categories = Category::all();
-        $collections = Collection::all();
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $colors = Color::all();
         return view('products/add_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors]);
     }
@@ -40,8 +40,11 @@ class ProductController extends Controller
             'description_nl' => 'required|string|max:750',
             'description_fr' => 'required|string|max:750',
             'description_en' => 'required|string|max:750',
+            'image' => 'required',
             'price' => 'required|numeric',
             'category' => 'required|numeric',
+            'collection' => 'required|min:1',
+            'color' => 'required|min:1',
         ]);
         
         $product = new Product([
@@ -111,15 +114,18 @@ class ProductController extends Controller
     }
     
     public function view_edit_product($id) {
-        $categories = Category::all();
-        $collections = Collection::all();
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $colors = Color::all();
         $product = Product::find($id);
         $product_colors = Color::whereHas('products', function($q) use ($product){
             $q->where('products.id', $product->id);
         })->pluck('id')->toArray();
+        $product_collections = Collection::whereHas('products', function($q) use ($product){
+            $q->where('products.id', $product->id);
+        })->pluck('id')->toArray();
         //dd($product_colors);
-        return view('products/edit_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors, 'product' => $product, 'product_colors' => $product_colors]);
+        return view('products/edit_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors, 'product' => $product, 'product_colors' => $product_colors, 'product_collections' => $product_collections]);
     }
     
     public function delete_product($id) {

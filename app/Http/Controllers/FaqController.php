@@ -104,7 +104,7 @@ class FaqController extends Controller
             $faq->categories()->attach($request->category);
         }
         
-        $faq->save();
+        //$faq->save();
         
         return redirect('/admin/faqs_overview');
     }

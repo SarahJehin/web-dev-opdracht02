@@ -239,6 +239,26 @@ body {
   margin-left: 60px;
   background-color: #454545;
   position: relative; }
+  .content.landing {
+    margin-left: 0; }
+    .content.landing .language_box {
+      background-color: #e6cfb9;
+      width: 400px;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 200px; }
+      .content.landing .language_box a {
+        display: block;
+        color: #e27500;
+        font-size: 1.3em;
+        padding: 15px;
+        border-bottom: 2px #e27500 solid; }
+        .content.landing .language_box a:last-child {
+          border-bottom: none; }
+        .content.landing .language_box a:hover {
+          background-color: #e27500;
+          color: #fff;
+          text-decoration: none; }
 
 .faq_overlay {
   position: absolute;
@@ -482,6 +502,8 @@ h2 {
           background-color: #323232;
           border: 1px solid #323232;
           margin-left: -5px; }
+      .page_content .bottom .newsletter .subscriber_error {
+        color: #e87b7b; }
 
 /*    ABOUT US     */
 .header_img {

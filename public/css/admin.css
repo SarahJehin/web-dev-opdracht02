@@ -9,12 +9,37 @@ table .delete {
 form textarea {
   max-width: 885px;
   max-height: 200px; }
-form .colors label {
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  vertical-align: middle;
-  box-shadow: 1px 1px 3px #888; }
+form input[type="checkbox"] {
+  display: none; }
+form label i {
+  margin-right: 5px; }
+  form label i.fa {
+    color: rgba(255, 165, 0, 0); }
+form .collections div {
+  float: left;
+  margin-right: 40px; }
+  form .collections div input:checked + label {
+    border: 2px solid orange; }
+    form .collections div input:checked + label i.fa {
+      color: orange; }
+  form .collections div label {
+    padding: 5px 10px;
+    border: 2px solid #eee;
+    background-color: #eee; }
+form .collections .error_block {
+  display: block;
+  clear: both; }
+form .colors div {
+  float: left;
+  margin-right: 40px; }
+  form .colors div input:checked + label {
+    border: 2px solid orange; }
+  form .colors div label {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    box-shadow: 1px 1px 3px #888; }
 form .specifications {
   clear: both; }
   form .specifications input {
@@ -24,6 +49,17 @@ form .specifications {
   form .specifications .desc_input {
     width: 75%; }
 
+/* CLEARFIX */
+.collections::before, .collections::after,
+.colors::before, .colors::after {
+  line-height: 0;
+  content: "";
+  display: table; }
+
+.collections::after,
+.colors::after {
+  clear: both; }
+
 .delete_alert {
   position: absolute;
   width: 60%;
@@ -32,5 +68,8 @@ form .specifications {
   .delete_alert .question_to_delete {
     font-weight: bold;
     margin-bottom: 15px; }
+
+.error_block {
+  color: #e87b7b; }
 
 /*# sourceMappingURL=admin.css.map */

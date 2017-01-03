@@ -15,7 +15,6 @@
                 <h1>{{$category->name}} @lang('products.articles')</h1>
             </div>
             
-            @if(!$products->isEmpty())
             <form class="product_filter" method="post" action="{{url(App::getLocale().'/products_filter')}}">
             {{ csrf_field() }}
             <div class="row filter">
@@ -58,6 +57,7 @@
             <input type="submit" value="Filter">
             </form>
             
+            @if(!$products->isEmpty())
             <div class="row products">
                 <div class="col-md-12 items">
                         @foreach($products as $product)

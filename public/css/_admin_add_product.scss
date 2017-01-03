@@ -7,17 +7,65 @@ form {
         max-height: 200px;
     }
     
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    label i {
+        margin-right: 5px;
+        &.fa {
+            color: rgba(255, 165, 0, 0);
+        }
+    }
+    
     .collections {
         //
+        div {
+            float: left;
+            margin-right: 40px;
+            
+            input {
+                &:checked + label {
+                    border: 2px solid orange;
+                    
+                    i.fa {
+                        color: orange;
+                    }
+                }
+            }
+            
+            label {
+                padding: 5px 10px;
+                border: 2px solid #eee;
+                background-color: #eee;
+            }
+            
+        }
+        .error_block {
+            display: block;
+            clear: both;
+        }
     }
     
     .colors {
-        label {
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
-            vertical-align: middle;
-            box-shadow: 1px 1px 3px #888;
+        
+        div {
+            float: left;
+            margin-right: 40px;
+            
+            input {
+                &:checked + label {
+                    border: 2px solid orange;
+                }
+            }
+            
+            label {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                vertical-align: middle;
+                box-shadow: 1px 1px 3px #888;
+            }
         }
     }
     
@@ -34,5 +82,20 @@ form {
             width: 75%;
         }
     }
+}
+
+
+/* CLEARFIX */
+
+.collections::before, .collections::after,
+.colors::before, .colors::after {
+    line-height: 0;
+    content: "";
+    display: table;
+}
+
+.collections::after,
+.colors::after {
+    clear: both;
 }
 

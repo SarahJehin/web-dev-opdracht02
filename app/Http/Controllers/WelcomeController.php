@@ -10,10 +10,29 @@ use App\Product;
 use App\HotItem;
 use App\Specification;
 use App\Faq;
+use App\Subscriber;
 use DB;
+use Cookie;
+use Illuminate\Cookie\CookieJar;
 
 class WelcomeController extends Controller
 {
+    public function view_landing(Request $request) {
+        $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
+        if($request->cookie('lang')){
+            //dd('locale has already been set, redirect to appropriate language');
+            return redirect('/' . App::getLocale());
+        }
+        else {
+            return view('landing', ['categories' => $categories]);
+        }
+    }
+    
+    public function choose_lang(CookieJar $cookieJar, $lang) {
+        $cookieJar->queue(cookie('lang', $lang, 45000));
+        return redirect('/' . $lang);
+    }
+    
     public function index()
     {
         $name = 'name_' . App::getLocale();
@@ -31,6 +50,21 @@ class WelcomeController extends Controller
         setcookie("client_ip", request()->ip(), time()+(3600*24*30));
         //dd($cookie);
         return back();
+    }
+    
+    public function add_subscriber(Request $request) {
+        
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+        
+        //add subscriber to database
+        $subscriber = new Subscriber([
+            'email' => $request->email,
+        ]);
+        dd($subscriber);
+        //$subscriber->save();
+        //send e-mail to subscriber
     }
     
     public function view_search() {

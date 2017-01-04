@@ -32,7 +32,7 @@ class ProductController extends Controller
     }
     
     public function add_product(Request $request) {
-        
+        //dd($request);
         $this->validate($request, [
             'name_nl' => 'required|string|max:100',
             'name_fr' => 'required|string|max:100',
@@ -41,10 +41,16 @@ class ProductController extends Controller
             'description_fr' => 'required|string|max:750',
             'description_en' => 'required|string|max:750',
             'image' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0.1',
             'category' => 'required|numeric',
             'collection' => 'required|min:1',
             'color' => 'required|min:1',
+            'specs.*.name_nl' => 'required|string|max:30',
+            'specs.*.name_fr' => 'required|string|max:30',
+            'specs.*.name_en' => 'required|string|max:30',
+            'specs.*.description_nl' => 'required|string|max:100',
+            'specs.*.description_fr' => 'required|string|max:100',
+            'specs.*.description_en' => 'required|string|max:100',
         ]);
         
         $product = new Product([
@@ -57,7 +63,6 @@ class ProductController extends Controller
             'price' => $request->price,
             'category_id' => $request->category
         ]);
-        
         $product->save();
         
         //save collections
@@ -118,6 +123,7 @@ class ProductController extends Controller
         $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $colors = Color::all();
         $product = Product::find($id);
+        //dd($product->specifications);
         $product_colors = Color::whereHas('products', function($q) use ($product){
             $q->where('products.id', $product->id);
         })->pluck('id')->toArray();
@@ -126,6 +132,110 @@ class ProductController extends Controller
         })->pluck('id')->toArray();
         //dd($product_colors);
         return view('products/edit_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors, 'product' => $product, 'product_colors' => $product_colors, 'product_collections' => $product_collections]);
+    }
+    
+    public function edit_product(Request $request) {
+        $this->validate($request, [
+            'name_nl' => 'required|string|max:100',
+            'name_fr' => 'required|string|max:100',
+            'name_en' => 'required|string|max:100',
+            'description_nl' => 'required|string|max:750',
+            'description_fr' => 'required|string|max:750',
+            'description_en' => 'required|string|max:750',
+            'images_amount' => 'required|numeric|min:1',
+            'price' => 'required|numeric|min:0.1',
+            'category' => 'required|numeric',
+            'collection' => 'required|min:1',
+            'color' => 'required|min:1',
+            'specs.*.name_nl' => 'required|string|max:30',
+            'specs.*.name_fr' => 'required|string|max:30',
+            'specs.*.name_en' => 'required|string|max:30',
+            'specs.*.description_nl' => 'required|string|max:100',
+            'specs.*.description_fr' => 'required|string|max:100',
+            'specs.*.description_en' => 'required|string|max:100',
+        ]);
+        
+        
+        //dd($request->name_nl);
+        
+        //update product
+        $product = Product::find($request->product_id);
+        $product->name_nl = $request->name_nl;
+        $product->name_fr = $request->name_fr;
+        $product->name_en = $request->name_en;
+        $product->description_nl = $request->description_nl;
+        $product->description_fr = $request->description_fr;
+        $product->description_en = $request->description_en;
+        $product->price = $request->price;
+        $product->category_id = $request->category;
+        
+        $product->save();
+        
+        //detach collections and colors
+        $product->collections()->detach();
+        $product->colors()->detach();
+        
+        //update collections
+        if(isset($request->collection)) {
+            foreach($request->collection as $collection_id) {
+                $product->collections()->attach($collection_id);
+            }
+        }
+        //update colors
+        if(isset($request->color)) {
+            foreach($request->color as $color_id) {
+                $product->colors()->attach($color_id);
+            }
+        }
+        
+        //update specifications
+        foreach($request->specs as $spec) {
+            $specification = Specification::find($spec['id']);
+            
+            $specification->title_nl = $spec['name_nl'];
+            $specification->title_fr = $spec['name_fr'];
+            $specification->title_en = $spec['name_en'];
+            $specification->description_nl = $spec['description_nl'];
+            $specification->description_fr = $spec['description_fr'];
+            $specification->description_en = $spec['description_en'];
+                
+            $product->specifications()->save($specification);
+        }
+        
+        
+        //update images
+        $allowed_extensions = ["jpeg", "png"];
+        
+        if ($request->hasFile('image')) {
+            foreach($request->image as $image) {
+                if ($image->isValid()) {
+                    if (in_array($image->guessClientExtension(), $allowed_extensions)) {
+                        //create new file name
+                        $new_file_name = time() . $image->getClientOriginalName();
+                        echo($new_file_name);
+                        $image->move(base_path() . '/public/images/products/', $new_file_name);
+                        
+                        $image = new Image([
+                            'image_path' => $new_file_name
+                        ]);
+
+                        $product->images()->save($image);
+                    }
+                }
+            }
+        }
+        return redirect('/admin/products_overview')->with("message", "Product successfully updated");
+        
+    }
+    
+    public function delete_image(Request $request) {
+        
+        $image_to_delete = Image::find($request->image_id);
+        $image_to_delete->delete();
+        
+        return response()->json([
+            'image' => $request->image_id,
+        ]);
     }
     
     public function delete_product($id) {

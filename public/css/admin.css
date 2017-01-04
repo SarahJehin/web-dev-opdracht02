@@ -6,58 +6,85 @@ table .delete {
 .item {
   margin-bottom: 10px; }
 
-form textarea {
+form.product textarea {
   max-width: 885px;
-  max-height: 200px; }
-form input[type="checkbox"] {
+  max-height: 200px;
+  height: 100px; }
+form.product input[type="checkbox"] {
   display: none; }
-form label i {
+form.product label i {
   margin-right: 5px; }
-  form label i.fa {
+  form.product label i.fa {
     color: rgba(255, 165, 0, 0); }
-form .collections div {
+form.product .collections div {
   float: left;
   margin-right: 40px; }
-  form .collections div input:checked + label {
+  form.product .collections div input:checked + label {
     border: 2px solid orange; }
-    form .collections div input:checked + label i.fa {
+    form.product .collections div input:checked + label i.fa {
       color: orange; }
-  form .collections div label {
+  form.product .collections div label {
     padding: 5px 10px;
     border: 2px solid #eee;
     background-color: #eee; }
-form .collections .error_block {
+    form.product .collections div label:hover {
+      border: 2px solid orange; }
+      form.product .collections div label:hover i.fa {
+        color: orange; }
+form.product .collections .error_block {
   display: block;
   clear: both; }
-form .colors div {
+form.product .colors div {
   float: left;
   margin-right: 40px; }
-  form .colors div input:checked + label {
+  form.product .colors div input:checked + label {
     border: 2px solid orange; }
-  form .colors div label {
+  form.product .colors div label {
     width: 20px;
     height: 20px;
     line-height: 20px;
     vertical-align: middle;
     box-shadow: 1px 1px 3px #888; }
-form .specifications {
+    form.product .colors div label:hover {
+      border: 2px solid orange; }
+form.product .specifications {
   clear: both; }
-  form .specifications input {
+  form.product .specifications input {
     float: left; }
-  form .specifications .name_input {
+  form.product .specifications .name_input {
     width: 25%; }
-  form .specifications .desc_input {
+  form.product .specifications .desc_input {
     width: 75%; }
+
+.existing_images {
+  margin-bottom: 20px; }
+  .existing_images figure {
+    width: 20%;
+    float: left; }
+    .existing_images figure img {
+      width: 96%;
+      height: auto;
+      padding: 2%;
+      background-color: #eee;
+      margin-right: 5%; }
+    .existing_images figure .btn {
+      padding: 2px 5px;
+      width: 80px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 5px; }
 
 /* CLEARFIX */
 .collections::before, .collections::after,
-.colors::before, .colors::after {
+.colors::before, .colors::after,
+.existing_images::before, .existing_images::after {
   line-height: 0;
   content: "";
   display: table; }
 
 .collections::after,
-.colors::after {
+.colors::after,
+.existing_images::after {
   clear: both; }
 
 .delete_alert {

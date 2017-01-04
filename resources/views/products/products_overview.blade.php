@@ -9,6 +9,12 @@
 
                 <div class="panel-body">
                     
+                    @if (session('message'))
+                       <div class="alert alert-success">
+                           {{ session('message') }}
+                       </div>
+                    @endif
+                    
                     <div>
                         <a href="{{url('/admin/add_product')}}">Product toevoegen</a>
                     </div>

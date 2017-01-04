@@ -1,10 +1,11 @@
 
-
-form {
+//add_product
+form.product {
     
     textarea {
         max-width: 885px;
         max-height: 200px;
+        height: 100px;
     }
     
     input[type="checkbox"] {
@@ -38,6 +39,14 @@ form {
                 padding: 5px 10px;
                 border: 2px solid #eee;
                 background-color: #eee;
+                
+                &:hover {
+                    border: 2px solid orange;
+                    
+                    i.fa {
+                        color: orange;
+                    }
+                }
             }
             
         }
@@ -65,6 +74,10 @@ form {
                 line-height: 20px;
                 vertical-align: middle;
                 box-shadow: 1px 1px 3px #888;
+                
+                &:hover {
+                    border: 2px solid orange;
+                }
             }
         }
     }
@@ -84,18 +97,45 @@ form {
     }
 }
 
+//edit_product
+.existing_images {
+    margin-bottom: 20px;
+    figure {
+        width: 20%;
+        float: left;
+        img {
+            width: 96%;
+            height: auto;
+            padding: 2%;
+            background-color: #eee;
+            margin-right: 5%;
+        }
+        
+        .btn {
+            padding: 2px 5px;
+            width: 80px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+    }
+}
+
+
 
 /* CLEARFIX */
 
 .collections::before, .collections::after,
-.colors::before, .colors::after {
+.colors::before, .colors::after,
+.existing_images::before, .existing_images::after {
     line-height: 0;
     content: "";
     display: table;
 }
 
 .collections::after,
-.colors::after {
+.colors::after,
+.existing_images::after {
     clear: both;
 }
 

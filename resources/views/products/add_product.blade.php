@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,16 +11,18 @@
                 <div class="panel-body">
                     
                     <div>
-                        <form method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data" novalidate>
+                        <form class="product" method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
                             
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    <!--<ul>
+                                    {{--
+                                    <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
-                                    </ul>-->
+                                    </ul>
+                                    --}}
                                     The form wasn't filled in correctly, check the errors below.
                                 </div>
                             @endif
@@ -87,10 +90,10 @@
                                 
                                 <h3>Afbeeldingen</h3>
                                 <div>
-                                    <input class="form-control" type="file" name="image[]" required>
-                                    <input class="form-control" type="file" name="image[]">
-                                    <input class="form-control" type="file" name="image[]">
-                                    <input class="form-control" type="file" name="image[]">
+                                    <input class="form-control" type="file" name="image[]" id="images_to_upload" multiple onChange="makeFileList();">
+                                    <ul id="file_list">
+                                        <li>No Files Selected</li>
+                                    </ul>
                                     @if ($errors->has('image'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('image') }}</strong>
@@ -155,6 +158,7 @@
                                 
                                 <div class="specifications">
                                     <h3>Specificaties</h3>
+                                    
                                     <h4>1.</h4>
                                     <div>
                                         <input class="form-control name_input" type="text" name="specs[1][name_nl]" placeholder="naam (NL)" required>
@@ -173,6 +177,79 @@
                                         <input class="form-control name_input" type="text" name="specs[2][name_en]" placeholder="name (EN)">
                                         <input class="form-control desc_input" type="text" name="specs[2][description_en]" placeholder="description (EN)">
                                     </div>
+                                    @if(count($errors->get('specs.*.*')) > 1)
+                                    <span class="error_block"><strong>* All fields above are required.</strong></span>
+                                    @endif
+                                    
+                                    {{--
+                                    
+                                    <div class="spec_block first">
+                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
+                                    <div>
+                                        <input class="form-control name_input" type="text" name="specs[1][name_nl]" placeholder="naam (NL)" >
+                                        <input class="form-control desc_input" type="text" name="specs[1][description_nl]" placeholder="beschrijving (NL)">
+                                        <input class="form-control name_input" type="text" name="specs[1][name_fr]" placeholder="nom (FR)">
+                                        <input class="form-control desc_input" type="text" name="specs[1][description_fr]" placeholder="description (FR)">
+                                        <input class="form-control name_input" type="text" name="specs[1][name_en]" placeholder="name (EN)" >
+                                        <input class="form-control desc_input" type="text" name="specs[1][description_en]" placeholder="description (EN)" >
+                                    </div>
+                                    </div>
+                                    @if(count($errors->get('specs.*.*')) > 1)
+                                    <span class="error_block"><strong>* All fields above are required.</strong></span>
+                                    @endif
+                                    <div class="btn btn-info add_spec">Add spec</div>
+                                    
+                                    --}}
+                                    {{--
+                                    @if ($errors->has('specs.1.name_nl'))
+                                        <span class="error_block">
+                                           test
+                                           @foreach($errors->get('specs.*.*') as $error)
+                                               {{$error[0]}}
+                                           @endforeach
+                                        </span>
+                                    @endif
+                                    --}}{{--
+                                    @if(count($errors->get('specs.*.*')) > 1)
+                                    @foreach(old('specs') as $spec)
+                                    <div class="spec_block first">
+                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
+                                    <div>
+                                        <input class="form-control name_input" type="text" name="specs[][name_nl]" placeholder="naam (NL)" value="{{$spec['name_nl']}}">
+                                        <input class="form-control desc_input" type="text" name="specs[][description_nl]" placeholder="beschrijving (NL)" value="{{$spec['description_nl']}}">
+                                        <input class="form-control name_input" type="text" name="specs[][name_fr]" placeholder="nom (FR)" value="{{$spec['name_fr']}}">
+                                        <input class="form-control desc_input" type="text" name="specs[][description_fr]" placeholder="description (FR)" value="{{$spec['description_fr']}}">
+                                        <input class="form-control name_input" type="text" name="specs[][name_en]" placeholder="name (EN)" value="{{$spec['name_en']}}">
+                                        <input class="form-control desc_input" type="text" name="specs[][description_en]" placeholder="description (EN)" value="{{$spec['description_en']}}">
+                                    </div>
+                                    </div>
+                                    @endforeach
+                                    <span class="error_block"><strong>* All fields above are required.</strong></span>
+                                    @else
+                                    <div class="spec_block first">
+                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
+                                    <div>
+                                        <input class="form-control name_input" type="text" name="specs[][name_nl]" placeholder="naam (NL)" >
+                                        <input class="form-control desc_input" type="text" name="specs[][description_nl]" placeholder="beschrijving (NL)">
+                                        <input class="form-control name_input" type="text" name="specs[][name_fr]" placeholder="nom (FR)">
+                                        <input class="form-control desc_input" type="text" name="specs[][description_fr]" placeholder="description (FR)">
+                                        <input class="form-control name_input" type="text" name="specs[][name_en]" placeholder="name (EN)" >
+                                        <input class="form-control desc_input" type="text" name="specs[][description_en]" placeholder="description (EN)" >
+                                    </div>
+                                    </div>
+                                    @endif
+                                    
+                                    <div class="btn btn-info add_spec">Add spec</div>
+                                    
+                                    <h4>2.</h4>
+                                    <div>
+                                        <input class="form-control name_input" type="text" name="specs[2][name_nl]" placeholder="naam (NL)">
+                                        <input class="form-control desc_input" type="text" name="specs[2][description_nl]" placeholder="beschrijving (NL)">
+                                        <input class="form-control name_input" type="text" name="specs[2][name_fr]" placeholder="nom (FR)">
+                                        <input class="form-control desc_input" type="text" name="specs[2][description_fr]" placeholder="description (FR)">
+                                        <input class="form-control name_input" type="text" name="specs[2][name_en]" placeholder="name (EN)">
+                                        <input class="form-control desc_input" type="text" name="specs[2][description_en]" placeholder="description (EN)">
+                                    </div>--}}
                                     
                                 </div>
                                 
@@ -192,8 +269,5 @@
 </div>
 @endsection
 @section('custom_js')
-<script>
-    console.log('test');
-    
-</script>
+<script src="{{url('js/admin.js')}}"></script>
 @endsection

@@ -42,4 +42,5 @@ class SubscriberController extends Controller
         $subscriber->delete();
         return redirect('admin/subscribers_overview');
     }
+    
 }

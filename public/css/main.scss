@@ -31,6 +31,7 @@ $grey_divider: #616161;
 $grey_faq: #717171;
 $main_border_color: #717171;
 
+$title_color: #e27500;
 $faq_font_color: #535353;
 
 
@@ -321,7 +322,8 @@ ul {
     .hot_items,
     .items {
          
-        .hot_item {
+        .hot_item,
+        .item {
             width: calc((100% - 15px)/4);
             padding: 4px;
             border: 1px solid $main_border_color;
@@ -452,6 +454,11 @@ ul {
     }
     
     
+}
+
+.subscribed_confirmation {
+    text-align: center;
+    margin-bottom: 450px;
 }
 
 /*    ABOUT US     */

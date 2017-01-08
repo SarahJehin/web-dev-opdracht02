@@ -15,8 +15,14 @@
                        </div>
                     @endif
                     
+                    @if (session('warning'))
+                       <div class="alert alert-warning">
+                           {{ session('warning') }}
+                       </div>
+                    @endif
+                    
                     <div>
-                        <a href="{{url('/admin/add_product')}}">Product toevoegen</a>
+                        <a href="{{url('/admin/add_product')}}">Add product</a>
                     </div>
                     
                     @if($products->isEmpty())

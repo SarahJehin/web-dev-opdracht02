@@ -26,6 +26,18 @@
             }
         }
     }
+    .search {
+        input {
+            &::-webkit-input-placeholder {
+                color:    $title_color;
+            }
+            
+            &::-moz-placeholder {
+               color:    #909;
+               opacity:  1;
+            }
+        }
+    }
 }
 
 .productblock {

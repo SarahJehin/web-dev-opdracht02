@@ -32,7 +32,6 @@ class ProductController extends Controller
     }
     
     public function add_product(Request $request) {
-        //dd($request);
         $this->validate($request, [
             'name_nl' => 'required|string|max:100',
             'name_fr' => 'required|string|max:100',
@@ -77,7 +76,6 @@ class ProductController extends Controller
                 $product->colors()->attach($color_id);
             }
         }
-        
         //save specifications
         foreach($request->specs as $spec) {
             if($spec['name_nl'] && $spec['description_nl']) {
@@ -93,7 +91,6 @@ class ProductController extends Controller
                 $product->specifications()->save($specification);
             }
         }
-        
         //save images
         $allowed_extensions = ["jpeg", "png"];
         
@@ -105,11 +102,9 @@ class ProductController extends Controller
                         $new_file_name = time() . $image->getClientOriginalName();
                         echo($new_file_name);
                         $image->move(base_path() . '/public/images/products/', $new_file_name);
-                        
                         $image = new Image([
                             'image_path' => $new_file_name
                         ]);
-
                         $product->images()->save($image);
                     }
                 }
@@ -123,14 +118,12 @@ class ProductController extends Controller
         $collections = Collection::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $colors = Color::all();
         $product = Product::find($id);
-        //dd($product->specifications);
         $product_colors = Color::whereHas('products', function($q) use ($product){
             $q->where('products.id', $product->id);
         })->pluck('id')->toArray();
         $product_collections = Collection::whereHas('products', function($q) use ($product){
             $q->where('products.id', $product->id);
         })->pluck('id')->toArray();
-        //dd($product_colors);
         return view('products/edit_product', ['categories' => $categories, 'collections' => $collections, 'colors' => $colors, 'product' => $product, 'product_colors' => $product_colors, 'product_collections' => $product_collections]);
     }
     
@@ -154,9 +147,6 @@ class ProductController extends Controller
             'specs.*.description_fr' => 'required|string|max:100',
             'specs.*.description_en' => 'required|string|max:100',
         ]);
-        
-        
-        //dd($request->name_nl);
         
         //update product
         $product = Product::find($request->product_id);
@@ -187,7 +177,6 @@ class ProductController extends Controller
                 $product->colors()->attach($color_id);
             }
         }
-        
         //update specifications
         foreach($request->specs as $spec) {
             $specification = Specification::find($spec['id']);
@@ -201,8 +190,6 @@ class ProductController extends Controller
                 
             $product->specifications()->save($specification);
         }
-        
-        
         //update images
         $allowed_extensions = ["jpeg", "png"];
         
@@ -225,11 +212,9 @@ class ProductController extends Controller
             }
         }
         return redirect('/admin/products_overview')->with("message", "Product successfully updated");
-        
     }
     
     public function delete_image(Request $request) {
-        
         $image_to_delete = Image::find($request->image_id);
         $image_to_delete->delete();
         
@@ -239,16 +224,21 @@ class ProductController extends Controller
     }
     
     public function delete_product($id) {
-        //
-        dd($id);
+        $product = Product::find($id);
+        //check if this product is an hot_item
+        $hot_items = HotItem::pluck('product_id')->toArray();
+        if(in_array($id, $hot_items)) {
+            return redirect('/admin/products_overview')->with("warning", "Product could not be deleted because it is a hot item!");
+        }
+        else {
+            $product->delete();
+            return redirect('/admin/products_overview')->with("message", "Product deleted successfully");
+        }
     }
     
-    
     public function view_set_hot_items() {
-        //
         $products = Product::select('id', 'name_' . App::getLocale() . ' as name', 'name_en')->get();
         $hot_items = HotItem::orderBy('position')->with('product')->get();
-        //dd($hot_items);
         return view('products/set_hot_items', ['products' => $products, 'hot_items' => $hot_items]);
     }
     
@@ -259,7 +249,6 @@ class ProductController extends Controller
         //if no hot items exist yet, create them
         if($hot_items->isEmpty()) {
             foreach($request->hot_item as $key => $product_id) {
-                //echo($key . " is " . $hot_item);
                 $position = $key+1;
                 $hot_item = new HotItem([
                     'product_id' => $product_id,

@@ -1,5 +1,9 @@
 @extends('layouts.main_layout')
 
+@section('title')
+@lang('welcome.meta_title')
+@endsection
+
 @section('content')
 <div class="">
     @include('sub_views.header')
@@ -13,19 +17,17 @@
         </div>
         <div class="row categories">
             <div class="col-md-12">
-                
                 <div>
                     @foreach($categories as $category)
                     <?php $name = 'name_' . App::getLocale() ?>
                     <div class="col-md-2 category">
-                        <a href="{{url(App::getLocale().'/products/' . $category->id)}}">
+                        <a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}">
                             <div class="cat_{{str_replace(' ', '_', strtolower($category->name_en))}}"></div>
                             <div>{{strtoupper($category->name)}}</div>
                         </a>
                     </div>
                     @endforeach
                 </div>
-                
             </div>
         </div>
         
@@ -35,7 +37,7 @@
                     <div class="items">
                         @foreach($hot_items as $hot_item)
                         <div class="hot_item">
-                            <a href="{{url(App::getLocale().'/product_details/' . $hot_item->product->id)}}">
+                            <a href="{{url(App::getLocale().'/product_details/' . $hot_item->product->id . '/' . str_replace(' ', '_', $hot_item->product->name))}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('/images/products/' . $hot_item->product->images[0]->image_path)}}" alt="{{$hot_item->product->name}}">

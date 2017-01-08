@@ -1,5 +1,7 @@
 @extends('layouts.main_layout')
 
+@section('title', 'Kowloon - Zoek je product')
+
 @section('content')
 <div class="">
     <div class="row searchpage">

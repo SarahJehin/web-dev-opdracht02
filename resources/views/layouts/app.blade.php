@@ -55,6 +55,7 @@
                         <li><a href="{{url('/admin/products_overview')}}">Products</a></li>
                         <li><a href="{{url('/admin/set_hot_items')}}">Hot items</a></li>
                         <li><a href="{{url('/admin/faqs_overview')}}">FAQ</a></li>
+                        <li><a href="{{url('/admin/subscribers_overview')}}">Subscribers</a></li>
                         @endif
                     </ul>
 

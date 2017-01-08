@@ -6,41 +6,77 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit FAQ</div>
-
                 <div class="panel-body">
                     
                     <div class="row">
-                        <form method="post" action="{{url('/admin/edit_faq')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{url('/admin/edit_faq')}}" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
+                            
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    The form wasn't filled in correctly, check the errors below.
+                                </div>
+                            @endif
+                            
                             <div class="col-md-12">
                                 <h3>Nederlands</h3>
                                 <div>
                                     <label for="question_nl">Vraag:</label>
-                                    <input class="form-control" type="text" name="question_nl" id="question_nl" value="{{$faq->question_nl}}" required>
+                                    <input class="form-control" type="text" name="question_nl" id="question_nl" value="{{ old('question_nl', $faq->question_nl) }}" required>
+                                    @if ($errors->has('question_nl'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_nl') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_nl">Antwoord:</label>
-                                    <textarea class="form-control" name="answer_nl" id="answer_nl" required>{{$faq->answer_nl}}</textarea>
+                                    <textarea class="form-control" name="answer_nl" id="answer_nl" required>{{old('answer_nl', $faq->answer_nl)}}</textarea>
+                                    @if ($errors->has('answer_nl'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_nl') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <h3>Français</h3>
                                 <div>
                                     <label for="question_fr">La question:</label>
-                                    <input class="form-control" type="text" name="question_fr" id="question_fr" value="{{$faq->question_fr}}" required>
+                                    <input class="form-control" type="text" name="question_fr" id="question_fr" value="{{old('question_fr', $faq->question_fr)}}" required>
+                                    @if ($errors->has('question_fr'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_fr') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_fr">La réponse:</label>
-                                    <textarea class="form-control" name="answer_fr" id="answer_fr" required>{{$faq->answer_fr}}</textarea>
+                                    <textarea class="form-control" name="answer_fr" id="answer_fr" required>{{old('answer', $faq->answer_fr)}}</textarea>
+                                    @if ($errors->has('answer_fr'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_fr') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <h3>English</h3>
                                 <div>
                                     <label for="question_en">Question:</label>
-                                    <input class="form-control" type="text" name="question_en" id="question_en" value="{{$faq->question_en}}" required>
+                                    <input class="form-control" type="text" name="question_en" id="question_en" value="{{old('question_en', $faq->question_en)}}" required>
+                                    @if ($errors->has('question_en'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('question_en') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div>
                                     <label for="answer_en">Answer:</label>
-                                    <textarea class="form-control" name="answer_en" id="answer_en" required>{{$faq->answer_en}}</textarea>
+                                    <textarea class="form-control" name="answer_en" id="answer_en" required>{{old('answer_en', $faq->answer_en)}}</textarea>
+                                    @if ($errors->has('answer_en'))
+                                        <span class="error_block">
+                                            <strong>*{{ $errors->first('answer_en') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             
@@ -51,7 +87,13 @@
                                     <select class="form-control" name="category">
                                         <option value="none">No category</option>
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}" <?php if(!$faq->categories->isEmpty() && $category->id == $faq->categories[0]->id) { echo("selected"); } ?>>{{$category->name}}</option>
+                                        <option value="{{$category->id}}" <?php 
+                                        if(old('category')){ 
+                                            if($category->id == old('category')){ 
+                                                echo("selected");
+                                            }
+                                        }
+                                        elseif(!$faq->categories->isEmpty() && $category->id == $faq->categories[0]->id) { echo("selected"); } ?>>{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -96,9 +138,7 @@
                                     </div>
                                     <span class="btn btn-info add_product">Add another product</span>
                                 </div>
-                                
                             </div>
-                            
                             
                             <div class="col-md-12">
                                 <input type="hidden" name="faq_id" value="{{$faq->id}}">

@@ -139,6 +139,18 @@ return [
         'time'                  => 'Tijd',
         'available'             => 'Beschikbaar',
         'size'                  => 'Grootte',
+        'question_nl'           => 'Nederlandstalige vraag',
+        'question_fr'           => 'Franstalige vraag',
+        'question_en'           => 'Engelstalige vraag',
+        'answer_nl'             => 'Nederlandstalig antwoord',
+        'answer_fr'             => 'Franstalig antwoord',
+        'answer_en'             => 'Engelstalig antwoord',
+        'name_nl'               => 'Nederlandstalige naam',
+        'name_fr'               => 'Franstalige naam',
+        'name_en'               => 'Engelstalige naam',
+        'description_nl'        => 'Nederlandstalig beschrijving',
+        'description_fr'        => 'Franstalig beschrijving',
+        'description_en'        => 'Engelstalig beschrijving',
     ],
 
 ];

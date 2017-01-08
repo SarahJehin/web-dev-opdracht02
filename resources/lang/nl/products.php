@@ -17,6 +17,7 @@ return [
     'product_title01' => 'Kleuren',
     'product_title02' => 'Beschrijving',
     'product_title03' => 'Specificaties',
+    'no_filter_results' => "Sorry, er bestaan nog geen producten in deze categorie, of ze voldoen niet aan je filter",
     'subtitle01' => 'Gerelateerde producten',
     'no_products' => 'Er bestaan nog geen gerelateerde producten...',
     'no_questions' => 'Er bestaan nog geen vragen...',

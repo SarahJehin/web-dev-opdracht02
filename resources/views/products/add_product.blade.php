@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -9,20 +8,12 @@
                 <div class="panel-heading">Add product</div>
 
                 <div class="panel-body">
-                    
                     <div>
                         <form class="product" method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
                             
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    {{--
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                    --}}
                                     The form wasn't filled in correctly, check the errors below.
                                 </div>
                             @endif
@@ -88,7 +79,7 @@
                                     @endif
                                 </div>
                                 
-                                <h3>Afbeeldingen</h3>
+                                <h3>Afbeeldingen/Images</h3>
                                 <div>
                                     <input class="form-control" type="file" name="image[]" id="images_to_upload" multiple onChange="makeFileList();">
                                     <ul id="file_list">
@@ -114,7 +105,7 @@
                                 </div>
 
                                 <div>
-                                    <label for="category"><h3>Categorie</h3></label>
+                                    <label for="category"><h3>Categorie/Catégorie/Category</h3></label>
                                     <select class="form-control" name="category" id="category">
                                         @foreach($categories as $category)
                                         @if(old('category') == $category->id)
@@ -127,7 +118,7 @@
                                 </div>
                                 
                                 <div class="collections">
-                                    <h3>Collecties</h3>
+                                    <h3>Collecties/Collections</h3>
                                     @foreach($collections as $collection)
                                     <div>
                                         <input type="checkbox" name="collection[]" id="collection{{$collection->id}}" value="{{$collection->id}}" <?php if(old('collection') && in_array($collection->id, old('collection'))){ echo("checked");} ?>>
@@ -142,11 +133,11 @@
                                 </div>
 
                                 <div class="colors">
-                                    <h3>Kleuren</h3>
+                                    <h3>Kleuren/Couleurs/Colors</h3>
                                     @foreach($colors as $color)
                                     <div>
                                         <input type="checkbox" name="color[]" id="color{{$color->id}}" value="{{$color->id}}" <?php if(old('color') && in_array($color->id, old('color'))){ echo("checked");} ?>>
-                                        <label style="background-color:{{$color->hexcode}}" for="color{{$color->id}}"><i class="fa fa-check" aria-hidden="true"></i></label>
+                                        <label style="background-color:{{$color->hexcode}}" for="color{{$color->id}}"></label>
                                     </div>
                                     @endforeach
                                     @if ($errors->has('color'))
@@ -157,7 +148,7 @@
                                 </div>
                                 
                                 <div class="specifications">
-                                    <h3>Specificaties</h3>
+                                    <h3>Specificaties/Spécifications/Specifications</h3>
                                     
                                     <h4>1.</h4>
                                     <div>
@@ -180,83 +171,12 @@
                                     @if(count($errors->get('specs.*.*')) > 1)
                                     <span class="error_block"><strong>* All fields above are required.</strong></span>
                                     @endif
-                                    
-                                    {{--
-                                    
-                                    <div class="spec_block first">
-                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
-                                    <div>
-                                        <input class="form-control name_input" type="text" name="specs[1][name_nl]" placeholder="naam (NL)" >
-                                        <input class="form-control desc_input" type="text" name="specs[1][description_nl]" placeholder="beschrijving (NL)">
-                                        <input class="form-control name_input" type="text" name="specs[1][name_fr]" placeholder="nom (FR)">
-                                        <input class="form-control desc_input" type="text" name="specs[1][description_fr]" placeholder="description (FR)">
-                                        <input class="form-control name_input" type="text" name="specs[1][name_en]" placeholder="name (EN)" >
-                                        <input class="form-control desc_input" type="text" name="specs[1][description_en]" placeholder="description (EN)" >
-                                    </div>
-                                    </div>
-                                    @if(count($errors->get('specs.*.*')) > 1)
-                                    <span class="error_block"><strong>* All fields above are required.</strong></span>
-                                    @endif
-                                    <div class="btn btn-info add_spec">Add spec</div>
-                                    
-                                    --}}
-                                    {{--
-                                    @if ($errors->has('specs.1.name_nl'))
-                                        <span class="error_block">
-                                           test
-                                           @foreach($errors->get('specs.*.*') as $error)
-                                               {{$error[0]}}
-                                           @endforeach
-                                        </span>
-                                    @endif
-                                    --}}{{--
-                                    @if(count($errors->get('specs.*.*')) > 1)
-                                    @foreach(old('specs') as $spec)
-                                    <div class="spec_block first">
-                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
-                                    <div>
-                                        <input class="form-control name_input" type="text" name="specs[][name_nl]" placeholder="naam (NL)" value="{{$spec['name_nl']}}">
-                                        <input class="form-control desc_input" type="text" name="specs[][description_nl]" placeholder="beschrijving (NL)" value="{{$spec['description_nl']}}">
-                                        <input class="form-control name_input" type="text" name="specs[][name_fr]" placeholder="nom (FR)" value="{{$spec['name_fr']}}">
-                                        <input class="form-control desc_input" type="text" name="specs[][description_fr]" placeholder="description (FR)" value="{{$spec['description_fr']}}">
-                                        <input class="form-control name_input" type="text" name="specs[][name_en]" placeholder="name (EN)" value="{{$spec['name_en']}}">
-                                        <input class="form-control desc_input" type="text" name="specs[][description_en]" placeholder="description (EN)" value="{{$spec['description_en']}}">
-                                    </div>
-                                    </div>
-                                    @endforeach
-                                    <span class="error_block"><strong>* All fields above are required.</strong></span>
-                                    @else
-                                    <div class="spec_block first">
-                                    <h4>1.</h4> <span class="btn_remove">Remove</span>
-                                    <div>
-                                        <input class="form-control name_input" type="text" name="specs[][name_nl]" placeholder="naam (NL)" >
-                                        <input class="form-control desc_input" type="text" name="specs[][description_nl]" placeholder="beschrijving (NL)">
-                                        <input class="form-control name_input" type="text" name="specs[][name_fr]" placeholder="nom (FR)">
-                                        <input class="form-control desc_input" type="text" name="specs[][description_fr]" placeholder="description (FR)">
-                                        <input class="form-control name_input" type="text" name="specs[][name_en]" placeholder="name (EN)" >
-                                        <input class="form-control desc_input" type="text" name="specs[][description_en]" placeholder="description (EN)" >
-                                    </div>
-                                    </div>
-                                    @endif
-                                    
-                                    <div class="btn btn-info add_spec">Add spec</div>
-                                    
-                                    <h4>2.</h4>
-                                    <div>
-                                        <input class="form-control name_input" type="text" name="specs[2][name_nl]" placeholder="naam (NL)">
-                                        <input class="form-control desc_input" type="text" name="specs[2][description_nl]" placeholder="beschrijving (NL)">
-                                        <input class="form-control name_input" type="text" name="specs[2][name_fr]" placeholder="nom (FR)">
-                                        <input class="form-control desc_input" type="text" name="specs[2][description_fr]" placeholder="description (FR)">
-                                        <input class="form-control name_input" type="text" name="specs[2][name_en]" placeholder="name (EN)">
-                                        <input class="form-control desc_input" type="text" name="specs[2][description_en]" placeholder="description (EN)">
-                                    </div>--}}
-                                    
                                 </div>
                                 
                             </div>
                             
                             <div class="col-md-12">
-                                <input class="btn btn-success" type="submit" value="Opslagen">
+                                <input class="btn btn-success" type="submit" value="Save">
                             </div>
                             
                         </form>

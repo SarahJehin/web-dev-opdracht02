@@ -84,7 +84,7 @@
                                 <div class="existing_images">
                                     @foreach($product->images as $image)
                                     <figure>
-                                        <img src="{{url('/images/products/' . $image->image_path)}}">
+                                        <img src="{{url('/images/products/' . $image->image_path)}}" alt="{{$product->name_en}}">
                                         <div class="btn btn-danger remove_img" img_id="{{$image->id}}">Remove</div>
                                     </figure>
                                     @endforeach

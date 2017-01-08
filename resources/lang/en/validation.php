@@ -112,6 +112,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'question_nl'           => 'Dutch question',
+        'question_fr'           => 'French question',
+        'question_en'           => 'English question',
+        'answer_nl'             => 'Dutch answer',
+        'answer_fr'             => 'French answer',
+        'answer_en'             => 'English answer',
+        'name_nl'               => 'Dutch name',
+        'name_fr'               => 'French name',
+        'name_en'               => 'English name',
+        'description_nl'        => 'Dutch description',
+        'description_fr'        => 'French description',
+        'description_en'        => 'English description',
+    ],
 
 ];

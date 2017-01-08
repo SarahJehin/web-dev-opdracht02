@@ -23,17 +23,20 @@ Route::group(['prefix' => '{language}', 'middleware' => 'verifyLocale'], functio
     
     Route::get('/', 'WelcomeController@index');
     Route::get('/set_cookie', 'WelcomeController@set_cookie');
-    Route::post('/add_subscriber', 'WelcomeController@add_subscriber');
+    Route::post('/add_subscriber', 'SubscriberController@add_subscriber');
+    Route::get('/subscriber_confirmation', 'SubscriberController@get_confirmation');
 
-    Route::get('/products/{id}', 'WelcomeController@category_products');
+    Route::get('/category/{id}/{name}', 'WelcomeController@category_products');
     Route::post('/products_filter', 'WelcomeController@products_filter');
-    Route::get('/product_details/{id}', 'WelcomeController@product_details');
+    Route::get('/product_details/{id}/{name}', 'WelcomeController@product_details');
     
     Route::get('/search', 'WelcomeController@view_search');
     Route::post('/search_products', 'WelcomeController@search_products');
     Route::get('/faq', 'WelcomeController@view_faq');
     Route::post('/search_faq', 'WelcomeController@search_faq');
     Route::get('/about_us', 'WelcomeController@view_about_us');
+    Route::post('/contact', 'WelcomeController@contact');
+    Route::get('/contact_confirmation', 'WelcomeController@contact_confirmation');
 });
 
 
@@ -55,6 +58,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/delete_faq/{id}', 'FaqController@delete_faq');
     Route::get('/set_hot_items', 'ProductController@view_set_hot_items');
     Route::post('/set_hot_items', 'ProductController@set_hot_items');
+    Route::get('/subscribers_overview', 'SubscriberController@view_subscribers');
+    Route::get('/delete_subscriber/{id}', 'SubscriberController@delete_subscriber');
 });
 
 

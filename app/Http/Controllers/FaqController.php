@@ -13,24 +13,20 @@ class FaqController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->lang = App::getLocale();
     }
     
     public function view_faqs() {
-        $lang = $this->lang;
-        $faqs = Faq::select('id', 'question_' . $lang . ' AS question', 'answer_' . $lang . ' AS answer')->get();
+        $faqs = Faq::select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')->get();
         return view('/faq/faqs_overview', ['faqs' => $faqs]);
     }
     
     public function view_add_faq() {
-        
         $categories = Category::select('id', 'name_' . App::getLocale() . ' as name')->get();
         $products = Product::select('id', 'name_' . App::getLocale() . ' as name')->get();
         return view('faq/add_faq', ['categories' => $categories, 'products' => $products]);
     }
     
     public function add_faq(Request $request) {
-        
         $this->validate($request, [
             'question_nl' => 'required|string|max:100',
             'question_fr' => 'required|string|max:100',
@@ -60,10 +56,8 @@ class FaqController extends Controller
             $faq->categories()->attach($request->category);
         }
         
-        
         return redirect('/admin/faqs_overview');
     }
-    
     
     public function view_edit_faq($id) {
         $faq = Faq::find($id);
@@ -73,7 +67,6 @@ class FaqController extends Controller
     }
     
     public function edit_faq(Request $request) {
-        
         $this->validate($request, [
             'question_nl' => 'required|string|max:100',
             'question_fr' => 'required|string|max:100',
@@ -111,6 +104,8 @@ class FaqController extends Controller
     
     public function delete_faq($id) {
         $faq = Faq::find($id);
+        $faq->products()->detach();
+        $faq->categories()->detach();
         $faq->delete();
         return redirect('/admin/faqs_overview')->with("message", "Question deleted successfully");
     }

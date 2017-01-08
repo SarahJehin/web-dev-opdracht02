@@ -11,4 +11,5 @@ return [
     'placeholder02' => 'Write your message here.',
     'submit_value' => 'Send',
     'faq' => 'Frequently asked questions',
+    'contact_confirmation' => 'Thank you for your e-mail.  We will respond as soon as possible.',
 ];

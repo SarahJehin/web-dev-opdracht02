@@ -1,5 +1,7 @@
 @extends('layouts.main_layout')
 
+@section('title', 'Kowloon - FAQ')
+
 @section('content')
 <div class="">
     <div class="faq_overlay selected">
@@ -44,7 +46,6 @@
                 @lang('welcome.no_search_results')
             </div>
             @endif
-            
             
         </div>
     </div>

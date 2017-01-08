@@ -17,6 +17,7 @@ return [
     'product_title01' => 'Colors',
     'product_title02' => 'Description',
     'product_title03' => 'Specifications',
+    'no_filter_results' => "Sorry, no products are available or they don't match your filter",
     'subtitle01' => 'Related products',
     'no_products' => 'No related products found...',
     'no_questions' => 'No questions found...',

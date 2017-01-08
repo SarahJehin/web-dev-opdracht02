@@ -53,8 +53,6 @@
                         <p class="question_to_delete"></p>
                         <a href="#" class="btn btn-info" role="button">Yes, delete!</a>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>

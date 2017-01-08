@@ -49,9 +49,25 @@
                     color: blue;
                 }
             }
-
         }
+    }
+    input[type="submit"] {
+        border: none;
+        background-color: $main_button_color;
+        font-weight: bold;
+        color: #fff;
+        width: 193px;
+        margin: 15px 0;
+        font-weight: normal;
+        padding: 5px;
+    }
+}
 
+.result_amount {
+    float: right;
+    text-align: right;
+    strong {
+        color: #fff;
     }
 }
 

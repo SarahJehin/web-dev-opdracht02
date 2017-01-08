@@ -1,5 +1,9 @@
 @extends('layouts.main_layout')
 
+@section('title')
+Kowloon - {{$category->name}} - {{$product->name}}
+@endsection
+
 @section('content')
 <div class="">
    
@@ -27,7 +31,7 @@
                 <div class="col-md-6">
                     <div class="row breadcrumbs">
                         <a href="{{url(App::getLocale().'/')}}"><div class="kowloon_logo"></div></a>
-                        <a href="{{url(App::getLocale().'/products/' . $category->id)}}"><span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span></a>
+                        <a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}"><span class="breadcrumb"><span class="dot_{{str_replace(' ', '_', strtolower($category->name_en))}}"></span><span class="category_name">{{$category->name}}</span></span></a>
                         @foreach($product->collections as $collection)
                         <span class="breadcrumb">{{$collection->name}}</span>
                         @endforeach
@@ -74,7 +78,7 @@
                 <div class="items">
                         @foreach($related_products as $related_product)
                         <div class="hot_item">
-                            <a href="{{url(App::getLocale().'/product_details/' . $related_product->id)}}">
+                            <a href="{{url(App::getLocale().'/product_details/' . $related_product->id . '/' . str_replace(' ', '_', $related_product->name))}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('images/products/' . $related_product->images[0]->image_path)}}" alt="{{$related_product->name}}">

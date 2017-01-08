@@ -11,4 +11,5 @@ return [
     'placeholder02' => 'Schrijf je bericht hier.',
     'submit_value' => 'Verstuur',
     'faq' => 'Veelgestelde vragen',
+    'contact_confirmation' => 'Bedankt voor je mailtje.  We sturen zo spoedig mogelijk een antwoord',
 ];

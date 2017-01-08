@@ -8,20 +8,12 @@
                 <div class="panel-heading">Add FAQ</div>
 
                 <div class="panel-body">
-                    
                     <div class="row">
                         <form method="post" action="{{url('/admin/add_faq')}}" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
                             
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    <!--
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>*{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                    -->
                                     The form wasn't filled in correctly, check the errors below.
                                 </div>
                             @endif
@@ -122,11 +114,7 @@
                                     </div>
                                     <span class="btn btn-info add_product">Add another product</span>
                                 </div>
-                                
                             </div>
-                            
-                            
-                            
                             
                             <div class="col-md-12">
                                 <input class="btn btn-success" type="submit" value="Save">

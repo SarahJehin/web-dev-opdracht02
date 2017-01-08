@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
+    
+    <meta name="description" content="@lang('welcome.meta_description')">
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -75,7 +77,7 @@
                         -->
                         @foreach($categories as $category)
                         @if($category->name_en != "Other")
-                        <li><a href="{{url(App::getLocale().'/products/' . $category->id)}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
                         @endif
                         @endforeach
                         <!--

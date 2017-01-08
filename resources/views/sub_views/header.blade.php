@@ -18,15 +18,15 @@
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                  <img src="{{url('/images/header_dog01.jpg')}}" alt="01">
+                  <img src="{{url('/images/header_dog01.jpg')}}" alt="banner_dog_01">
                 </div>
 
                 <div class="item">
-                  <img src="{{url('/images/header_dog02.jpg')}}" alt="02">
+                  <img src="{{url('/images/header_dog02.jpg')}}" alt="banner_dog_02">
                 </div>
 
                 <div class="item">
-                  <img src="{{url('/images/header_dog03.jpg')}}" alt="03">
+                  <img src="{{url('/images/header_dog03.jpg')}}" alt="banner_dog_03">
                 </div>
                 
                 <div class="overlay"></div>

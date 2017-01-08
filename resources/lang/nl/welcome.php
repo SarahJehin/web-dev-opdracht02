@@ -2,6 +2,8 @@
 
 return [
 
+    'meta_title' => 'Kowloon - Alle benodigheden voor jouw huisdier!',
+    'meta_description' => 'Bij dierenspeciaalzaak Kowloon te Herentals bieden we u een ruim assortiment aan benodigdheden voor honden, katten, vissen, vogels en knaagdieren.',
     'intro' => 'Welkom bij Kowloon - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique tincidunt elit ut elementum. Nulla lectus purus, ullamcorper placerat elementum ut, venenatis ac tortor. Sed fermentum velit at metus blandit vehicula. Integer sed metus sit amet risus iaculis pharetra at nec nunc.',
     'subtitle01' => 'Populaire items.',
     'visit_store' => 'Bezoek de winkel',
@@ -9,6 +11,7 @@ return [
     'banner_part02' => 'enkel in onze nieuwsbrief',
     'newsletter' => 'Meld je aan voor onze nieuwsbrief',
     'newsletter_description' => 'Lorem ipsum dolor sit amet.',
+    'subscriber_message' => 'Bedankt om je te registreren voor de nieuwsletter!  Een bevestigingsmailtje is onderweg.',
     
     //search
     'advanced_filter' => 'Geavanceerde filter',

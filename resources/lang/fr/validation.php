@@ -140,6 +140,18 @@ return [
         'time'                  => 'Heure',
         'available'             => 'Disponible',
         'size'                  => 'Taille',
+        'question_nl'           => 'Question néerlandais',
+        'question_fr'           => 'Question français',
+        'question_en'           => 'Question anglais',
+        'answer_nl'             => 'Réponse néerlandais',
+        'answer_fr'             => 'Réponse français',
+        'answer_en'             => 'Réponse anglais',
+        'name_nl'               => 'Nom néerlandais',
+        'name_fr'               => 'Nom français',
+        'name_en'               => 'Nom anglais',
+        'description_nl'        => 'Description néerlandais',
+        'description_fr'        => 'Description français',
+        'description_en'        => 'Description anglais',
     ],
 
 ];

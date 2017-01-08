@@ -1,5 +1,9 @@
 @extends('layouts.main_layout')
 
+@section('title')
+Kowloon - @lang('about_us.title')
+@endsection
+
 @section('content')
 <div class="">
     <div class="col-md-12 header_img">
@@ -44,14 +48,25 @@
             </div>
             
             <div class="row contact_form">
-                <form method="post" action="#">
+                <form method="post" action="{{url(App::getLocale().'/contact')}}" novalidate>
+                   {{ csrf_field() }}
                     <div>
                         <label for="email">@lang('about_us.label01')</label>
-                        <input type="email" name="email" id="email" placeholder="name@domain.com">
+                        <input type="email" name="email" id="email" placeholder="name@domain.com" value="{{ old('email') }}">
+                        @if ($errors->has('email'))
+                            <div class="error_block">
+                                <strong>*{{ $errors->first('email') }}</strong>
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <label for="message">@lang('about_us.label02')</label>
-                        <textarea name="message" id="message" placeholder="@lang('about_us.placeholder02')"></textarea>
+                        <textarea name="message" id="message" placeholder="@lang('about_us.placeholder02')">{{ old('message') }}</textarea>
+                        @if ($errors->has('message'))
+                            <div class="error_block">
+                                <strong>*{{ $errors->first('message') }}</strong>
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <input type="submit" value="@lang('about_us.submit_value')">

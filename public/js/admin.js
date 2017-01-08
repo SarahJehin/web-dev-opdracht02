@@ -23,6 +23,15 @@
         $(".delete_alert").show();
     });
     
+    //subscribers_overview
+    $(".delete_subscriber").click(function(){
+        $subscriber_id = $(this).attr("subscriber_id");
+        $subscriber = $(this).parent().parent().find(">:first-child").text();
+        $(".subscriber_to_delete").text('"' + $subscriber + '"');
+        $(".delete_alert .btn").attr("href", APP_URL + "/admin/delete_subscriber/" + $subscriber_id);
+        $(".delete_alert").show();
+    });
+    
     
     //add product
     $spec_counter = 1;

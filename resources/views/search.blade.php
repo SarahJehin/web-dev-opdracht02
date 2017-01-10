@@ -7,10 +7,10 @@
     <div class="row searchpage">
     <div class="col-md-10 col-md-offset-1">
         
-        <form method="post" action="{{url(App::getLocale().'/search_products')}}">
+        <form method="get" action="{{url(App::getLocale().'/search_products')}}">
         <div class="row filter">
             <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
-                <span class="text">@lang('welcome.advanced_filter')</span>
+                <span class="textfilter">@lang('welcome.advanced_filter')</span>
                 <span class="arrow"></span>
             </div>
             <div id="filters" class="row collapse">
@@ -31,7 +31,6 @@
         </div>
         
         <div class="row search">
-            {{ csrf_field() }}
             <div class="input">
                 <span class="search_icon"></span>
                 <input type="text" name="searchword" id="searchword" placeholder="@lang('welcome.search_products_placeholder')">
@@ -59,7 +58,7 @@
                     <img src="{{url('/images/products/' . $product_result->images[0]->image_path)}}" alt="{{$product_result->name}}">
                 </div>
                 <div class="col-md-10">
-                    <h4><a href="{{url(App::getLocale().'/product_details/' . $product_result->id)}}">{{$product_result->name}}</a></h4>
+                    <h4><a href="{{url(App::getLocale().'/' . $product_result->category->name . '/' . $product_result->id . '/' . str_replace(' ', '_', $product_result->name))}}">{{$product_result->name}}</a></h4>
                     <p>
                         {{$product_result->description}}
                     </p>

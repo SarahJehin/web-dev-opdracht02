@@ -37,7 +37,7 @@
                     <div class="items">
                         @foreach($hot_items as $hot_item)
                         <div class="hot_item">
-                            <a href="{{url(App::getLocale().'/product_details/' . $hot_item->product->id . '/' . str_replace(' ', '_', $hot_item->product->name))}}">
+                            <a href="{{url(App::getLocale().'/' . $hot_item->product->category->name . '/' . $hot_item->product->id . '/' . str_replace(' ', '_', $hot_item->product->name))}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('/images/products/' . $hot_item->product->images[0]->image_path)}}" alt="{{$hot_item->product->name}}">

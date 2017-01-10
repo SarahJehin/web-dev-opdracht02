@@ -33,10 +33,11 @@ class WelcomeController extends Controller
     
     public function index()
     {
-        $name = 'name_' . App::getLocale();
         $categories = Category::with('products')->select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $hot_items = HotItem::orderBy('position')->with(array('product'=>function($query){
-            $query->select('id','name_' . App::getLocale() . ' AS name', 'price')->with('images');
+            $query->select('id','name_' . App::getLocale() . ' AS name', 'price', 'category_id')->with('images')->with(array('category'=>function($q){
+                $q->select('id','name_' . App::getLocale() . ' AS name');
+            }));
         }))->get();
         return view('welcome', ['categories' => $categories, 'hot_items' => $hot_items]);
     }
@@ -55,7 +56,9 @@ class WelcomeController extends Controller
     public function search_products(Request $request) {
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         
-        $query = Product::with('images')->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description')->where('name_' . App::getLocale(), 'like', '%' . $request->searchword . '%');
+        $query = Product::with('images')->with(array('category'=>function($q){
+            $q->select('id','name_' . App::getLocale() . ' AS name');
+        }))->select('id', 'name_' . App::getLocale() . ' AS name', 'description_' . App::getLocale() . ' AS description', 'category_id')->where('name_' . App::getLocale(), 'like', '%' . $request->searchword . '%');
         
         if($request->from != "" && $request->to != "") {
             $query = $query->whereBetween('price', [$request->from, $request->to]);
@@ -69,7 +72,7 @@ class WelcomeController extends Controller
             $query = $query->whereIn('category_id', $cats);
         }
         
-        $product_results = $query->paginate(10);
+        $product_results = $query->paginate(10)->appends(['searchword' => $request->searchword, 'from' => $request->from, 'to' => $request->to, 'category' => $request->category]);;
         
         return view('search', ['categories' => $categories, 'product_results' => $product_results]);
     }
@@ -85,9 +88,13 @@ class WelcomeController extends Controller
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         $faqs = Faq::select('id', 'question_' . App::getLocale() . ' AS question', 'answer_' . App::getLocale() . ' AS answer')
             ->where('question_' . App::getLocale(), 'like', '%' . $request->searchword . '%')
-            ->paginate(10);
+            ->paginate(10)->appends('searchword', $request->searchword);
         
         return view('faq', ['categories' => $categories, 'faqs' => $faqs, 'searchword' => $request->searchword]);
+        
+        //session(['faq_searchword' => $request->searchword]);
+        //return redirect(/*to the handler*/);
+        
     }
     
     public function view_about_us() {
@@ -176,7 +183,7 @@ class WelcomeController extends Controller
         return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products, 'collections' => $collections]);
     }
     
-    public function product_details($lang, $product_id) {
+    public function product_details($lang, $category_name, $product_id) {
         $categories = Category::select('id', 'name_' . App::getLocale() . ' AS name', 'name_en')->get();
         
         $product = Product::with('images')

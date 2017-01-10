@@ -60,9 +60,9 @@
             <nav>
                 <div class="general">
                     <ul>
-                        <li><a href="{{url(App::getLocale().'/search')}}"><span class="search"></span><span class="text">Search</span></a></li>
-                        <li><a href="{{url(App::getLocale().'/faq')}}" class="faq_link"><span class="faq"></span><span class="text">FAQ</span></a></li>
-                        <li><a href="{{url(App::getLocale().'/about_us')}}"><span class="about_us"></span><span class="text">Contact</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/search')}}" class="{{ (Route::getCurrentRoute()->getPath() == '{language}/search') ? 'active' : '' }}"><span class="search"></span><span class="text">Search</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/faq')}}" class="faq_link {{ (Route::getCurrentRoute()->getPath() == '{language}/faq') ? 'active' : '' }}"><span class="faq"></span><span class="text">FAQ</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/about_us')}}" class="{{ (Route::getCurrentRoute()->getPath() == '{language}/about_us') ? 'active' : '' }}"><span class="about_us"></span><span class="text">Contact</span></a></li>
                     </ul>
                 </div>
                 
@@ -77,7 +77,7 @@
                         -->
                         @foreach($categories as $category)
                         @if($category->name_en != "Other")
-                        <li><a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}" class="{{ (substr(Request::url(), strrpos(Request::url(), '/') + 1) == $category->name || explode('/', Request::url())[count(explode('/', Request::url()))-3] == $category->name) ? 'active' : '' }}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
                         @endif
                         @endforeach
                         <!--
@@ -98,7 +98,7 @@
 
         <div class="content">
             {{--@include('sub_views.faq_overlay')--}}
-            
+            <?php //dd(Route::current()->getParameter('id')) ?>
             @yield('content')
         </div>
         

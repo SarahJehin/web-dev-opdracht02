@@ -10,8 +10,7 @@
             <h2>FREQUENTLY ASKED QUESTIONS</h2>
         </div>
         <div class="row search">
-            <form method="post" action="{{url(App::getLocale().'/search_faq')}}">
-                {{ csrf_field() }}
+            <form method="get" action="{{url(App::getLocale().'/search_faq')}}">
                 <div class="input">
                     <span class="search_icon"></span>
                     <input type="text" name="searchword" id="searchword" placeholder="@lang('welcome.search_faq_placeholder')">

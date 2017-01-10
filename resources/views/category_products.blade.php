@@ -79,7 +79,7 @@ Kowloon - {{$category->name}}
                 <div class="col-md-12 items">
                         @foreach($products as $product)
                         <div class="item">
-                            <a href="{{url(App::getLocale().'/product_details/' . $product->id. '/' . str_replace(' ', '_', $product->name))}}">
+                            <a href="{{url(App::getLocale().'/' . $category->name . '/' . $product->id. '/' . str_replace(' ', '_', $product->name))}}">
                                 <figure>
                                      <div class="img">
                                          <img src="{{url('images/products/' . $product->images[0]->image_path)}}" alt="{{$product->name}}">

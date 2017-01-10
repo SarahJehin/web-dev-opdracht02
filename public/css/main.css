@@ -101,15 +101,15 @@
       background: url("../images/icons/category_icons_sprite.png") 0 -150px; }
     .side_nav .categories ul a .small_animals_icon {
       background: url("../images/icons/category_icons_sprite.png") 0 -200px; }
-    .side_nav .categories ul a:hover .dogs_icon {
+    .side_nav .categories ul a:hover .dogs_icon, .side_nav .categories ul a.active .dogs_icon {
       background: url("../images/icons/category_icons_sprite.png") -50px 0; }
-    .side_nav .categories ul a:hover .cats_icon {
+    .side_nav .categories ul a:hover .cats_icon, .side_nav .categories ul a.active .cats_icon {
       background: url("../images/icons/category_icons_sprite.png") -50px -50px; }
-    .side_nav .categories ul a:hover .fish_icon {
+    .side_nav .categories ul a:hover .fish_icon, .side_nav .categories ul a.active .fish_icon {
       background: url("../images/icons/category_icons_sprite.png") -50px -100px; }
-    .side_nav .categories ul a:hover .birds_icon {
+    .side_nav .categories ul a:hover .birds_icon, .side_nav .categories ul a.active .birds_icon {
       background: url("../images/icons/category_icons_sprite.png") -50px -150px; }
-    .side_nav .categories ul a:hover .small_animals_icon {
+    .side_nav .categories ul a:hover .small_animals_icon, .side_nav .categories ul a.active .small_animals_icon {
       background: url("../images/icons/category_icons_sprite.png") -50px -200px; }
   .side_nav .categories img {
     width: 40px;
@@ -362,7 +362,7 @@ h2 {
   color: #565656; }
   .searchpage .filter {
     margin-bottom: 25px; }
-    .searchpage .filter .title .text {
+    .searchpage .filter .title .textfilter {
       float: left;
       color: #000;
       font-size: 2em; }

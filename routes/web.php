@@ -28,12 +28,13 @@ Route::group(['prefix' => '{language}', 'middleware' => 'verifyLocale'], functio
 
     Route::get('/category/{id}/{name}', 'WelcomeController@category_products');
     Route::post('/products_filter', 'WelcomeController@products_filter');
-    Route::get('/product_details/{id}/{name}', 'WelcomeController@product_details');
+    //Route::get('/product_details/{id}/{name}', 'WelcomeController@product_details');
+    Route::get('/{category}/{id}/{name}', 'WelcomeController@product_details');
     
     Route::get('/search', 'WelcomeController@view_search');
-    Route::post('/search_products', 'WelcomeController@search_products');
+    Route::get('/search_products', 'WelcomeController@search_products');
     Route::get('/faq', 'WelcomeController@view_faq');
-    Route::post('/search_faq', 'WelcomeController@search_faq');
+    Route::get('/search_faq', 'WelcomeController@search_faq');
     Route::get('/about_us', 'WelcomeController@view_about_us');
     Route::post('/contact', 'WelcomeController@contact');
     Route::get('/contact_confirmation', 'WelcomeController@contact_confirmation');

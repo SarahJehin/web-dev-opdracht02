@@ -13,6 +13,7 @@ use App\Faq;
 use DB;
 use Cookie;
 use Illuminate\Cookie\CookieJar;
+use Mail;
 
 class WelcomeController extends Controller
 {
@@ -109,8 +110,13 @@ class WelcomeController extends Controller
             'message' => 'required|string|max:1000',
         ]);
         
-        dd($request);
-        //send mail to the new subscriber + redirect to confirm blade
+        //dd($request);
+        //send mail to the kowloon team + redirect to confirm blade
+        Mail::send('emails.contact_mail', ['email' => $request->email, 'contact_message' => $request->message], function($message) use($request) {
+            $message->to('sarah.jehin@student.kdg.be');
+            $message->from($request->email);
+            $message->subject('New contact mail!');
+        });
         
         return redirect(App::getLocale() . '/contact_confirmation');
     }

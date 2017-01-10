@@ -26,7 +26,7 @@ Route::group(['prefix' => '{language}', 'middleware' => 'verifyLocale'], functio
     Route::post('/add_subscriber', 'SubscriberController@add_subscriber');
     Route::get('/subscriber_confirmation', 'SubscriberController@get_confirmation');
 
-    Route::get('/category/{id}/{name}', 'WelcomeController@category_products');
+    Route::get('/category/{id}/{category}', 'WelcomeController@category_products');
     Route::post('/products_filter', 'WelcomeController@products_filter');
     //Route::get('/product_details/{id}/{name}', 'WelcomeController@product_details');
     Route::get('/{category}/{id}/{name}', 'WelcomeController@product_details');

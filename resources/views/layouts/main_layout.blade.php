@@ -43,11 +43,11 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                 </p>
                 <div>
-                    <a href="{{url('/set_cookie')}}">ok, verder surfen</a>
+                    <a href="{{url(App::getLocale().'/set_cookie')}}">ok, verder surfen</a>
                 </div>
             </div>
             <div class="close_tag">
-                <a href="{{url('/set_cookie')}}">X</a>
+                <a href="{{url(App::getLocale().'/set_cookie')}}">X</a>
             </div>
         </div>
         @endif
@@ -56,7 +56,6 @@
         <label for="hamburger"><span class="hamburger"></span></label>
         
         <div class="side_nav">
-            
             <nav>
                 <div class="general">
                     <ul>
@@ -68,23 +67,11 @@
                 
                 <div class="categories">
                     <ul>
-                        <!--
-                        <li><a href="#"><span class="dogs_icon"></span><span class="text">Dogs</span></a></li>
-                        <li><a href="#"><span class="cats_icon"></span><span class="text">Cats</span></a></li>
-                        <li><a href="#"><span class="fish_icon"></span><span class="text">Fish</span></a></li>
-                        <li><a href="#"><span class="birds_icon"></span><span class="text">Birds</span></a></li>
-                        <li><a href="#"><span class="small_animals_icon"></span><span class="text">Small animals</span></a></li>
-                        -->
                         @foreach($categories as $category)
                         @if($category->name_en != "Other")
-                        <li><a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}" class="{{ (substr(Request::url(), strrpos(Request::url(), '/') + 1) == $category->name || explode('/', Request::url())[count(explode('/', Request::url()))-3] == $category->name) ? 'active' : '' }}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
+                        <li><a href="{{url(App::getLocale().'/category/' . $category->id . '/' . str_replace(' ', '_', $category->name))}}" class="{{ (Route::current()->getParameter('category') == $category->name) ? 'active' : '' }}"><span class="{{str_replace(' ', '_', strtolower($category->name_en))}}_icon"></span><span class="text">{{$category->name}}</span></a></li>
                         @endif
                         @endforeach
-                        <!--
-                        <li><a href="#"><img src="{{url('/images/icons/icon_dog.png')}}"><span>Dogs</span></a></li>
-                        <li><a href="#"><img src="{{url('/images/icons/icon_cat.png')}}"><span>Cats</span></a></li>
-                        <li><a href="#"><img src="{{url('/images/icons/icon_fish.png')}}"><span>Fish</span></a></li>
-                        -->
                     </ul>
                 </div>
             </nav>
@@ -92,13 +79,9 @@
             <div class="logo">
                 <a href="{{url(App::getLocale().'/')}}"></a>
             </div>
-            
         </div>
-        
 
         <div class="content">
-            {{--@include('sub_views.faq_overlay')--}}
-            <?php //dd(Route::current()->getParameter('id')) ?>
             @yield('content')
         </div>
         

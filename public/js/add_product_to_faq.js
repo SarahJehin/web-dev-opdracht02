@@ -8,8 +8,7 @@
         $amount_of_products = $('.product_select.first option').length-1;
         //check whether there are more selects than products
         if($counter <= $amount_of_products) {
-            $product_select = $('.product_select.first')
-                .clone();
+            $product_select = $('.product_select.first').clone();
 
             $product_select.removeClass("first");
 
@@ -20,15 +19,12 @@
         }
     });
     
-    
-    
     $( ".products" ).on( "click", ".btn_remove", function() {
         $clicked_parent = $( this ).parent().parent();
         if(!$clicked_parent.hasClass('first')) {
             $clicked_parent.remove();
         }
     });
-    
     
     
 })(window, window.document, window.jQuery);

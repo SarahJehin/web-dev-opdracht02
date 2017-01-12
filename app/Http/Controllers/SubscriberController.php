@@ -29,12 +29,11 @@ class SubscriberController extends Controller
         //dd($subscriber);
         $subscriber->save();
         //send e-mail to subscriber
-        /*
         Mail::send('emails.mail_to_subscriber', [], function($message) use($request) {
             $message->to('sarah.jehin@student.kdg.be', $request->email);
             $message->from('no-reply@kowloon.be', 'Kowloon');
             $message->subject("You've subscribed to the kowloon newsletter!");
-        });*/
+        });
         
         return redirect(App::getLocale() . '/subscriber_confirmation');
     }

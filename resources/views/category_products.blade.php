@@ -91,7 +91,7 @@ Kowloon - {{$category->name}}
                             </a>
                         </div>
                         @endforeach
-                        <div class="col-md-12 pagination_block">
+                        <div class="col-md-12 pagination_block page_links01">
                             {{ $products->links() }}
                         </div>
                 </div>

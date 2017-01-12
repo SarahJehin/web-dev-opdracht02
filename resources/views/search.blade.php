@@ -66,7 +66,9 @@
                 
             </div>
             @endforeach
-            {{ $product_results->links() }}
+            <div class="pagination_block page_links02">
+                {{ $product_results->links() }}
+            </div>
             @else
             <div>
                 @lang('welcome.no_search_results')

@@ -234,6 +234,18 @@ body {
 
 .pagination_block {
   text-align: center; }
+  .pagination_block.page_links01 li span, .pagination_block.page_links01 li a {
+    color: #ff6f9e; }
+  .pagination_block.page_links01 li.active span {
+    background-color: #ff6f9e;
+    border-color: #ff6f9e;
+    color: #fff; }
+  .pagination_block.page_links02 li span, .pagination_block.page_links02 li a {
+    color: #e27500; }
+  .pagination_block.page_links02 li.active span {
+    background-color: #e27500;
+    border-color: #e27500;
+    color: #fff; }
 
 .content {
   margin-left: 60px;
@@ -389,6 +401,8 @@ h2 {
   .productblock .image img {
     width: 100%;
     height: auto; }
+  .productblock h4 a {
+    color: #e27500; }
 
 .page_content {
   padding-bottom: 100px; }

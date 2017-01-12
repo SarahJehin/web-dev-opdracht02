@@ -91,6 +91,12 @@ Kowloon - @lang('about_us.title')
                     </div>
                 </div>
                 @endforeach
+                
+                <div class="pagination_block page_links01">
+                    {{$faqs->links() }}
+                </div>
+                
+                
                 @else 
                 <div>
                     There are no questions yet

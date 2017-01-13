@@ -19,8 +19,7 @@ Kowloon - {{$category->name}}
             </div>
             
             <div class="row">
-            <form class="product_filter" method="post" action="{{url(App::getLocale().'/products_filter')}}" novalidate>
-            {{ csrf_field() }}
+            <form class="product_filter" method="get" action="{{url(App::getLocale().'/products_filter')}}" novalidate>
             <div class="row filter">
                 <div type="button" class="question collapsed title" data-toggle="collapse" data-target="#filters">
                     <span class="text">@lang('products.filter')</span>

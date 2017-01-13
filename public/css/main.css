@@ -456,7 +456,9 @@ h2 {
         .page_content .hot_items .item a figure .img,
         .page_content .items .hot_item a figure .img,
         .page_content .items .item a figure .img {
-          position: relative; }
+          position: relative;
+          height: 228px;
+          overflow: hidden; }
           .page_content .hot_items .hot_item a figure .img img,
           .page_content .hot_items .item a figure .img img,
           .page_content .items .hot_item a figure .img img,
@@ -701,9 +703,12 @@ h2 {
   background-color: #565656;
   margin-bottom: 20px;
   border: 1px #717171 solid; }
-  .product .images .big_img img {
-    width: 100%;
-    height: auto; }
+  .product .images .big_img {
+    height: 468px;
+    overflow: hidden; }
+    .product .images .big_img img {
+      width: 100%;
+      height: auto; }
   .product .images .small_img {
     padding: 0;
     cursor: pointer;

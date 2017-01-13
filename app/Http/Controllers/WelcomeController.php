@@ -73,7 +73,7 @@ class WelcomeController extends Controller
             $query = $query->whereIn('category_id', $cats);
         }
         
-        $product_results = $query->paginate(10)->appends(['searchword' => $request->searchword, 'from' => $request->from, 'to' => $request->to, 'category' => $request->category]);;
+        $product_results = $query->paginate(10)->appends(['searchword' => $request->searchword, 'from' => $request->from, 'to' => $request->to, 'category' => $request->category]);
         
         return view('search', ['categories' => $categories, 'product_results' => $product_results]);
     }
@@ -180,7 +180,7 @@ class WelcomeController extends Controller
             }
         }
         
-        $products = $query->paginate(12);
+        $products = $query->paginate(12)->appends(['category_id' => $request->category_id, 'sort' => $request->sort, 'from' => $request->from, 'to' => $request->to, 'collection' => $request->collection]);
         return view('category_products', ['category' => $category, 'categories' => $categories, 'products' => $products, 'collections' => $collections]);
     }
     

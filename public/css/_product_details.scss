@@ -18,6 +18,8 @@
         border: 1px $main_border_color solid;
         
         .big_img {
+            height: 468px;
+            overflow: hidden;
             img {
                 width: 100%;
                 height: auto;

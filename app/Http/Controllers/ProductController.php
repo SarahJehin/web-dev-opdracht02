@@ -99,7 +99,7 @@ class ProductController extends Controller
                 if ($image->isValid()) {
                     if (in_array($image->guessClientExtension(), $allowed_extensions)) {
                         //create new file name
-                        $new_file_name = time() . $image->getClientOriginalName();
+                        $new_file_name = time() . str_replace(" ", "-", $image->getClientOriginalName());
                         echo($new_file_name);
                         $image->move(base_path() . '/public/images/products/', $new_file_name);
                         $image = new Image([

@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <div>
-                        <form class="product" method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data" novalidate>
+                        <form class="product" method="post" action="{{url('/admin/add_product')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             
                             @if (count($errors) > 0)
@@ -22,7 +22,7 @@
                                 <h3>Nederlands</h3>
                                 <div>
                                     <label for="name_nl">Naam:</label>
-                                    <input class="form-control" type="text" name="name_nl" id="name_nl" value="{{ old('name_nl') }}" required>
+                                    <input class="form-control" type="text" name="name_nl" id="name_nl" value="{{ old('name_nl') }}">
                                     @if ($errors->has('name_nl'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('name_nl') }}</strong>
@@ -31,7 +31,7 @@
                                 </div>
                                 <div>
                                     <label for="description_nl">Beschrijving:</label>
-                                    <textarea class="form-control" name="description_nl" id="description_nl" required>{{ old('description_nl') }}</textarea>
+                                    <textarea class="form-control" name="description_nl" id="description_nl">{{ old('description_nl') }}</textarea>
                                     @if ($errors->has('description_nl'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('description_nl') }}</strong>
@@ -42,7 +42,7 @@
                                 <h3>Français</h3>
                                 <div>
                                     <label for="name_fr">Nom:</label>
-                                    <input class="form-control" type="text" name="name_fr" id="name_fr" value="{{ old('name_fr') }}" required>
+                                    <input class="form-control" type="text" name="name_fr" id="name_fr" value="{{ old('name_fr') }}">
                                     @if ($errors->has('name_fr'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('name_fr') }}</strong>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div>
                                     <label for="description_fr">La description:</label>
-                                    <textarea class="form-control" name="description_fr" id="description_fr" required>{{ old('description_fr') }}</textarea>
+                                    <textarea class="form-control" name="description_fr" id="description_fr">{{ old('description_fr') }}</textarea>
                                     @if ($errors->has('description_fr'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('description_fr') }}</strong>
@@ -62,7 +62,7 @@
                                 <h3>English</h3>
                                 <div>
                                     <label for="name_en">Name:</label>
-                                    <input class="form-control" type="text" name="name_en" id="name_en" value="{{ old('name_en') }}" required>
+                                    <input class="form-control" type="text" name="name_en" id="name_en" value="{{ old('name_en') }}">
                                     @if ($errors->has('name_en'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('name_en') }}</strong>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div>
                                     <label for="description_en">Description:</label>
-                                    <textarea class="form-control" name="description_en" id="description_en" required>{{ old('description_en') }}</textarea>
+                                    <textarea class="form-control" name="description_en" id="description_en">{{ old('description_en') }}</textarea>
                                     @if ($errors->has('description_en'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('description_en') }}</strong>
@@ -80,8 +80,9 @@
                                 </div>
                                 
                                 <h3>Afbeeldingen/Images</h3>
+                                <span>(advised size: 500x400)</span>
                                 <div>
-                                    <input class="form-control" type="file" name="image[]" id="images_to_upload" multiple onChange="makeFileList();">
+                                    <input class="form-control" type="file" name="image[]" id="images_to_upload" multiple accept=".jpg,.png" onChange="makeFileList();">
                                     <ul id="file_list">
                                         <li>No Files Selected</li>
                                     </ul>
@@ -96,7 +97,7 @@
                             <div class="col-md-12">
                                 <div>
                                     <label for="price"><h3>Prijs/Prix/Price:</h3></label>
-                                    <input class="form-control" type="number" step="0.01" min="1" name="price" id="price" value="{{ old('price') }}" required>
+                                    <input class="form-control" type="number" step="0.01" name="price" id="price" value="{{ old('price') }}">
                                     @if ($errors->has('price'))
                                         <span class="error_block">
                                             <strong>*{{ $errors->first('price') }}</strong>
@@ -152,8 +153,8 @@
                                     
                                     <h4>1.</h4>
                                     <div>
-                                        <input class="form-control name_input" type="text" name="specs[1][name_nl]" placeholder="naam (NL)" required>
-                                        <input class="form-control desc_input" type="text" name="specs[1][description_nl]" placeholder="beschrijving (NL)" required>
+                                        <input class="form-control name_input" type="text" name="specs[1][name_nl]" placeholder="naam (NL)">
+                                        <input class="form-control desc_input" type="text" name="specs[1][description_nl]" placeholder="beschrijving (NL)">
                                         <input class="form-control name_input" type="text" name="specs[1][name_fr]" placeholder="nom (FR)">
                                         <input class="form-control desc_input" type="text" name="specs[1][description_fr]" placeholder="description (FR)">
                                         <input class="form-control name_input" type="text" name="specs[1][name_en]" placeholder="name (EN)">
@@ -161,8 +162,8 @@
                                     </div>
                                     <h4>2.</h4>
                                     <div>
-                                        <input class="form-control name_input" type="text" name="specs[2][name_nl]" placeholder="naam (NL)" required>
-                                        <input class="form-control desc_input" type="text" name="specs[2][description_nl]" placeholder="beschrijving (NL)" required>
+                                        <input class="form-control name_input" type="text" name="specs[2][name_nl]" placeholder="naam (NL)">
+                                        <input class="form-control desc_input" type="text" name="specs[2][description_nl]" placeholder="beschrijving (NL)">
                                         <input class="form-control name_input" type="text" name="specs[2][name_fr]" placeholder="nom (FR)">
                                         <input class="form-control desc_input" type="text" name="specs[2][description_fr]" placeholder="description (FR)">
                                         <input class="form-control name_input" type="text" name="specs[2][name_en]" placeholder="name (EN)">

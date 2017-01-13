@@ -40,20 +40,8 @@
             <p>Hopefully you'll find what you need on one of the pages below:</p>
             <ul>
                 <li><a href="{{url(App::getLocale().'/')}}">Home</a></li>
-                <li><a href="{{url(App::getLocale().'/')}}">Search</a></li>
-                <li><a href="{{url(App::getLocale().'/')}}">Contact</a></li>
-                <li>
-                    Categories
-                    <ul>
-                        <!-- voor onderstaande eerst de categories variabele beschikbaar maken in alle views -->
-                        {{--<li><a href="{{url(App::getLocale().'/products/' . $category->id)}}">{{$category->name}}</a></li>--}}
-                        <li><a href="{{url(App::getLocale().'/products/1')}}">Dogs</a></li>
-                        <li><a href="{{url(App::getLocale().'/products/2')}}">Cats</a></li>
-                        <li><a href="{{url(App::getLocale().'/products/3')}}">Fish</a></li>
-                        <li><a href="{{url(App::getLocale().'/products/4')}}">Birds</a></li>
-                        <li><a href="{{url(App::getLocale().'/products/5')}}">Small animals</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{url(App::getLocale().'/search')}}">Search</a></li>
+                <li><a href="{{url(App::getLocale().'/about_us')}}">Contact</a></li>
             </ul>
         </div>
     </div>

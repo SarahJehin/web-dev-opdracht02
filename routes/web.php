@@ -11,7 +11,12 @@
 |
 */
 
+
 Auth::routes();
+
+Route::get('/register', function() {
+    abort(404);
+});
 
 Route::get('/home', 'HomeController@index');
 

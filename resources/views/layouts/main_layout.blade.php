@@ -32,7 +32,7 @@
 <body>
     <div id="app">
         
-        @if (!isset($_COOKIE["client_ip"]))
+        @if (!Request::cookie('client_ip'))
         <div class="cookies">
             <div class="left">
                 <img src="{{url('/images/cookie_img.png')}}" alt="cookie bone">

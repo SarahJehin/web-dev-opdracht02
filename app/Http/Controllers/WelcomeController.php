@@ -43,9 +43,10 @@ class WelcomeController extends Controller
         return view('welcome', ['categories' => $categories, 'hot_items' => $hot_items]);
     }
     
-    public function set_cookie() {
+    public function set_cookie(CookieJar $cookieJar) {
         //setCookie that expires in 30 days
-        setcookie("client_ip", request()->ip(), time()+(3600*24*30));
+        //setcookie("client_ip", request()->ip(), time()+(3600*24*30));
+        $cookieJar->queue(cookie('client_ip', 'activated', 45000));
         return back();
     }
     
